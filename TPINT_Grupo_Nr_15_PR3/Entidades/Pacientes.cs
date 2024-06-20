@@ -18,7 +18,7 @@ namespace Entidades
         private string Telefono;
         private string Email;
 
-        Pacientes()
+        public Pacientes()
         {
 
         }
@@ -77,5 +77,4 @@ namespace Entidades
             set { Email = value; }
         }
     }
-}
 }

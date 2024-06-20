@@ -17,6 +17,20 @@
         .auto-style3 {
             width: 63%;
         }
+        .auto-style4 {
+            width: 359px;
+        }
+        .auto-style5 {
+            height: 33px;
+            width: 359px;
+        }
+        .auto-style6 {
+            width: 359px;
+            height: 23px;
+        }
+        .auto-style7 {
+            height: 23px;
+        }
     </style>
 </head>
 <body>
@@ -43,42 +57,42 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Nombre:</td>
+                    <td class="auto-style4">Nombre:</td>
                     <td>
                         <asp:TextBox ID="txtNombreMedico" runat="server"></asp:TextBox>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td>Apellido:</td>
+                    <td class="auto-style4">Apellido:</td>
                     <td>
                         <asp:TextBox ID="txtApellidoMedico" runat="server"></asp:TextBox>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td>DNI:</td>
+                    <td class="auto-style4">DNI:</td>
                     <td>
                         <asp:TextBox ID="txtDniMedico" runat="server"></asp:TextBox>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td>Fecha de Nacimiento:</td>
+                    <td class="auto-style4">Fecha de Nacimiento:</td>
                     <td>
                         <asp:TextBox ID="txtFNMedico" runat="server"></asp:TextBox>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td>Dirección:</td>
+                    <td class="auto-style4">Dirección:</td>
                     <td>
                         <asp:TextBox ID="txtDireccionMedico" runat="server"></asp:TextBox>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td>Provincia::</td>
+                    <td class="auto-style4">Provincia:</td>
                     <td>
                         <asp:DropDownList ID="ddlProvincias" runat="server">
                         </asp:DropDownList>
@@ -86,7 +100,7 @@
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">Localidad:</td>
+                    <td class="auto-style5">Localidad:</td>
                     <td class="auto-style2">
                         <asp:DropDownList ID="ddlLocalidades" runat="server">
                         </asp:DropDownList>
@@ -94,35 +108,35 @@
                     <td class="auto-style2"></td>
                 </tr>
                 <tr>
-                    <td>Nacionalidad:</td>
+                    <td class="auto-style4">Nacionalidad:</td>
                     <td>
                         <asp:TextBox ID="txtNacionalidadMedico" runat="server"></asp:TextBox>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td>Sexo:</td>
+                    <td class="auto-style4">Sexo:</td>
                     <td>
                         <asp:TextBox ID="txtSexoMedico" runat="server"></asp:TextBox>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td>Teléfono:</td>
+                    <td class="auto-style4">Teléfono:</td>
                     <td>
                         <asp:TextBox ID="txtTelefonoMedico" runat="server"></asp:TextBox>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td>Email:</td>
+                    <td class="auto-style4">Email:</td>
                     <td>
                         <asp:TextBox ID="txtEmailMedico" runat="server"></asp:TextBox>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td>Especialidad:</td>
+                    <td class="auto-style4">Especialidad:</td>
                     <td>
                         <asp:DropDownList ID="DropDownList1" runat="server">
                         </asp:DropDownList>
@@ -130,40 +144,70 @@
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td>Usuario:</td>
+                    <td class="auto-style4">Usuario:</td>
                     <td>
                         <asp:TextBox ID="txtUsuarioMedico" runat="server"></asp:TextBox>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td>Password:</td>
+                    <td class="auto-style4">Password:</td>
                     <td>
                         <asp:TextBox ID="txtPassMedico" runat="server"></asp:TextBox>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
+                    <td class="auto-style4">Dia y Horiario de atencion:</td>
+                    <td>
+                        <asp:DropDownList ID="ddlDias" runat="server">
+                            <asp:ListItem Value="0">-Seleccione un dia-</asp:ListItem>
+                            <asp:ListItem Value="1">Lunes</asp:ListItem>
+                            <asp:ListItem Value="2">Martes</asp:ListItem>
+                            <asp:ListItem Value="3">Miercoles</asp:ListItem>
+                            <asp:ListItem Value="4">Jueves</asp:ListItem>
+                            <asp:ListItem Value="5">Viernes</asp:ListItem>
+                            <asp:ListItem Value="6">Sabado</asp:ListItem>
+                        </asp:DropDownList>
+&nbsp;
+                        <asp:DropDownList ID="ddlHorario" runat="server">
+                            <asp:ListItem>-Seleccione un Turno</asp:ListItem>
+                            <asp:ListItem Value="9:00 a 14:00">Mañana</asp:ListItem>
+                            <asp:ListItem Value="14:00 a 19:00">Tarde</asp:ListItem>
+                        </asp:DropDownList>
+&nbsp;
+                        <asp:Button ID="btnAgregarDiayHorario" runat="server" OnClick="btnAgregarDiayHorario_Click" Text="Agregar" />
+                    </td>
                     <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style4">&nbsp;</td>
+                    <td>
+                        <asp:Label ID="lblDiasyHorario" runat="server"></asp:Label>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style4">&nbsp;</td>
                     <td>
                         <asp:Button ID="btnAgregar" runat="server" Text="Agregar" />
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td>&nbsp;</td>
+                    <td class="auto-style4">&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td>Legajo asignado:</td>
+                    <td class="auto-style4">Legajo asignado:</td>
                     <td>
                         <asp:Label ID="lblLegajo" runat="server"></asp:Label>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td>&nbsp;</td>
+                    <td class="auto-style4">&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>
                         <asp:HyperLink ID="hlVolverInicio" runat="server" NavigateUrl="~/Administrador/Inicio.aspx">Volver al Inicio</asp:HyperLink>

@@ -21,5 +21,17 @@ namespace Vistas.Administrador
         {
             PanelUsuario.Visible = !PanelUsuario.Visible;
         }
+
+        protected void btnAgregarDiayHorario_Click(object sender, EventArgs e)
+        {
+            if(lblDiasyHorario.Text == "")
+            {
+                lblDiasyHorario.Text = ddlDias.SelectedItem.Text + " " + ddlHorario.SelectedValue;
+            }
+            else
+            {
+                lblDiasyHorario.Text += "<br>" + ddlDias.SelectedItem.Text + " " + ddlHorario.SelectedValue;
+            }
+        }
     }
 }

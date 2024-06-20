@@ -11,7 +11,7 @@ namespace Entidades
         private int ID_Provincia;
         private string Nombre;
 
-        Provincia()
+        public Provincias()
         {
 
         }
