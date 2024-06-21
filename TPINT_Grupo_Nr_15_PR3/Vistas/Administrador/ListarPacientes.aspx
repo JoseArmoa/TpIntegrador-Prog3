@@ -119,18 +119,47 @@
                 <asp:GridView ID="gvListarPacientes" runat="server" AutoGenerateColumns="False">
                     <Columns>
                         <asp:TemplateField HeaderText="Acciones">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="lbEditar" runat="server">Editar</asp:LinkButton>
+                            <EditItemTemplate>
+                                <asp:LinkButton ID="lbActualizar" runat="server" CommandName="Update">Actualizar</asp:LinkButton>
                                 &nbsp;
-                                <asp:LinkButton ID="lbEliminar" runat="server">Eliminar</asp:LinkButton>
+                                <asp:LinkButton ID="lbCancelar" runat="server" CommandName="Cancel">Cancelar</asp:LinkButton>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:LinkButton ID="lbEditar" runat="server" CommandName="Edit">Editar</asp:LinkButton>
+                                &nbsp;
+                                <asp:LinkButton ID="lbEliminar" runat="server" CommandName="Delete">Eliminar</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="DNI"></asp:TemplateField>
-                        <asp:TemplateField HeaderText="Nombre"></asp:TemplateField>
-                        <asp:TemplateField HeaderText="Apellido"></asp:TemplateField>
-                        <asp:TemplateField HeaderText="Sexo"></asp:TemplateField>
-                        <asp:TemplateField HeaderText="Nacionalidad"></asp:TemplateField>
-                        <asp:TemplateField HeaderText="Fecha Nacimiento"></asp:TemplateField>
+                        <asp:TemplateField HeaderText="DNI">
+                            <EditItemTemplate>
+                                <asp:Label ID="lb_eit_Dni" runat="server"></asp:Label>
+                            </EditItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Nombre">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="txt_eit_Nombre" runat="server"></asp:TextBox>
+                            </EditItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Apellido">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="txt_eit_Apellido" runat="server"></asp:TextBox>
+                            </EditItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Sexo">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="txt_eit_Sexo" runat="server"></asp:TextBox>
+                            </EditItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Nacionalidad">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="txt_eit_Nacionalidad" runat="server"></asp:TextBox>
+                            </EditItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Fecha Nacimiento">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="txt_eit_FechNac" runat="server" TextMode="Date"></asp:TextBox>
+                            </EditItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Observaciones">
                             <ItemTemplate>
                                 <asp:LinkButton ID="lbObservaciones" runat="server">Ver Observaciones</asp:LinkButton>
