@@ -9,3 +9,14 @@ C:\Users\noe_3\Documents\GITHUB\TIF_PRIII\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_P
 C:\Users\noe_3\Documents\GITHUB\TIF_PRIII\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Negocio\obj\Debug\Negocio.csproj.CopyComplete
 C:\Users\noe_3\Documents\GITHUB\TIF_PRIII\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Negocio\obj\Debug\Negocio.dll
 C:\Users\noe_3\Documents\GITHUB\TIF_PRIII\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Negocio\obj\Debug\Negocio.pdb
+C:\Users\gaby4\OneDrive\Escritorio\trabajo Practico Prog3\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Negocio\bin\Debug\Negocio.dll
+C:\Users\gaby4\OneDrive\Escritorio\trabajo Practico Prog3\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Negocio\bin\Debug\Negocio.pdb
+C:\Users\gaby4\OneDrive\Escritorio\trabajo Practico Prog3\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Negocio\bin\Debug\Dao.dll
+C:\Users\gaby4\OneDrive\Escritorio\trabajo Practico Prog3\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Negocio\bin\Debug\Entidades.dll
+C:\Users\gaby4\OneDrive\Escritorio\trabajo Practico Prog3\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Negocio\bin\Debug\Dao.pdb
+C:\Users\gaby4\OneDrive\Escritorio\trabajo Practico Prog3\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Negocio\bin\Debug\Entidades.pdb
+C:\Users\gaby4\OneDrive\Escritorio\trabajo Practico Prog3\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+C:\Users\gaby4\OneDrive\Escritorio\trabajo Practico Prog3\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\gaby4\OneDrive\Escritorio\trabajo Practico Prog3\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Negocio\obj\Debug\Negocio.csproj.CopyComplete
+C:\Users\gaby4\OneDrive\Escritorio\trabajo Practico Prog3\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Negocio\obj\Debug\Negocio.dll
+C:\Users\gaby4\OneDrive\Escritorio\trabajo Practico Prog3\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Negocio\obj\Debug\Negocio.pdb

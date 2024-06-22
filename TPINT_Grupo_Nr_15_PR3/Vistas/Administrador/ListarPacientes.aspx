@@ -172,7 +172,9 @@
                     </Columns>
                 </asp:GridView>
             </td>
-            <td class="auto-style16"></td>
+            <td class="auto-style16">
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" />
+            </td>
             <td class="auto-style16">&nbsp;</td>
         </tr>
         <tr>

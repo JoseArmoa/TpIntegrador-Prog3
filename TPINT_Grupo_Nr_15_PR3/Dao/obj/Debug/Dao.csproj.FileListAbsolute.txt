@@ -7,3 +7,12 @@ C:\Users\noe_3\Documents\GITHUB\TIF_PRIII\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_P
 C:\Users\noe_3\Documents\GITHUB\TIF_PRIII\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Dao\obj\Debug\Dao.csproj.CopyComplete
 C:\Users\noe_3\Documents\GITHUB\TIF_PRIII\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Dao\obj\Debug\Dao.dll
 C:\Users\noe_3\Documents\GITHUB\TIF_PRIII\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Dao\obj\Debug\Dao.pdb
+C:\Users\gaby4\OneDrive\Escritorio\trabajo Practico Prog3\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Dao\bin\Debug\Dao.dll
+C:\Users\gaby4\OneDrive\Escritorio\trabajo Practico Prog3\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Dao\bin\Debug\Dao.pdb
+C:\Users\gaby4\OneDrive\Escritorio\trabajo Practico Prog3\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Dao\bin\Debug\Entidades.dll
+C:\Users\gaby4\OneDrive\Escritorio\trabajo Practico Prog3\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Dao\bin\Debug\Entidades.pdb
+C:\Users\gaby4\OneDrive\Escritorio\trabajo Practico Prog3\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Dao\obj\Debug\Dao.csproj.AssemblyReference.cache
+C:\Users\gaby4\OneDrive\Escritorio\trabajo Practico Prog3\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Dao\obj\Debug\Dao.csproj.CoreCompileInputs.cache
+C:\Users\gaby4\OneDrive\Escritorio\trabajo Practico Prog3\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Dao\obj\Debug\Dao.csproj.CopyComplete
+C:\Users\gaby4\OneDrive\Escritorio\trabajo Practico Prog3\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Dao\obj\Debug\Dao.dll
+C:\Users\gaby4\OneDrive\Escritorio\trabajo Practico Prog3\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Dao\obj\Debug\Dao.pdb
