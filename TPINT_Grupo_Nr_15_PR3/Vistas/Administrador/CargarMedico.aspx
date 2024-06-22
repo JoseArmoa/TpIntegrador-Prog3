@@ -181,6 +181,7 @@
                             <asp:ListItem>-Seleccione un Turno</asp:ListItem>
                             <asp:ListItem Value="9:00 a 14:00">Mañana</asp:ListItem>
                             <asp:ListItem Value="14:00 a 19:00">Tarde</asp:ListItem>
+                            <asp:ListItem Value="9:00 a 19:00">Completo</asp:ListItem>
                         </asp:DropDownList>
 &nbsp;
                         <asp:Button ID="btnAgregarDiayHorario" runat="server" OnClick="btnAgregarDiayHorario_Click" Text="Agregar" />

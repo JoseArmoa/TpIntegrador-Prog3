@@ -10,8 +10,8 @@ namespace Entidades
     {
         private string legajoMed;
         private int diaSemana;
-        private TimeSpan horaEntrada;
-        private TimeSpan horaSalida;
+        private string horaEntrada;
+        private string horaSalida;
 
         public HorarioMedico()
         {
@@ -19,7 +19,7 @@ namespace Entidades
 
         public string LegajoMed { get => legajoMed; set => legajoMed = value; }
         public int DiaSemana { get => diaSemana; set => diaSemana = value; }
-        public TimeSpan HoraEntrada { get => horaEntrada; set => horaEntrada = value; }
-        public TimeSpan HoraSalida { get => horaSalida; set => horaSalida = value; }
+        public string HoraEntrada { get => horaEntrada; set => horaEntrada = value; }
+        public string HoraSalida { get => horaSalida; set => horaSalida = value; }
     }
 }
