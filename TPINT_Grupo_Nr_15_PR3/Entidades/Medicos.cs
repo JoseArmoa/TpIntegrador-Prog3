@@ -21,7 +21,7 @@ namespace Entidades
         private int IdUsuario;
         private string Nacionalidad;
         private string Sexo;
-        Medicos()
+        public Medicos()
         {
         }
         public string legajo

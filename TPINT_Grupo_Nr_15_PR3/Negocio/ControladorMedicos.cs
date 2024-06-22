@@ -9,7 +9,7 @@ using System.Data;
 
 namespace Negocio
 {
-    class ControladorMedicos
+    public class ControladorMedicos
     {
         AccesoMedicos accMed = new AccesoMedicos();
 
