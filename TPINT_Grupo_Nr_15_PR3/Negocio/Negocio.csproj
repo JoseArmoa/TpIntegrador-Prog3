@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControladorHorario.cs" />
+    <Compile Include="ControladorLocalidades.cs" />
+    <Compile Include="ControladorMedicos.cs" />
     <Compile Include="ControladorPacientes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

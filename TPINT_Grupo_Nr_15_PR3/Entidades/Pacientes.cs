@@ -17,12 +17,8 @@ namespace Entidades
         private int ID_Localidad;
         private string Telefono;
         private string Email;
-<<<<<<< Updated upstream
 
         public Pacientes()
-=======
-        Pacientes()
->>>>>>> Stashed changes
         {
         }
         public string nombre

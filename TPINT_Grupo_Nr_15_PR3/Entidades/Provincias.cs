@@ -6,16 +6,12 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class Provincias
+    public class Provincias
     {
         private int ID_Provincia;
         private string Nombre;
 
-<<<<<<< Updated upstream
         public Provincias()
-=======
-        Provincias()
->>>>>>> Stashed changes
         {
 
         }

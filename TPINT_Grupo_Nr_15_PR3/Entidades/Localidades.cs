@@ -10,12 +10,7 @@ namespace Entidades
     {
         private string ID_Localidad;
         private string Nombre;
-
-<<<<<<< Updated upstream
         public Localidades()
-=======
-        Localidades()
->>>>>>> Stashed changes
         {
 
         }

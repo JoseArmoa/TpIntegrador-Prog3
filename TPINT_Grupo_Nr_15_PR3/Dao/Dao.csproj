@@ -41,12 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< Updated upstream
-=======
     <Compile Include="AccesoDB.cs" />
+    <Compile Include="AccesoHorarios.cs" />
+    <Compile Include="AccesoMedicos.cs" />
     <Compile Include="AccesoPacientes.cs" />
-    <Compile Include="Class1.cs" />
->>>>>>> Stashed changes
+    <Compile Include="AccesoLocalidades.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -24,11 +24,18 @@
             height: 33px;
             width: 359px;
         }
-        .auto-style6 {
+        .auto-style8 {
+            width: 359px;
+            height: 30px;
+        }
+        .auto-style9 {
+            height: 30px;
+        }
+        .auto-style10 {
             width: 359px;
             height: 23px;
         }
-        .auto-style7 {
+        .auto-style11 {
             height: 23px;
         }
     </style>
@@ -181,18 +188,18 @@
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="auto-style4">&nbsp;</td>
-                    <td>
+                    <td class="auto-style10"></td>
+                    <td class="auto-style11">
                         <asp:Label ID="lblDiasyHorario" runat="server"></asp:Label>
                     </td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style11"></td>
                 </tr>
                 <tr>
-                    <td class="auto-style4">&nbsp;</td>
-                    <td>
+                    <td class="auto-style8"></td>
+                    <td class="auto-style9">
                         <asp:Button ID="btnAgregar" runat="server" Text="Agregar" />
                     </td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style9"></td>
                 </tr>
                 <tr>
                     <td class="auto-style4">&nbsp;</td>

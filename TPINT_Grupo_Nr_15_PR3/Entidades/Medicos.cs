@@ -15,7 +15,6 @@ namespace Entidades
         private int IdEspecialidad;
         private string FechaNacimiento;
         private string Direccion;
-        private int Id_Provincia;
         private int IdLocalidad;
         private string Telefono;
         private string Email;
@@ -59,11 +58,6 @@ namespace Entidades
         {
             get { return Direccion; }
             set { Direccion = value; }
-        }
-        public int iDProvincia
-        {
-            get { return Id_Provincia; }
-            set { Id_Provincia = value; }
         }
         public int iDLocalidad
         {

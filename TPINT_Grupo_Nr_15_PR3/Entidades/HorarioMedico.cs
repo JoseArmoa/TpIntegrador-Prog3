@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class HorarioMedico
+    public class HorarioMedico
     {
         private string legajoMed;
         private int diaSemana;

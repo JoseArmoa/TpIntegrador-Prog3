@@ -61,3 +61,5 @@ C:\Users\josel\OneDrive\Escritorio\Ejercicios en code\TpIntegrador-Prog3\TPINT_G
 C:\Users\josel\OneDrive\Escritorio\Ejercicios en code\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Vistas\obj\Debug\Vistas.csproj.CopyComplete
 C:\Users\josel\OneDrive\Escritorio\Ejercicios en code\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Vistas\obj\Debug\Vistas.dll
 C:\Users\josel\OneDrive\Escritorio\Ejercicios en code\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Vistas\obj\Debug\Vistas.pdb
+C:\Users\josel\OneDrive\Escritorio\Ejercicios en code\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Vistas\bin\Dao.dll
+C:\Users\josel\OneDrive\Escritorio\Ejercicios en code\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Vistas\bin\Dao.pdb
