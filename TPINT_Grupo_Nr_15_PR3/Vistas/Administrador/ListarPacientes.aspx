@@ -138,21 +138,25 @@
                         <asp:TemplateField HeaderText="Nombre">
                             <EditItemTemplate>
                                 <asp:TextBox ID="txt_eit_Nombre" runat="server"></asp:TextBox>
+                                &nbsp;<asp:RegularExpressionValidator ID="revNombre" runat="server" ControlToValidate="txt_eit_Nombre" ErrorMessage="Solo se permiten Caracteres" ValidationExpression="^[A-Za-zs]+$">*</asp:RegularExpressionValidator>
                             </EditItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Apellido">
                             <EditItemTemplate>
                                 <asp:TextBox ID="txt_eit_Apellido" runat="server"></asp:TextBox>
+                                &nbsp;<asp:RegularExpressionValidator ID="revApellido" runat="server" ControlToValidate="txt_eit_Apellido" ErrorMessage="Solo se permiten Caracteres" ValidationExpression="^[A-Za-zs]+$">*</asp:RegularExpressionValidator>
                             </EditItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Sexo">
                             <EditItemTemplate>
                                 <asp:TextBox ID="txt_eit_Sexo" runat="server"></asp:TextBox>
+                                &nbsp;<asp:RegularExpressionValidator ID="revSexo" runat="server" ControlToValidate="txt_eit_Sexo" ErrorMessage="Solo se permiten Caracteres" ValidationExpression="^[A-Za-zs]+$">*</asp:RegularExpressionValidator>
                             </EditItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Nacionalidad">
                             <EditItemTemplate>
                                 <asp:TextBox ID="txt_eit_Nacionalidad" runat="server"></asp:TextBox>
+                                &nbsp;<asp:RegularExpressionValidator ID="revNacionalidad" runat="server" ControlToValidate="txt_eit_Nacionalidad" ErrorMessage="Solo se permiten Caracteres" ValidationExpression="^[A-Za-zs]+$">*</asp:RegularExpressionValidator>
                             </EditItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Fecha Nacimiento">
