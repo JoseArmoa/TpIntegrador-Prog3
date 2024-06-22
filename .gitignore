@@ -17,6 +17,7 @@ packages/
 _ReSharper/
 
 # Ignore Visual Studio profiling files
+*.vs
 *.vsp
 *.vspx
 *.psess
