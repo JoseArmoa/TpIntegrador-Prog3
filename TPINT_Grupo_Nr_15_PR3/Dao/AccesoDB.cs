@@ -67,5 +67,17 @@ namespace Dao
             Conexion.Close();
             return FilasCambiadas;
         }
+
+        public Boolean existe(string consulta)
+        {
+            SqlConnection conexion = ObtenerConeccion();
+            SqlCommand comando = new SqlCommand(consulta, conexion);
+            SqlDataReader datos = comando.ExecuteReader();
+            if (datos.Read())
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

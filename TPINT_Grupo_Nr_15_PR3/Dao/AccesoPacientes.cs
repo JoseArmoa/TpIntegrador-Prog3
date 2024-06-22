@@ -11,59 +11,70 @@ namespace Dao
 {
     public class AccesoPacientes
     {
+        AccesoDB db = new AccesoDB();
 
-        AccesoDB accesoPacientes = new AccesoDB();
-
-        public AccesoPacientes() { }
-
-        public DataTable obtenerTabla()
+        public Boolean existeDNI(Pacientes pac)
         {
-            string consulta = "SELECT * FROM viewPacientes";
-            return accesoPacientes.ObtenerTabla("Pacientes", consulta);
-
+            string consulta = "Select [NombrePaciente] AS Nombre, [ApellidoPaciente] AS Apellido,[Dni_Paciente] AS DNI,[Id_LocalidadPacientes] AS Localidad,Dirreccion From Pacientes" + "WHERE Dni_Paciente = '" + pac.dni + "'";
+            return db.existe(consulta);
         }
 
-        public Boolean AgregarPaciente(Pacientes pac)
+        public int agregarPacientes(ref Pacientes pac)
         {
-            SqlCommand cm = new SqlCommand();
-            parametrosAgregar(ref cm, ref pac);
-            int filasAfectadadas = accesoPacientes.EjecutarProcedimientoAlmacenado(ref cm, "spAgregarPaciente");
-            if (filasAfectadadas > 0)
-            {
-                return true;
-            }
-            return false;
+            SqlCommand sc = new SqlCommand();
+            ParametrosAgregar(ref sc, ref pac);
+            return db.EjecutarProcedimientoAlmacenado(ref sc, "spAgregarPacientes");
+
+            /*
+             * Consulta del procedimiento en db
+                CREATE PROCEDURE spAgregarSucursal
+                (
+	                @NOMBRE varchar(50),
+	                @APELLIDO varchar(50),
+                    @DNI varchar(10),
+	                @IDLOCALIDAD int,
+	                @DIRECCION varchar(50)
+                ) AS
+                INSERT INTO Sucursal(NombrePaciente, ApellidoPaciente,Dni_Paciente, Id_LocalidadPacientes, Direccion, Emal_Paciente, Telefono, Id_Provincia, fechaDeNacimiento)
+                SELECT @NOMBRE,  @APELLIDO, @DNI,@IDLOCALIDAD, @DIRECCION,@EMAIL,@TELEFONO,@IDPROVINCIA,@FECHANAC
+                GO
+             */
         }
 
-        public void parametrosAgregar(ref SqlCommand cmd, ref Pacientes pac)
+        public void ParametrosAgregar(ref SqlCommand sc, ref Pacientes pac)
         {
             SqlParameter SqlParametros = new SqlParameter();
-            SqlParametros = cmd.Parameters.Add("@DNI", SqlDbType.VarChar);
-            SqlParametros.Value = pac.dni;
-            SqlParametros = cmd.Parameters.Add("@NOMBRE", SqlDbType.VarChar);
+            SqlParametros = sc.Parameters.Add("@NOMBRE", SqlDbType.VarChar);
             SqlParametros.Value = pac.nombre;
-            SqlParametros = cmd.Parameters.Add("@APELLIDO", SqlDbType.VarChar);
+            SqlParametros = sc.Parameters.Add("@APELLIDO", SqlDbType.VarChar);
             SqlParametros.Value = pac.apellido;
-            SqlParametros = cmd.Parameters.Add("@FECHANACIMIENTO", SqlDbType.Date);
-            SqlParametros.Value = pac.FechNac;
-            SqlParametros = cmd.Parameters.Add("@DIRECCION", SqlDbType.VarChar);
-            SqlParametros.Value = pac.direccion;
-            SqlParametros = cmd.Parameters.Add("@IDPROVINCIA", SqlDbType.Int);
-            SqlParametros.Value = pac.iDProvincia;
-            SqlParametros = cmd.Parameters.Add("@IDLOCALIDAD", SqlDbType.Int);
+            SqlParametros = sc.Parameters.Add("@DNI", SqlDbType.Int);
+            SqlParametros.Value = pac.dni;
+            SqlParametros = sc.Parameters.Add("@IDLOCALIDAD", SqlDbType.Int);
             SqlParametros.Value = pac.iDLocalidad;
-            SqlParametros = cmd.Parameters.Add("@TELEFONO", SqlDbType.VarChar);
+            SqlParametros = sc.Parameters.Add("@DIRECCION", SqlDbType.VarChar);
+            SqlParametros.Value = pac.direccion;
+            SqlParametros = sc.Parameters.Add("@TELEFONO", SqlDbType.VarChar);
             SqlParametros.Value = pac.telefono;
-            SqlParametros = cmd.Parameters.Add("@EMAIL", SqlDbType.VarChar);
+            SqlParametros = sc.Parameters.Add("@FECHANAC", SqlDbType.VarChar);
+            SqlParametros.Value = pac.FechNac;
+            SqlParametros = sc.Parameters.Add("@EMAIL", SqlDbType.VarChar);
             SqlParametros.Value = pac.email;
-            SqlParametros = cmd.Parameters.Add("@NACIONALIDAD", SqlDbType.VarChar);
-            SqlParametros.Value = pac.nacionalidad;
-            SqlParametros = cmd.Parameters.Add("@SEXO", SqlDbType.VarChar);
-            SqlParametros.Value = pac.sexo;
-
+            SqlParametros = sc.Parameters.Add("@IDPROVINCIA", SqlDbType.Int);
+            SqlParametros.Value = pac.iDProvincia;
         }
 
+        public DataTable getTablaPacientesListar()
+        {
+            string consulta = "Select [Dni_Paciente] AS DNI,[NombrePaciente] AS Nombre, [ApellidoPaciente] AS Apellido, Sexo ,Nacionalidad From Pacientes";
+            return db.ObtenerTabla("Pacientes", consulta);
+        }
 
+        public DataTable getTablaFiltrada(Pacientes pac)
+        {
+            string consulta = "Select [NombrePaciente] AS Nombre, [ApellidoPaciente] AS Apellido,[Dni_Paciente] AS DNI,[Id_LocalidadPacientes] AS Localidad,Dirreccion From Pacientes" + "WHERE Dni_Paciente = '" + pac.dni + "'";
+            return db.ObtenerTabla("Pacientes", consulta);
+        }
 
         public void AgregarParametrosEliminar(ref SqlCommand sc, Pacientes pac)
         {
@@ -76,7 +87,7 @@ namespace Dao
         {
             SqlCommand sc = new SqlCommand();
             AgregarParametrosEliminar(ref sc, pac);
-            return accesoPacientes.EjecutarProcedimientoAlmacenado(ref sc, "spEliminarPaciente");
+            return db.EjecutarProcedimientoAlmacenado(ref sc, "spEliminarPaciente");
 
             //--spEliminarPaciente
 
@@ -112,7 +123,7 @@ namespace Dao
         {
             SqlCommand sc = new SqlCommand();
             AgregarParametrosActualizar(ref sc, pac);
-            return accesoPacientes.EjecutarProcedimientoAlmacenado(ref sc, "spActualizarPaciente");
+            return db.EjecutarProcedimientoAlmacenado(ref sc, "spActualizarPaciente");
 
             /*
                 CREATE PROCEDURE spActualizarPaciente
@@ -138,7 +149,7 @@ namespace Dao
              */
         }
 
-        public Pacientes ObtenerPacientesPorDni(string dni)
+        /*public Pacientes ObtenerPacientesPorDni(string dni)
         {
             AccesoDB db = new AccesoDB();
 
@@ -157,7 +168,7 @@ namespace Dao
 
 
             return pacientes;
-        }
+        }*/
 
 
 

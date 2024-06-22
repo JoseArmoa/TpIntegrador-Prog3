@@ -10,3 +10,9 @@ C:\Users\gaby4\OneDrive\Escritorio\trabajo Practico Prog3\TpIntegrador-Prog3\TPI
 C:\Users\gaby4\OneDrive\Escritorio\trabajo Practico Prog3\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
 C:\Users\gaby4\OneDrive\Escritorio\trabajo Practico Prog3\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Entidades\obj\Debug\Entidades.dll
 C:\Users\gaby4\OneDrive\Escritorio\trabajo Practico Prog3\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Entidades\obj\Debug\Entidades.pdb
+C:\Users\Agus\OneDrive\Desktop\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Entidades\bin\Debug\Entidades.dll
+C:\Users\Agus\OneDrive\Desktop\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Entidades\bin\Debug\Entidades.pdb
+C:\Users\Agus\OneDrive\Desktop\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Entidades\obj\Debug\Entidades.csproj.AssemblyReference.cache
+C:\Users\Agus\OneDrive\Desktop\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\Agus\OneDrive\Desktop\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Entidades\obj\Debug\Entidades.dll
+C:\Users\Agus\OneDrive\Desktop\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Entidades\obj\Debug\Entidades.pdb

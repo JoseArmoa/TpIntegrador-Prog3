@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AccesoDB.cs" />
     <Compile Include="AccesoHorarios.cs" />
+    <Compile Include="AccesoLocalidad.cs" />
     <Compile Include="AccesoMedicos.cs" />
     <Compile Include="AccesoPacientes.cs" />
     <Compile Include="AccesoProvincia.cs" />

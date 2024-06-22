@@ -105,7 +105,7 @@
 &nbsp;</td>
             <td class="auto-style15">
 &nbsp;&nbsp;&nbsp;
-                <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" />
+                <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" OnCommand="btnBuscar_Command" />
             &nbsp;&nbsp;
                 <asp:Button ID="btnAgregar" runat="server" Text="Agregar" OnClick="btnBuscar_Click" PostBackUrl="~/CagarPacientes.aspx" />
             </td>
@@ -114,7 +114,8 @@
         </tr>
         <tr>
             <td class="auto-style5">
-                &nbsp;</td>
+                <asp:Label ID="lblMensaje" runat="server"></asp:Label>
+            </td>
             <td class="auto-style9">
                 <asp:GridView ID="gvListarPacientes" runat="server" AutoGenerateColumns="False">
                     <Columns>
