@@ -21,6 +21,7 @@ namespace Entidades
         public Pacientes()
         {
         }
+
         public string nombre
         {
             get { return Nombre; }

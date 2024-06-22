@@ -62,6 +62,7 @@ C:\Users\josel\OneDrive\Escritorio\Ejercicios en code\TpIntegrador-Prog3\TPINT_G
 C:\Users\josel\OneDrive\Escritorio\Ejercicios en code\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Vistas\obj\Debug\Vistas.dll
 C:\Users\josel\OneDrive\Escritorio\Ejercicios en code\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Vistas\obj\Debug\Vistas.pdb
 <<<<<<< HEAD
+<<<<<<< HEAD
 C:\Users\josel\OneDrive\Escritorio\Ejercicios en code\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Vistas\bin\Dao.dll
 C:\Users\josel\OneDrive\Escritorio\Ejercicios en code\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Vistas\bin\Dao.pdb
 =======
@@ -129,3 +130,5 @@ C:\Users\noe_3\Documents\GITHUB\TIF_PRIII\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_P
 C:\Users\noe_3\Documents\GITHUB\TIF_PRIII\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Vistas\obj\Debug\Vistas.dll
 C:\Users\noe_3\Documents\GITHUB\TIF_PRIII\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Vistas\obj\Debug\Vistas.pdb
 >>>>>>> 6edce69359249940dd2b5972dbeb45c52954c400
+=======
+>>>>>>> parent of 6edce69 (Corrección de conflictos)
