@@ -11,11 +11,7 @@ namespace Entidades
         private int ID_Provincia;
         private string Nombre;
 
-<<<<<<< Updated upstream
         public Provincias()
-=======
-        Provincias()
->>>>>>> Stashed changes
         {
 
         }
