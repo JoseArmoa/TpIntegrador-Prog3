@@ -68,6 +68,32 @@ namespace Dao
 
         }
 
+        public void AgregarParametrosEliminar(ref SqlCommand sc, Medicos medico)
+        {
+            SqlParameter SqlParametros = new SqlParameter();
+            SqlParametros = sc.Parameters.Add("@LEGAJO", SqlDbType.VarChar);
+            SqlParametros.Value = medico.legajo;
+        }
+
+        public int EliminarMedico(Medicos medico)
+        {
+            SqlCommand sc = new SqlCommand();
+            AgregarParametrosEliminar(ref sc, medico);
+            return acceso.EjecutarProcedimientoAlmacenado(ref sc, "spEliminarMedico");
+
+            //--spEliminarMedico
+
+            //CREATE PROCEDURE spEliminarMedico
+            //(
+            //@LEGAJO varchar(4)
+            //)
+            //AS
+            //DELETE FROM Medicos
+            //WHERE Legajo_Me = @LEGAJO
+            //RETURN
+        }
+
+
 
     }
 }

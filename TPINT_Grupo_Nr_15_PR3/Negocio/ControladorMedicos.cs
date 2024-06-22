@@ -26,5 +26,15 @@ namespace Negocio
             }
             return false;
         }
+
+        public bool EliminarMedico(Medicos medico)
+        {
+            int filasAfectadas = accMed.EliminarMedico(medico);
+            if (filasAfectadas > 0)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
