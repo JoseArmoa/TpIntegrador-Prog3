@@ -149,26 +149,6 @@ namespace Dao
              */
         }
 
-        /*public Pacientes ObtenerPacientesPorDni(string dni)
-        {
-            AccesoDB db = new AccesoDB();
-
-            Pacientes pacientes = new Pacientes();
-
-            string consulta = "SELECT Dni_Pa AS Dni, Nombre_Pa AS Nombre, Apellido_Pa AS Apellido, Nacionalidad_Pa AS Nacionalidad, Sexo_Pa AS Sexo, FechaNacimiento_Pa AS Fecha Nacimiento FROM Sucursal " +
-                "WHERE Dni_Pa= " + dni;
-            DataTable dt = db.ObtenerTabla("Pacientes", consulta);
-            DataRow dr = dt.Rows[0];
-            pacientes.dni = dr["Dni"].ToString();
-            pacientes.nombre = dr["Nombre"].ToString();
-            pacientes.apellido = dr["Apellido"].ToString();
-            pacientes.FechNac = dr["FechaNacimiento"].ToString();
-            pacientes.nacionalidad= dr["Nacionalidad"].ToString();
-            pacientes.sexo = dr["Sexo"].ToString();
-
-
-            return pacientes;
-        }*/
 
 
 
