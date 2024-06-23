@@ -36,5 +36,18 @@ namespace Negocio
             }
             return false;
         }
+
+        public bool ActualizarMedico(Medicos medico)
+        {
+            int filasAfectadas = accMed.ActualizarMedico(medico);
+            if (filasAfectadas == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

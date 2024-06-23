@@ -29,7 +29,7 @@ namespace Dao
             SqlCommand cm = new SqlCommand();
             parametrosAgregar(ref cm, ref med);
             int filasAfectadadas = acceso.EjecutarProcedimientoAlmacenado(ref cm, "spAgregarMedico");
-            if(filasAfectadadas > 0)
+            if (filasAfectadadas > 0)
             {
                 return true;
             }
@@ -68,10 +68,10 @@ namespace Dao
 
         }
 
-        public void AgregarParametrosEliminar(ref SqlCommand sc, Medicos medico)
+        private void AgregarParametrosEliminar(ref SqlCommand sc, Medicos medico)
         {
             SqlParameter SqlParametros = new SqlParameter();
-            SqlParametros = sc.Parameters.Add("@LEGAJO", SqlDbType.NChar,5);
+            SqlParametros = sc.Parameters.Add("@LEGAJO", SqlDbType.NChar, 5);
             SqlParametros.Value = medico.legajo;
         }
 
@@ -95,5 +95,47 @@ namespace Dao
             //RETURN
         }
 
+        private void AgregarParametrosActualizar(ref SqlCommand cmd, Medicos med)
+        {
+            SqlParameter SqlParametros = new SqlParameter();
+            SqlParametros = cmd.Parameters.Add("@LEGAJO", SqlDbType.NChar, 5);
+            SqlParametros.Value = med.legajo;
+            SqlParametros = cmd.Parameters.Add("@NOMBRE", SqlDbType.VarChar, 50);
+            SqlParametros.Value = med.nombre;
+            SqlParametros = cmd.Parameters.Add("@APELLIDO", SqlDbType.VarChar, 50);
+            SqlParametros.Value = med.apellido;
+            SqlParametros = cmd.Parameters.Add("@DNI", SqlDbType.NChar, 9);
+            SqlParametros.Value = med.dni;
+            SqlParametros = cmd.Parameters.Add("@ESPECIALIDAD", SqlDbType.Int);
+            SqlParametros.Value = med.IDespecialidad;
+        }
+
+        public int ActualizarMedico(Medicos medico)
+        {
+            SqlCommand cmd = new SqlCommand();
+            AgregarParametrosActualizar(ref cmd, medico);
+
+            return acceso.EjecutarProcedimientoAlmacenado(ref cmd, "spActualizarMedico");
+
+            //-- spActualizarMedico
+
+            //CREATE PROCEDURE spActualizarMedicos
+            //(
+            //@LEGAJO nchar(5),
+            //@NOMBRE varchar(50),
+            //@APELLIDO varchar(50),
+            //@DNI nchar(9),
+            //@ESPECIALIDAD int
+            //)
+            //AS
+            //UPDATE  Medicos
+            //SET
+            //NombreMedico = @NOMBRE,
+            //ApellidoMedico = @APELLIDO,
+            //DniMedico = @DNI,
+            //IdEspecialidad_Med = @ESPECIALIDAD
+            //WHERE LegajoMedico = @LEGAJO
+            //RETURN
+        }
     }
 }
