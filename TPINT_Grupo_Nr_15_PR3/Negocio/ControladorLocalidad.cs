@@ -11,9 +11,9 @@ namespace Negocio
     public class ControladorLocalidad
     {
         AccesoLocalidad acceso = new AccesoLocalidad();
-        public DataTable ObtenerddlProvincia()
+        public DataTable ObtenerLocalidades(int idProvincia)
         {
-            return acceso.GetTablaLocalidad();
+            return acceso.GetTablaLocalidad(idProvincia);
         }
     }
 }

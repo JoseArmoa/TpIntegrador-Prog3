@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -17,6 +18,16 @@ namespace Vistas.Administrador
             if (Session["Usuario"] != null)
             {
                 lblNombreUsuario.Text = Session["Usuario"].ToString();
+            }
+
+            if (!IsPostBack)
+            {
+                ControladorProvincia cp = new ControladorProvincia();
+                cargarDDL(ddlProvincias, cp.getTabla());
+                ListItem lt = new ListItem("-Selecione una Provincia-", "-1");
+                ddlProvincias.Items.Insert(0, lt);
+                lt = new ListItem("-Selecione una Localidad-", "-1");
+                ddlLocalidades.Items.Add(lt);
             }
         }
 
@@ -47,6 +58,33 @@ namespace Vistas.Administrador
                 hm.HoraSalida = ddlHorario.SelectedValue.Trim().Split('a')[1];
 
                 horarios.Add(hm);
+            }
+        }
+
+        protected void cargarDDL(DropDownList ddl, DataTable dt)
+        {
+            ddl.DataSource = dt;
+            ddl.DataTextField = "Nombre";
+            ddl.DataValueField = "Id";
+            ddl.DataBind();
+        }
+
+        protected void ddlProvincias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Provincias prov = new Provincias();
+            prov.idProvincia = Convert.ToInt32(ddlProvincias.SelectedValue);
+            if(ddlProvincias.SelectedValue != "-1")
+            {
+                ControladorLocalidad cl = new ControladorLocalidad();
+                cargarDDL(ddlLocalidades, cl.ObtenerLocalidades(prov.idProvincia));
+                ListItem lt = new ListItem("-Selecione una Localidad-", "-1");
+                ddlLocalidades.Items.Insert(0, lt);
+                ddlLocalidades.Enabled = true;
+            }
+            else
+            {
+                ddlLocalidades.SelectedIndex = 0;
+                ddlLocalidades.Enabled = false;
             }
         }
     }

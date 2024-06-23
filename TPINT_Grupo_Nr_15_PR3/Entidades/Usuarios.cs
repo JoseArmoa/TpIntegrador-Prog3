@@ -13,7 +13,7 @@ namespace Entidades
         private string Contraseña;
         private string TipoUsuario;
 
-        Usuarios()
+        public Usuarios()
         {
 
         }

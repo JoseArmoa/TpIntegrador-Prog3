@@ -16,9 +16,9 @@ namespace Dao
 
         }
 
-        public DataTable obtenerTablaFiltrada()
+        public DataTable obtenerTabla()
         {
-            string consulta = "SELECT Nombre, IdProvincia FROM Provincias";
+            string consulta = "SELECT NombreProvincia as Nombre, IdProvincia as Id FROM Provincias";
 
             return acceso.ObtenerTabla("Provincia", consulta);
         }

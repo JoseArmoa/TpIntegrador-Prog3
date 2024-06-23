@@ -13,9 +13,9 @@ namespace Negocio
     {
         AccesoProvincia accesoProvincia = new AccesoProvincia();
 
-        DataTable getTabla()
+        public DataTable getTabla()
         {
-            return accesoProvincia.obtenerTablaFiltrada();
+            return accesoProvincia.obtenerTabla();
         }
     }
 }
