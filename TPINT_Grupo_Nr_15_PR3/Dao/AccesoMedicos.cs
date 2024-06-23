@@ -71,7 +71,7 @@ namespace Dao
         public void AgregarParametrosEliminar(ref SqlCommand sc, Medicos medico)
         {
             SqlParameter SqlParametros = new SqlParameter();
-            SqlParametros = sc.Parameters.Add("@LEGAJO", SqlDbType.VarChar);
+            SqlParametros = sc.Parameters.Add("@LEGAJO", SqlDbType.NChar,5);
             SqlParametros.Value = medico.legajo;
         }
 
@@ -81,19 +81,19 @@ namespace Dao
             AgregarParametrosEliminar(ref sc, medico);
             return acceso.EjecutarProcedimientoAlmacenado(ref sc, "spEliminarMedico");
 
-            //--spEliminarMedico
+            //--spEliminarMedico     ( REALIZA BAJA LOGICA )
 
-            //CREATE PROCEDURE spEliminarMedico
+            //CREATE PROCEDURE spEliminarMedicos
             //(
-            //@LEGAJO varchar(4)
+            //@LEGAJO nchar(5)
             //)
             //AS
-            //DELETE FROM Medicos
-            //WHERE Legajo_Me = @LEGAJO
+            //UPDATE  Medicos
+            //SET
+            //Estado_Med = 0
+            //WHERE LegajoMedico = @LEGAJO
             //RETURN
         }
-
-
 
     }
 }
