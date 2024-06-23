@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class Usuarios
+    public class Usuarios
     {
         private int Idusuario;
         private string NombreUsuario;
         private string Contraseña;
         private string TipoUsuario;
 
-        Usuarios()
+        public Usuarios()
         {
 
         }

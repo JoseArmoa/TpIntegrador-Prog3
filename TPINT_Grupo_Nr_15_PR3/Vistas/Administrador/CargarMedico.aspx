@@ -101,7 +101,7 @@
                 <tr>
                     <td class="auto-style4">Provincia:</td>
                     <td>
-                        <asp:DropDownList ID="ddlProvincias" runat="server">
+                        <asp:DropDownList ID="ddlProvincias" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlProvincias_SelectedIndexChanged">
                         </asp:DropDownList>
                     </td>
                     <td>&nbsp;</td>
@@ -109,7 +109,7 @@
                 <tr>
                     <td class="auto-style5">Localidad:</td>
                     <td class="auto-style2">
-                        <asp:DropDownList ID="ddlLocalidades" runat="server">
+                        <asp:DropDownList ID="ddlLocalidades" runat="server" Enabled="False">
                         </asp:DropDownList>
                     </td>
                     <td class="auto-style2"></td>

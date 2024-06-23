@@ -46,6 +46,7 @@
     <Compile Include="ControladorMedicos.cs" />
     <Compile Include="ControladorPacientes.cs" />
     <Compile Include="ControladorProvincia.cs" />
+    <Compile Include="ControladorUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

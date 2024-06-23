@@ -20,8 +20,8 @@ namespace Vistas
 
             if (!IsPostBack)
             {
-                cargarDdlLocalidad(ddlLocalidad);
-                cargarDdlProvincias(ddlProvinciaPacientes);
+                //cargarDdlLocalidad(ddlLocalidad);
+                //cargarDdlProvincias(ddlProvinciaPacientes);
             }
 
         }
@@ -29,7 +29,7 @@ namespace Vistas
         public void cargarDdlLocalidad(DropDownList ddl)
         {
             ControladorLocalidad cl = new ControladorLocalidad();
-            ddl.DataSource = cl.ObtenerddlProvincia();
+           // ddl.DataSource = cl.ObtenerddlProvincia();
             ddl.DataTextField = "Nombre";
             ddl.DataValueField = "ID";
             ddl.DataBind();

@@ -10,7 +10,7 @@ namespace Dao
 {
     class AccesoDB
     {
-        string ruta;
+        string ruta = "Data Source=localhost\\sqlexpress;Initial Catalog=Clinica;Integrated Security=True";
         public AccesoDB()
         {
 

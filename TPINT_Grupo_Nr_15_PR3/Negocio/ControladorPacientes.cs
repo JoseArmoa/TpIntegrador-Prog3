@@ -11,18 +11,18 @@ namespace Negocio
 {
     public class ControladorPacientes
     {
-        AccesoPacientes acceso = new AccesoPacientes();
+        AccesoPacientes accPacientes = new AccesoPacientes();
         public bool agregarPaciente(ref Pacientes pac, ref string mensaje)
         {
 
             mensaje = null;
 
-            if (acceso.existeDNI(pac))
+            if (accPacientes.existeDNI(pac))
             {
                 mensaje = "El DNI ya existe en la base de datos";
                 return false;
             }
-            int filasAfectadas = acceso.agregarPacientes(ref pac);
+            int filasAfectadas = accPacientes.agregarPacientes(ref pac);
 
 
 
@@ -36,19 +36,43 @@ namespace Negocio
 
         public DataTable getTabla()
         {
-            return acceso.getTablaPacientesListar();
+            return accPacientes.getTablaPacientesListar();
         }
 
         public DataTable filtrarPorDNI(string dni)
         {
             Pacientes paciente = new Pacientes();
             paciente.dni = dni;
-            if (acceso.existeDNI(paciente))
+            if (accPacientes.existeDNI(paciente))
             {
-                return acceso.getTablaFiltrada(paciente);
+                return accPacientes.getTablaFiltrada(paciente);
             }
             return null;
 
         }
+
+        public bool EliminarPacientes(Pacientes pac)
+        {
+            int filasAfectadas = accPacientes.EliminarPaciente(pac);
+            if (filasAfectadas > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool ActualizarPacientes(Pacientes pac)
+        {
+            int filasAfectadas = accPacientes.ActualizarPacientes(pac);
+            if (filasAfectadas == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 }
