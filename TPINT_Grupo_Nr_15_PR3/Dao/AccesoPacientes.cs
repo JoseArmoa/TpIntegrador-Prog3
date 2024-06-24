@@ -67,39 +67,42 @@ namespace Dao
             SqlParametros.Value = pac.dni;
         }
 
+
         public int EliminarPaciente(Pacientes pac)
         {
             SqlCommand sc = new SqlCommand();
             AgregarParametrosEliminar(ref sc, pac);
-            return db.EjecutarProcedimientoAlmacenado(ref sc, "spEliminarPaciente");
+            return db.EjecutarProcedimientoAlmacenado(ref sc, "spEliminarPacientes");
 
             //--spEliminarPaciente
 
-            //CREATE PROCEDURE spEliminarPaciente
+            //CREATE PROCEDURE spEliminarPacientes
             //(
-            //@DNI varchar(8)
+            //@DNIPACIENTE nchar(5)
             //)
             //AS
             //DELETE FROM Pacientes
-            //WHERE Dni_Pa = @DNI
+            //WHERE DniPaciente = @DNIPACIENTE
             //RETURN
+            //GO
         }
 
         public void AgregarParametrosActualizar(ref SqlCommand sc, Pacientes pac)
         {
             SqlParameter sqlParameter = new SqlParameter();
-            sqlParameter = sc.Parameters.Add("@DNI", SqlDbType.VarChar);
+            sqlParameter = sc.Parameters.Add("@DNI", SqlDbType.NChar);
             sqlParameter.Value = pac.dni;
             sqlParameter = sc.Parameters.Add("@NOMBRE", SqlDbType.VarChar);
             sqlParameter.Value = pac.nombre;
             sqlParameter = sc.Parameters.Add("@APELLIDO", SqlDbType.VarChar);
             sqlParameter.Value = pac.apellido;
+            sqlParameter = sc.Parameters.Add("@DIRECCION", SqlDbType.VarChar);
+            sqlParameter.Value = pac.direccion;
+            sqlParameter = sc.Parameters.Add("@TELEFONO", SqlDbType.NChar);
+            sqlParameter.Value = pac.telefono;
             sqlParameter = sc.Parameters.Add("@FECHANACIMIENTO", SqlDbType.Date);
             sqlParameter.Value = pac.FechNac;
-            sqlParameter = sc.Parameters.Add("@NACIONALIDAD", SqlDbType.VarChar);
-            sqlParameter.Value = pac.nacionalidad;
-            sqlParameter = sc.Parameters.Add("@SEXO", SqlDbType.VarChar);
-            sqlParameter.Value = pac.sexo;
+  
         }
 
 
@@ -107,29 +110,30 @@ namespace Dao
         {
             SqlCommand sc = new SqlCommand();
             AgregarParametrosActualizar(ref sc, pac);
-            return db.EjecutarProcedimientoAlmacenado(ref sc, "spActualizarPaciente");
+            return db.EjecutarProcedimientoAlmacenado(ref sc, "spActualizarPacientes");
 
             /*
-                CREATE PROCEDURE spActualizarPaciente
+                CREATE PROCEDURE spActualizarPacientes
             (
-                  @DNI varchar(8),
-                  @NOMBRE varchar(30),
-                  @APELLIDO varchar(30),
-                  @FECHANACIMIENTO Date,
-                  @NACIONALIDAD varchar(30),
-                  @SEXO varchar(9)
+                  @DNI nchar(5),
+                  @NOMBRE varchar(50),
+                  @APELLIDO varchar(50),
+                  @DIRECCION varchar(50),
+                  @TELEFONO varchar(50)
+                  @FECHANACIMIENTO DateTime
+       
             )
                 AS
                 UPDATE Pacientes
                 SET
-                  Nombre_Pa = @NOMBRE,
-                  Apellido_Pa = @Apellido,
-                  FechaNacimiento_Pa = @FECHANACIMIENTO,
-                  Nacionalidad_Pa = @NACIONALIDAD,
-                  Sexo_Pa = @SEXO
-                WHERE Dni_Pa = @DNI
+                  NombrePaciente = @NOMBRE,
+                  ApellidoPaciente = @APELLIDO
+                  Direccion_Paciente = @DIRECCION,      
+                  Telefono_Paciente = @TELEFONO,
+                  FechaNacimiento = @FECHANACIMIENTO
+                WHERE DniPaciente = @DNI
                 RETURN
-
+                GO
              */
         }
 
