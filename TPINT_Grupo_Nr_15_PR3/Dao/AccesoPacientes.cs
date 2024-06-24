@@ -15,7 +15,8 @@ namespace Dao
 
         public Boolean existeDNI(Pacientes pac)
         {
-            string consulta = "Select [NombrePaciente] AS Nombre, [ApellidoPaciente] AS Apellido,[Dni_Paciente] AS DNI,[Id_LocalidadPacientes] AS Localidad,Dirreccion From Pacientes" + "WHERE Dni_Paciente = '" + pac.dni + "'";
+            string consulta = "SELECT * FROM Pacientes " +
+                "WHERE DniPaciente = '" + pac.dni + "'";
             return db.existe(consulta);
         }
 
@@ -24,21 +25,6 @@ namespace Dao
             SqlCommand sc = new SqlCommand();
             ParametrosAgregar(ref sc, ref pac);
             return db.EjecutarProcedimientoAlmacenado(ref sc, "spAgregarPacientes");
-
-            /*
-             * Consulta del procedimiento en db
-                CREATE PROCEDURE spAgregarSucursal
-                (
-	                @NOMBRE varchar(50),
-	                @APELLIDO varchar(50),
-                    @DNI varchar(10),
-	                @IDLOCALIDAD int,
-	                @DIRECCION varchar(50)
-                ) AS
-                INSERT INTO Sucursal(NombrePaciente, ApellidoPaciente,Dni_Paciente, Id_LocalidadPacientes, Direccion, Emal_Paciente, Telefono, Id_Provincia, fechaDeNacimiento)
-                SELECT @NOMBRE,  @APELLIDO, @DNI,@IDLOCALIDAD, @DIRECCION,@EMAIL,@TELEFONO,@IDPROVINCIA,@FECHANAC
-                GO
-             */
         }
 
         public void ParametrosAgregar(ref SqlCommand sc, ref Pacientes pac)
@@ -48,31 +34,31 @@ namespace Dao
             SqlParametros.Value = pac.nombre;
             SqlParametros = sc.Parameters.Add("@APELLIDO", SqlDbType.VarChar);
             SqlParametros.Value = pac.apellido;
-            SqlParametros = sc.Parameters.Add("@DNI", SqlDbType.Int);
+            SqlParametros = sc.Parameters.Add("@DNI", SqlDbType.NChar);
             SqlParametros.Value = pac.dni;
             SqlParametros = sc.Parameters.Add("@IDLOCALIDAD", SqlDbType.Int);
             SqlParametros.Value = pac.iDLocalidad;
             SqlParametros = sc.Parameters.Add("@DIRECCION", SqlDbType.VarChar);
             SqlParametros.Value = pac.direccion;
-            SqlParametros = sc.Parameters.Add("@TELEFONO", SqlDbType.VarChar);
-            SqlParametros.Value = pac.telefono;
-            SqlParametros = sc.Parameters.Add("@FECHANAC", SqlDbType.VarChar);
-            SqlParametros.Value = pac.FechNac;
             SqlParametros = sc.Parameters.Add("@EMAIL", SqlDbType.VarChar);
             SqlParametros.Value = pac.email;
-            SqlParametros = sc.Parameters.Add("@IDPROVINCIA", SqlDbType.Int);
-            SqlParametros.Value = pac.iDProvincia;
+            SqlParametros = sc.Parameters.Add("@TELEFONO", SqlDbType.NChar);
+            SqlParametros.Value = pac.telefono;
+            SqlParametros = sc.Parameters.Add("@FECHANAC", SqlDbType.DateTime);
+            SqlParametros.Value = pac.FechNac;
         }
 
         public DataTable getTablaPacientesListar()
         {
-            string consulta = "Select [Dni_Paciente] AS DNI,[NombrePaciente] AS Nombre, [ApellidoPaciente] AS Apellido, Sexo ,Nacionalidad From Pacientes";
+            string consulta = "Select DniPaciente AS DNI,NombrePaciente AS Nombre, ApellidoPaciente AS Apellido, Direccion_Paciente AS Direccion ,Telefono_Paciente AS Telefono,FechaNacimiento AS [Fecha Nacimiento]  From Pacientes";
             return db.ObtenerTabla("Pacientes", consulta);
         }
 
         public DataTable getTablaFiltrada(Pacientes pac)
         {
-            string consulta = "Select [NombrePaciente] AS Nombre, [ApellidoPaciente] AS Apellido,[Dni_Paciente] AS DNI,[Id_LocalidadPacientes] AS Localidad,Dirreccion From Pacientes" + "WHERE Dni_Paciente = '" + pac.dni + "'";
+            string consulta = "SELECT DniPaciente AS DNI, NombrePaciente AS Nombre, ApellidoPaciente AS Apellido, " +
+                        "Direccion_Paciente AS Direccion, Telefono_Paciente AS Telefono, FechaNacimiento AS [Fecha Nacimiento] " +
+                        "FROM Pacientes WHERE DniPaciente = '" + pac.dni + "'";
             return db.ObtenerTabla("Pacientes", consulta);
         }
 

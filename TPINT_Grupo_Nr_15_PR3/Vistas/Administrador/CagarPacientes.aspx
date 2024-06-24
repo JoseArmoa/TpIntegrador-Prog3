@@ -158,12 +158,12 @@
                     </table>
                 </td>
                 <td class="auto-style6">
-                    <asp:DropDownList ID="ddlProvinciaPacientes" runat="server">
+                    <asp:DropDownList ID="ddlProvinciaPacientes" runat="server" OnSelectedIndexChanged="ddlProvinciaPacientes_SelectedIndexChanged" AutoPostBack="True">
                     </asp:DropDownList>
                     <table cellspacing="3" class="auto-style17">
                         <tr>
                             <td>
-                                <asp:DropDownList ID="ddlLocalidad" runat="server" OnSelectedIndexChanged="ddlLocalidad_SelectedIndexChanged">
+                                <asp:DropDownList ID="ddlLocalidad" runat="server">
                                 </asp:DropDownList>
                             </td>
                         </tr>

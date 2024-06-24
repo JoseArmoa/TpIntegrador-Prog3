@@ -11,7 +11,7 @@ namespace Entidades
         private string Nombre;
         private string Apellido;
         private string DNI;
-        private string FechaNacimiento;
+        private DateTime FechaNacimiento;
         private string Direccion;
         private int ID_Provincia;
         private int ID_Localidad;
@@ -39,7 +39,7 @@ namespace Entidades
             get { return DNI; }
             set { DNI = value; }
         }
-        public string FechNac
+        public DateTime FechNac
         {
             get { return FechaNacimiento; }
             set { FechaNacimiento = value; }
