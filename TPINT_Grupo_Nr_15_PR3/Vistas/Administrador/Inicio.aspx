@@ -38,7 +38,7 @@
                 <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Administrador/Informes.aspx">INFORMES</asp:HyperLink>
             </p>
             <p>
-                <asp:HyperLink ID="hlPacientes" runat="server" NavigateUrl="~/ListarPacientes.aspx">PACIENTES</asp:HyperLink>
+                <asp:HyperLink ID="hlPacientes" runat="server" NavigateUrl="~/Administrador/CagarPacientes.aspx">PACIENTES</asp:HyperLink>
             </p>
             <p>
                 <asp:HyperLink ID="hlMedicos" runat="server" NavigateUrl="~/Administrador/ListarMedicos.aspx">MEDICOS</asp:HyperLink>

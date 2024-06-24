@@ -14,14 +14,10 @@
         }
         .auto-style3 {
             height: 50px;
-            width: 289px;
+            width: 315px;
         }
         .auto-style4 {
-            width: 289px;
-        }
-        .auto-style5 {
-            width: 289px;
-            height: 31px;
+            width: 315px;
         }
         .auto-style7 {
             height: 50px;
@@ -30,13 +26,9 @@
         .auto-style8 {
             width: 60px;
         }
-        .auto-style9 {
-            width: 60px;
-            height: 31px;
-        }
         .auto-style10 {
             height: 66px;
-            width: 289px;
+            width: 315px;
         }
         .auto-style11 {
             height: 66px;
@@ -53,15 +45,11 @@
             height: 66px;
             width: 395px;
         }
-        .auto-style16 {
-            width: 395px;
-            height: 31px;
-        }
         .auto-style17 {
             width: 395px;
         }
         .auto-style18 {
-            width: 289px;
+            width: 315px;
             height: 11px;
         }
         .auto-style19 {
@@ -72,6 +60,18 @@
             width: 395px;
             height: 11px;
         }
+        .auto-style21 {
+            height: 65px;
+            width: 315px;
+        }
+        .auto-style22 {
+            height: 65px;
+            width: 60px;
+        }
+        .auto-style23 {
+            height: 65px;
+            width: 395px;
+        }
     </style>
 </head>
 <body>
@@ -79,7 +79,7 @@
     <table class="auto-style1">
         <tr>
             <td class="auto-style18"></td>
-            <td class="auto-style19"></td>
+            <td class="auto-style19">&nbsp;</td>
             <td class="auto-style20">
                 <asp:Button ID="ButtonbtnVerUsuario" runat="server" Text="Usuario" Height="25px" OnClick="ButtonbtnVerUsuario_Click" />
                 <asp:Panel ID="panelUsuario" runat="server" CssClass="auto-style13" Height="42px" Visible="False" Width="256px">
@@ -95,17 +95,18 @@
         </tr>
         <tr>
             <td class="auto-style3"><h1>Administrar Pacientes</h1></td>
-            <td class="auto-style7">&nbsp;</td>
+            <td class="auto-style7"></td>
             <td class="auto-style14"></td>
-            <td class="auto-style14">&nbsp;</td>
+            <td class="auto-style14"></td>
         </tr>
         <tr>
             <td class="auto-style10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
             <td class="auto-style11">Dni Pacientes:&nbsp;&nbsp; <asp:TextBox ID="txtFiltrar" runat="server" Height="16px"></asp:TextBox>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtFiltrar" ErrorMessage="El numero de Dni ingresado no es valido" ValidationExpression="^[1-9]\d*$" ValidationGroup="Grupo2">*</asp:RegularExpressionValidator>
             </td>
             <td class="auto-style15">
 &nbsp;&nbsp;&nbsp;
-                <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" OnCommand="btnBuscar_Command" />
+                <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" OnCommand="btnBuscar_Command" ValidationGroup="Grupo2" />
             &nbsp;&nbsp;
                 <asp:Button ID="btnAgregar" runat="server" Text="Agregar" OnClick="btnBuscar_Click" PostBackUrl="~/Administrador/CagarPacientes.aspx" />
             </td>
@@ -113,10 +114,10 @@
                 &nbsp;</td>
         </tr>
         <tr>
-            <td class="auto-style5">
+            <td class="auto-style21">
                 <asp:Label ID="lblMensaje" runat="server"></asp:Label>
             </td>
-            <td class="auto-style9">
+            <td class="auto-style22">
                 <asp:GridView ID="gvListarPacientes" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
@@ -202,15 +203,18 @@
                     <SortedDescendingHeaderStyle BackColor="#15524A" />
                 </asp:GridView>
             </td>
-            <td class="auto-style16">
+            <td class="auto-style23">
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" />
             </td>
-            <td class="auto-style16">&nbsp;</td>
+            <td class="auto-style23"></td>
         </tr>
         <tr>
-            <td class="auto-style4">&nbsp;</td>
+            <td class="auto-style4">
+                <asp:ValidationSummary ID="ValidationSummary2" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="Grupo2" />
+            </td>
             <td class="auto-style8">&nbsp;</td>
             <td class="auto-style17">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:HyperLink ID="hlVolverInicio" runat="server" NavigateUrl="~/Administrador/Inicio.aspx">Volver a Inicio</asp:HyperLink>
             </td>
             <td class="auto-style17">
