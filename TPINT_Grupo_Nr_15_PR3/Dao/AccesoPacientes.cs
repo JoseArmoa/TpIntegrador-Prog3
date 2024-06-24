@@ -50,15 +50,13 @@ namespace Dao
 
         public DataTable getTablaPacientesListar()
         {
-            string consulta = "Select DniPaciente AS DNI,NombrePaciente AS Nombre, ApellidoPaciente AS Apellido, Direccion_Paciente AS Direccion ,Telefono_Paciente AS Telefono,FechaNacimiento AS [Fecha Nacimiento]  From Pacientes";
+            string consulta = "Select DniPaciente,NombrePaciente, ApellidoPaciente, Direccion_Paciente,Telefono_Paciente,FechaNacimiento From Pacientes";
             return db.ObtenerTabla("Pacientes", consulta);
         }
 
         public DataTable getTablaFiltrada(Pacientes pac)
         {
-            string consulta = "SELECT DniPaciente AS DNI, NombrePaciente AS Nombre, ApellidoPaciente AS Apellido, " +
-                        "Direccion_Paciente AS Direccion, Telefono_Paciente AS Telefono, FechaNacimiento AS [Fecha Nacimiento] " +
-                        "FROM Pacientes WHERE DniPaciente = '" + pac.dni + "'";
+            string consulta = "Select DniPaciente,NombrePaciente, ApellidoPaciente, Direccion_Paciente,Telefono_Paciente,FechaNacimiento From Pacientes WHERE DniPaciente = '" + pac.dni + "'";
             return db.ObtenerTabla("Pacientes", consulta);
         }
 

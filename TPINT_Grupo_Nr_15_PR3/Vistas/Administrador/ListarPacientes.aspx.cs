@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
+using System.Data;
 
 namespace Vistas
 {
@@ -28,8 +29,8 @@ namespace Vistas
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             string dni = txtFiltrar.Text.Trim();
-            txtFiltrar.Text = "";
-            if (contrPacientes.filtrarPorDNI(dni) != null)
+            DataTable resultado = contrPacientes.filtrarPorDNI(dni);
+            if (resultado != null)
             {
                 lblMensaje.Text = "";
                 gvListarPacientes.DataSource = contrPacientes.filtrarPorDNI(dni);
@@ -39,6 +40,7 @@ namespace Vistas
             {
                 lblMensaje.Text = "DNI inexistente ";
             }
+
         }
 
         protected void ButtonbtnVerUsuario_Click(object sender, EventArgs e)
