@@ -50,10 +50,12 @@ namespace Dao
             SqlConnection coneccion = ObtenerConeccion();
             SqlDataAdapter adaptador = ObtenerAdaptador(consulta, coneccion);
 
-            adaptador.Fill(ds, NombreTabla);
-            coneccion.Close();
+                adaptador.Fill(ds, NombreTabla);
+                coneccion.Close();
 
-            return ds.Tables[NombreTabla];
+                return ds.Tables[NombreTabla];
+ 
+
         }
 
         public int EjecutarProcedimientoAlmacenado(ref SqlCommand cmd, String NombreSP)

@@ -65,7 +65,7 @@
                 <tr>
                     <td class="auto-style3"></td>
                     <td class="auto-style3" id="ddl_eit_Especialidad">
-                        <asp:GridView ID="gvListarMedicos" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" PageSize="6" ShowHeaderWhenEmpty="True" OnRowDeleting="gvListarMedicos_RowDeleting">
+                        <asp:GridView ID="gvListarMedicos" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" PageSize="6" ShowHeaderWhenEmpty="True" OnRowDeleting="gvListarMedicos_RowDeleting" OnRowEditing="gvListarMedicos_RowEditing">
                             <AlternatingRowStyle BackColor="#DCDCDC" />
                             <Columns>
                                 <asp:TemplateField HeaderText="Acciones">
@@ -82,8 +82,11 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Legajo">
                                     <EditItemTemplate>
-                                        <asp:Label ID="lb_eit_Legajo" runat="server"></asp:Label>
+                                        <asp:Label ID="lb_eit_Legajo" runat="server" Text='<%# Bind("LegajoMedico") %>'></asp:Label>
                                     </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_it_Legajo" runat="server" Text='<%# Bind("Legajo") %>'></asp:Label>
+                                    </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Nombre">
                                     <EditItemTemplate>
@@ -91,6 +94,9 @@
                                         &nbsp;<asp:RequiredFieldValidator ID="rfv_eit_Nombre" runat="server" ControlToValidate="txt_eit_Nombre" ErrorMessage="Debe ingresar un nombre de médico" ValidationGroup="Grupo1">*</asp:RequiredFieldValidator>
                                         <asp:RegularExpressionValidator ID="rev_eit_Nombre" runat="server" ControlToValidate="txt_eit_Nombre" ErrorMessage="El nombre sólo debe contener letras " ValidationExpression="^[A-Za-z\s]+$" ValidationGroup="Grupo1">*</asp:RegularExpressionValidator>
                                     </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_it_Nombre" runat="server" Text='<%# Bind("Nombre") %>'></asp:Label>
+                                    </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Apellido">
                                     <EditItemTemplate>
@@ -98,6 +104,9 @@
                                         <asp:RequiredFieldValidator ID="rfv_eit_Apellido" runat="server" ControlToValidate="txt_eit_Apellido" ErrorMessage="Debe ingresar el apellido del médico" ValidationGroup="Grupo1">*</asp:RequiredFieldValidator>
                                         <asp:RegularExpressionValidator ID="rev_eit_Apellido" runat="server" ControlToValidate="txt_eit_Apellido" ErrorMessage="El apellido sólo puede contener letras" ValidationExpression="^[A-Za-z\s]+$" ValidationGroup="Grupo1">*</asp:RegularExpressionValidator>
                                     </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_it_Apellido" runat="server" Text='<%# Bind("Apellido") %>'></asp:Label>
+                                    </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Dni">
                                     <EditItemTemplate>
@@ -105,6 +114,9 @@
                                         <asp:RequiredFieldValidator ID="rfv_eit_Dni" runat="server" ControlToValidate="txt_eit_Dni" ErrorMessage="Debe ingresar un numero de dni" ValidationGroup="Grupo1">*</asp:RequiredFieldValidator>
                                         <asp:RegularExpressionValidator ID="rev_eit_Dni" runat="server" ControlToValidate="txt_eit_Dni" ErrorMessage="El dni solo debe contener números" ValidationExpression="^[0-9,]*$" ValidationGroup="Grupo1">*</asp:RegularExpressionValidator>
                                     </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_it_Dni" runat="server" Text='<%# Bind("DNI") %>'></asp:Label>
+                                    </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Especialidad">
                                     <EditItemTemplate>
@@ -112,6 +124,9 @@
                                         </asp:DropDownList>
                                         <asp:RequiredFieldValidator ID="rfv_eit_Especialidad" runat="server" ControlToValidate="DropDownList1" ErrorMessage="Debe seleccionar una especialidad" InitialValue="0" ValidationGroup="Grupo1">*</asp:RequiredFieldValidator>
                                     </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_it_Especialidad" runat="server" Text='<%# Bind("Especialidad") %>'></asp:Label>
+                                    </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Horarios">
                                     <ItemTemplate>

@@ -20,8 +20,14 @@ namespace Dao
         public DataTable obtenerTabla()
         {
             string consulta = "SELECT * FROM viewMedicos";
-
+     
             return acceso.ObtenerTabla("Medicos", consulta);
+
+            //CREATE VIEW viewMedicos
+            //AS
+            //SELECT LegajoMedico AS Legajo, NombreMedico AS Nombre, ApellidoMedico AS Apellido, DniMedico AS DNI, NombreEspecialidad AS Especialidad
+            //FROM Medicos INNER JOIN Especialidades ON Medicos.IdEspecialidad_Med = Especialidades.IdEspecialidad
+            //GO
         }
 
         public Boolean agregarMedico(Medicos med)
