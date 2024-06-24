@@ -12,14 +12,11 @@ namespace Negocio
     public class ControladorPacientes
     {
         AccesoPacientes accPacientes = new AccesoPacientes();
-        public bool agregarPaciente(ref Pacientes pac, ref string mensaje)
+        public bool agregarPaciente(ref Pacientes pac)
         {
-
-            mensaje = null;
 
             if (accPacientes.existeDNI(pac))
             {
-                mensaje = "El DNI ya existe en la base de datos";
                 return false;
             }
             int filasAfectadas = accPacientes.agregarPacientes(ref pac);
@@ -30,7 +27,6 @@ namespace Negocio
             {
                 return true;
             }
-            mensaje = "Hubo un error al guardar";
             return false;
         }
 

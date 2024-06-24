@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
 using Entidades;
+using System.Data;
+using System.Globalization;
 
 namespace Vistas
 {
@@ -17,27 +19,25 @@ namespace Vistas
             {
                 lblNombreUsuario.Text = Session["Usuario"].ToString();
             }
-
             if (!IsPostBack)
             {
-                //cargarDdlLocalidad(ddlLocalidad);
-                //cargarDdlProvincias(ddlProvinciaPacientes);
+                ControladorProvincia cp = new ControladorProvincia();
+                cargarDDL(ddlProvinciaPacientes, cp.getTabla());
+                ListItem lt = new ListItem("-Seleccione una Provincia-", "-1");
+                ddlProvinciaPacientes.Items.Insert(0, lt);
+                lt = new ListItem("-Seleccione una Localidad-", "-1");
+                ddlLocalidad.Items.Add(lt);
+                ddlLocalidad.Enabled = false;
             }
 
         }
 
-        public void cargarDdlLocalidad(DropDownList ddl)
+        public void cargarDDL(DropDownList ddl, DataTable dt)
         {
-            ControladorLocalidad cl = new ControladorLocalidad();
-           // ddl.DataSource = cl.ObtenerddlProvincia();
+            ddl.DataSource = dt;
             ddl.DataTextField = "Nombre";
             ddl.DataValueField = "ID";
             ddl.DataBind();
-        }
-
-        public void cargarDdlProvincias(DropDownList ddl)
-        {
-
         }
 
         protected void ButtonbtnVerUsuario_Click(object sender, EventArgs e)
@@ -47,7 +47,7 @@ namespace Vistas
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string mensaje = "";
+            string formatoFecha = "dd/MM/yyyy";
             ControladorPacientes controlador = new ControladorPacientes();
             Pacientes paciente = new Pacientes();
             paciente.nombre = txtNombrePacientes.Text.Trim();
@@ -58,17 +58,31 @@ namespace Vistas
             paciente.email = txtEmailPacientes.Text.Trim();
             paciente.telefono = txtTelefonoPacientes.Text.Trim();
             paciente.iDProvincia = Convert.ToInt32(ddlProvinciaPacientes.SelectedValue);
-            paciente.FechNac = txtFechaNacimientoPaciente.Text.Trim();
-
-            if (controlador.agregarPaciente(ref paciente, ref mensaje))
+            // Convertir la cadena de fecha a DateTime
+            DateTime fechaNacimiento;
+            if (DateTime.TryParseExact(txtFechaNacimientoPaciente.Text.Trim(), formatoFecha, CultureInfo.InvariantCulture, DateTimeStyles.None, out fechaNacimiento))
             {
-                lblMensaje.Text = "Sucursal agregada con exito";
+                paciente.FechNac = fechaNacimiento;
+
+                if (controlador.agregarPaciente(ref paciente))
+                {
+                    lblMensaje.Text = "Paciente agregado con éxito";
+                }
+                else
+                {
+                    lblMensaje.Text = "El DNI ya existe en la base de datos";
+                }
             }
             else
             {
-                lblMensaje.Text = mensaje;
+                lblMensaje.Text = "La fecha de nacimiento no es válida. Formato esperado: " + formatoFecha;
             }
 
+            LimpiarCampos();
+        }
+
+        public void LimpiarCampos()
+        {
             txtNombrePacientes.Text = "";
             txtApellidoPacientes.Text = "";
             txtDireccionPacientes.Text = "";
@@ -80,6 +94,23 @@ namespace Vistas
             txtTelefonoPacientes.Text = "";
         }
 
-
+        protected void ddlProvinciaPacientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Provincias prov = new Provincias();
+            prov.idProvincia = Convert.ToInt32(ddlProvinciaPacientes.SelectedValue);
+            if (ddlProvinciaPacientes.SelectedValue != "-1")
+            {
+                ControladorLocalidad cl = new ControladorLocalidad();
+                cargarDDL(ddlLocalidad, cl.ObtenerLocalidades(prov.idProvincia));
+                ListItem lt = new ListItem("-Selecione una Localidad-", "-1");
+                ddlLocalidad.Items.Insert(0, lt);
+                ddlLocalidad.Enabled = true;
+            }
+            else
+            {
+                ddlLocalidad.SelectedIndex = 0;
+                ddlLocalidad.Enabled = false;
+            }
+        }
     }
 }
