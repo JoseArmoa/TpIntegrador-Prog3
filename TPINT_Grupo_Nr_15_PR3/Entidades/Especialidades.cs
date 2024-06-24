@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class Especialidades
+    public class Especialidades
     {
         private int ID_Especialidades;
         private string Nombre;
 
-        Especialidades()
+        public Especialidades()
         {
 
         }

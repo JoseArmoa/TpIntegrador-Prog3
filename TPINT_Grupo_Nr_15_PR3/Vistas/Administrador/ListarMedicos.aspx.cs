@@ -54,16 +54,59 @@ namespace Vistas.Administrador
         {
             ddl.DataSource = dt;
             ddl.DataTextField = "Nombre";
-            ddl.DataValueField = "ID";
+            ddl.DataValueField = "Id";
             ddl.DataBind();
         }
-
 
 
         protected void gvListarMedicos_RowEditing(object sender, GridViewEditEventArgs e)
         {
             gvListarMedicos.EditIndex = e.NewEditIndex;
-            //CargarGD();
+
+            CargarGD();
+        }
+
+        protected void gvListarMedicos_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if(e.Row.RowType == DataControlRowType.DataRow)
+            {
+                DropDownList ddl = (DropDownList)e.Row.FindControl("ddl_eit_Especialidad");
+                if(ddl != null)
+                {
+                    ControladorEspecialidades ce = new ControladorEspecialidades();
+                    cargarDDL(ddl, ce.getTabla());
+                }
+
+            }
+        }
+
+        protected void gvListarMedicos_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            string Legajo = ((Label)gvListarMedicos.Rows[e.RowIndex].FindControl("lbl_eit_Legajo")).Text;
+            string Nombre = ((TextBox)gvListarMedicos.Rows[e.RowIndex].FindControl("txt_eit_Nombre")).Text;
+            string Apellido = ((TextBox)gvListarMedicos.Rows[e.RowIndex].FindControl("txt_eit_Apellido")).Text;
+            string Dni = ((TextBox)gvListarMedicos.Rows[e.RowIndex].FindControl("txt_eit_Dni")).Text;
+            int Especialidad = Int32.Parse( ((DropDownList)gvListarMedicos.Rows[e.RowIndex].FindControl("ddl_eit_Especialidad")).SelectedItem.Value);
+          
+
+            Medicos medico = new Medicos();
+            medico.legajo = Legajo;
+            medico.nombre = Nombre;
+            medico.apellido = Apellido;
+            medico.dni = Dni;
+            medico.IDespecialidad = Especialidad;
+
+            ControladorMedicos cm = new ControladorMedicos();
+            cm.ActualizarMedico(medico);
+
+            gvListarMedicos.EditIndex = -1;
+            CargarGD();
+        }
+
+        protected void gvListarMedicos_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            gvListarMedicos.EditIndex = -1;
+            CargarGD();
         }
     }
 }

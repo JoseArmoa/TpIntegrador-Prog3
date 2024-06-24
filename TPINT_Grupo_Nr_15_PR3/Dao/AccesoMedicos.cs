@@ -145,9 +145,9 @@ namespace Dao
             SqlCommand cmd = new SqlCommand();
             AgregarParametrosActualizar(ref cmd, medico);
 
-            return acceso.EjecutarProcedimientoAlmacenado(ref cmd, "spActualizarMedico");
+            return acceso.EjecutarProcedimientoAlmacenado(ref cmd, "spActualizarMedicoS");
 
-            //-- spActualizarMedico
+            //-- spActualizarMedicoS
 
             //CREATE PROCEDURE spActualizarMedicos
             //(
