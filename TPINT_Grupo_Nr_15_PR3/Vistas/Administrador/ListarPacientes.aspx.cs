@@ -6,12 +6,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
 using System.Data;
+using Entidades;
 
 namespace Vistas
 {
     public partial class ListarPacientes : System.Web.UI.Page
     {
         ControladorPacientes contrPacientes = new ControladorPacientes();
+        Pacientes pac = new Pacientes();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["Usuario"] != null)
@@ -21,9 +23,15 @@ namespace Vistas
 
             if (!IsPostBack)
             {
-                gvListarPacientes.DataSource = contrPacientes.getTabla();
-                gvListarPacientes.DataBind();
+                CargarGD();
             }
+        }
+
+        protected void CargarGD()
+        {
+
+            gvListarPacientes.DataSource = contrPacientes.getTabla();
+            gvListarPacientes.DataBind();
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
@@ -53,10 +61,55 @@ namespace Vistas
             if (txtFiltrar.Text == "")
             {
                 lblMensaje.Text = "";
-                gvListarPacientes.DataSource = contrPacientes.getTabla();
-                gvListarPacientes.DataBind();
+                CargarGD();
             }
         }
+
+        protected void gvListarPacientes_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            string DniPaciente = ((Label)gvListarPacientes.Rows[e.RowIndex].FindControl("lb_it_DNI")).Text;
+          
+            pac.dni = DniPaciente;
+            contrPacientes.EliminarPacientes(pac);
+
+            CargarGD();
+
+        }
+
+        protected void gvListarPacientes_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            gvListarPacientes.EditIndex = e.NewEditIndex;
+            CargarGD();
+
+        }
+
+        protected void gvListarPacientes_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            gvListarPacientes.EditIndex = -1;
+            CargarGD();
+        }
+
+        protected void gvListarPacientes_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            string DniPaciente = ((Label)gvListarPacientes.Rows[e.RowIndex].FindControl("lb_it_DNI")).Text;
+            string NombrePaciente = ((TextBox)gvListarPacientes.Rows[e.RowIndex].FindControl("txt_eit_Nombre")).Text;
+            string ApellidoPaciente = ((TextBox)gvListarPacientes.Rows[e.RowIndex].FindControl("txt_eit_Apellido")).Text;
+            string Direccion = ((TextBox)gvListarPacientes.Rows[e.RowIndex].FindControl("txt_eit_Direccion")).Text;
+            string Telefno = ((TextBox)gvListarPacientes.Rows[e.RowIndex].FindControl("txt_eit_telefono")).Text;
+            string Fecha = ((TextBox)gvListarPacientes.Rows[e.RowIndex].FindControl("txt_eit_FechNac")).Text;
+            
+            pac.dni = DniPaciente;
+            pac.nombre = NombrePaciente;
+            pac.apellido = ApellidoPaciente;
+            pac.direccion = Direccion;
+            pac.telefono = Fecha;
+
+            contrPacientes.ActualizarPacientes(pac);
+            gvListarPacientes.EditIndex = -1;
+            CargarGD();
+
+        }
     }
-    
+
+
 }
