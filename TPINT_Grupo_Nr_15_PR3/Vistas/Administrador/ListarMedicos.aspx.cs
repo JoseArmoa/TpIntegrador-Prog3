@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Entidades;
 using Negocio;
+using System.Data;
 
 namespace Vistas.Administrador
 {
@@ -48,6 +49,16 @@ namespace Vistas.Administrador
 
             CargarGD();
         }
+
+        protected void cargarDDL(DropDownList ddl, DataTable dt)
+        {
+            ddl.DataSource = dt;
+            ddl.DataTextField = "Nombre";
+            ddl.DataValueField = "ID";
+            ddl.DataBind();
+        }
+
+
 
         protected void gvListarMedicos_RowEditing(object sender, GridViewEditEventArgs e)
         {
