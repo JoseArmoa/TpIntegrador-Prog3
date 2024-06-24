@@ -13,6 +13,7 @@ namespace Vistas.Administrador
     public partial class CargarMedico : System.Web.UI.Page
     {
         static List<HorarioMedico> horarios = new List<HorarioMedico>();
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["Usuario"] != null)
@@ -28,6 +29,10 @@ namespace Vistas.Administrador
                 ddlProvincias.Items.Insert(0, lt);
                 lt = new ListItem("-Selecione una Localidad-", "-1");
                 ddlLocalidades.Items.Add(lt);
+                ControladorEspecialidades ce = new ControladorEspecialidades();
+                cargarDDL(ddlEspecialidades, ce.getTabla());
+                lt = new ListItem("-Selecione una Especialidad-", "-1");
+                ddlEspecialidades.Items.Insert(0, lt);
             }
         }
 
@@ -42,20 +47,20 @@ namespace Vistas.Administrador
             if(lblDiasyHorario.Text == "")
             {
                 lblDiasyHorario.Text = ddlDias.SelectedItem.Text + " " + ddlHorario.SelectedValue;
-                hm.LegajoMed = lblLegajo.Text;
+                hm.LegajoMed = txtLegajoMedico.Text;
                 hm.DiaSemana = Convert.ToInt32(ddlDias.SelectedValue);
-                hm.HoraEntrada = ddlHorario.SelectedValue.Trim().Split('a')[0];
-                hm.HoraSalida = ddlHorario.SelectedValue.Trim().Split('a')[1];
+                hm.HoraEntrada = TimeSpan.Parse(ddlHorario.SelectedValue.Trim().Split('a')[0]);
+                hm.HoraSalida = TimeSpan.Parse(ddlHorario.SelectedValue.Trim().Split('a')[1]);
 
                 horarios.Add(hm);
             }
             else
             {
                 lblDiasyHorario.Text += "<br>" + ddlDias.SelectedItem.Text + " " + ddlHorario.SelectedValue;
-                hm.LegajoMed = lblLegajo.Text;
+                hm.LegajoMed = txtLegajoMedico.Text;
                 hm.DiaSemana = Convert.ToInt32(ddlDias.SelectedValue);
-                hm.HoraEntrada = ddlHorario.SelectedValue.Trim().Split('a')[0];
-                hm.HoraSalida = ddlHorario.SelectedValue.Trim().Split('a')[1];
+                hm.HoraEntrada = TimeSpan.Parse(ddlHorario.SelectedValue.Trim().Split('a')[0]);
+                hm.HoraSalida = TimeSpan.Parse(ddlHorario.SelectedValue.Trim().Split('a')[1]);
 
                 horarios.Add(hm);
             }
@@ -85,6 +90,66 @@ namespace Vistas.Administrador
             {
                 ddlLocalidades.SelectedIndex = 0;
                 ddlLocalidades.Enabled = false;
+            }
+        }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            string mensaje = "";
+            Medicos med = new Medicos();
+
+            med.legajo = txtLegajoMedico.Text;
+            med.dni = txtDniMedico.Text;
+            med.apellido = txtApellidoMedico.Text;
+            med.nombre = txtNombreMedico.Text;
+            med.FechaNac = DateTime.Parse(txtFNMedico.Text);
+            med.direccion = txtDireccionMedico.Text;
+            med.IDespecialidad = Convert.ToInt32(ddlEspecialidades.SelectedValue);
+            med.iDLocalidad = Convert.ToInt32(ddlLocalidades.SelectedValue);
+            med.nacionalidad = txtNacionalidadMedico.Text;
+            med.telefono = txtTelefonoMedico.Text;
+            med.email = txtEmailMedico.Text;
+            med.sexo = txtSexoMedico.Text;
+
+            Usuarios usuarioMedico = new Usuarios();
+            usuarioMedico.nombreUsuario = txtUsuarioMedico.Text;
+            usuarioMedico.contraseña = txtPassMedico.Text;
+            usuarioMedico.tipousuario = "Medico";
+
+            ControladorUsuario cu = new ControladorUsuario();
+            if(!cu.agregarUsuario(ref usuarioMedico, ref mensaje))
+            {
+                lblMensajeUsuario.Text = mensaje;
+                return;
+            }
+
+
+            med.iDUsuario = cu.obtenerUsuario(usuarioMedico).iDUsuario;
+
+            ControladorHorario ch = new ControladorHorario();
+            ControladorMedicos cm = new ControladorMedicos();
+            if(cm.AgregarMedico(ref med))
+            {
+                cargarHorarios(ch);
+                lblMensajeAgregar.Text = "Registro agregado";
+                
+            }
+            else
+            {
+                lblMensajeAgregar.Text = "No se pudo agregar registro";
+            }
+
+
+
+
+        }
+
+        void cargarHorarios(ControladorHorario ch)
+        {
+            foreach(HorarioMedico hm in horarios)
+            {
+                HorarioMedico horario = hm;
+                ch.agregarHorario(ref horario);
             }
         }
     }

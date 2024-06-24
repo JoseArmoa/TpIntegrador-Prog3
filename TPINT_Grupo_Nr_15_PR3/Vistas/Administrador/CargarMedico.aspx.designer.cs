@@ -60,6 +60,15 @@ namespace Vistas.Administrador
         protected global::System.Web.UI.WebControls.HyperLink hlCerrarSesion;
 
         /// <summary>
+        /// Control txtLegajoMedico.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtLegajoMedico;
+
+        /// <summary>
         /// Control txtNombreMedico.
         /// </summary>
         /// <remarks>
@@ -159,13 +168,13 @@ namespace Vistas.Administrador
         protected global::System.Web.UI.WebControls.TextBox txtEmailMedico;
 
         /// <summary>
-        /// Control DropDownList1.
+        /// Control ddlEspecialidades.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEspecialidades;
 
         /// <summary>
         /// Control txtUsuarioMedico.
@@ -184,6 +193,15 @@ namespace Vistas.Administrador
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPassMedico;
+
+        /// <summary>
+        /// Control lblMensajeUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMensajeUsuario;
 
         /// <summary>
         /// Control ddlDias.
@@ -231,13 +249,13 @@ namespace Vistas.Administrador
         protected global::System.Web.UI.WebControls.Button btnAgregar;
 
         /// <summary>
-        /// Control lblLegajo.
+        /// Control lblMensajeAgregar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLegajo;
+        protected global::System.Web.UI.WebControls.Label lblMensajeAgregar;
 
         /// <summary>
         /// Control hlVolverInicio.

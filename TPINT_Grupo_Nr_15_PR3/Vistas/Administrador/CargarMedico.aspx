@@ -38,6 +38,13 @@
         .auto-style11 {
             height: 23px;
         }
+        .auto-style12 {
+            width: 359px;
+            height: 26px;
+        }
+        .auto-style13 {
+            height: 26px;
+        }
     </style>
 </head>
 <body>
@@ -64,18 +71,25 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style4">Nombre:</td>
-                    <td>
-                        <asp:TextBox ID="txtNombreMedico" runat="server"></asp:TextBox>
+                    <td class="auto-style12">Legajo:</td>
+                    <td class="auto-style13">
+                        <asp:TextBox ID="txtLegajoMedico" runat="server"></asp:TextBox>
                     </td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style13">&nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="auto-style4">Apellido:</td>
-                    <td>
+                    <td class="auto-style12">Nombre:</td>
+                    <td class="auto-style13">
+                        <asp:TextBox ID="txtNombreMedico" runat="server"></asp:TextBox>
+                    </td>
+                    <td class="auto-style13"></td>
+                </tr>
+                <tr>
+                    <td class="auto-style12">Apellido:</td>
+                    <td class="auto-style13">
                         <asp:TextBox ID="txtApellidoMedico" runat="server"></asp:TextBox>
                     </td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style13"></td>
                 </tr>
                 <tr>
                     <td class="auto-style4">DNI:</td>
@@ -87,7 +101,7 @@
                 <tr>
                     <td class="auto-style4">Fecha de Nacimiento:</td>
                     <td>
-                        <asp:TextBox ID="txtFNMedico" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtFNMedico" runat="server" TextMode="Date"></asp:TextBox>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
@@ -145,7 +159,7 @@
                 <tr>
                     <td class="auto-style4">Especialidad:</td>
                     <td>
-                        <asp:DropDownList ID="DropDownList1" runat="server">
+                        <asp:DropDownList ID="ddlEspecialidades" runat="server">
                         </asp:DropDownList>
                     </td>
                     <td>&nbsp;</td>
@@ -161,6 +175,8 @@
                     <td class="auto-style4">Password:</td>
                     <td>
                         <asp:TextBox ID="txtPassMedico" runat="server"></asp:TextBox>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <asp:Label ID="lblMensajeUsuario" runat="server"></asp:Label>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
@@ -198,20 +214,21 @@
                 <tr>
                     <td class="auto-style8"></td>
                     <td class="auto-style9">
-                        <asp:Button ID="btnAgregar" runat="server" Text="Agregar" />
+                        <asp:Button ID="btnAgregar" runat="server" Text="Agregar" OnClick="btnAgregar_Click" />
                     </td>
                     <td class="auto-style9"></td>
                 </tr>
                 <tr>
-                    <td class="auto-style4">&nbsp;</td>
+                    <td class="auto-style4">
+                        <asp:Label ID="lblMensajeAgregar" runat="server"></asp:Label>
+                    </td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="auto-style4">Legajo asignado:</td>
+                    <td class="auto-style4">&nbsp;</td>
                     <td>
-                        <asp:Label ID="lblLegajo" runat="server"></asp:Label>
-                    </td>
+                        &nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
