@@ -40,6 +40,30 @@ namespace Dao
                 return true;
             }
             return false;
+
+
+            /*
+                 ALTER PROCEDURE spAgregarMedico
+                (
+	                @LEGAJO nchar(5),
+                    @NOMBRE varchar(50),
+	                @APELLIDO varchar(50),
+	                @DNI varchar(10),
+	                @IDESPECIALIDAD int,
+	                @FECHANACIMIENTO Date,
+	                @DIRECCION varchar(50),
+	                @IDLOCALIDAD int,
+	                @TELEFONO varchar(11),
+	                @EMAIL varchar(50),
+	                @IDUSUARIO int,
+	                @NACIONALIDAD varchar(15),
+	                @SEXO varchar(15)
+	                )
+	                AS
+	                INSERT INTO Medicos(LegajoMedico,NombreMedico,ApellidoMedico,DniMedico,IdEspecialidad_Med,FechaNacimiento,Direccion_Med,IdLocalidad_Med,Telefono_Med,Email_Med,IdUsuario_Med,Sexo_Med,Nacionalidad)
+	                SELECT @LEGAJO ,@NOMBRE,@APELLIDO,@DNI, @IDESPECIALIDAD, @FECHANACIMIENTO, @DIRECCION,@IDLOCALIDAD,@TELEFONO,@EMAIL,@IDUSUARIO,@SEXO,@NACIONALIDAD
+	                GO
+             */
         }
 
         public void parametrosAgregar(ref SqlCommand cmd, ref Medicos med)
@@ -65,7 +89,7 @@ namespace Dao
             SqlParametros.Value = med.telefono;
             SqlParametros = cmd.Parameters.Add("@EMAIL", SqlDbType.VarChar);
             SqlParametros.Value = med.email;
-            SqlParametros = cmd.Parameters.Add("@IDUSURIO", SqlDbType.Int);
+            SqlParametros = cmd.Parameters.Add("@IDUSUARIO", SqlDbType.Int);
             SqlParametros.Value = med.iDUsuario;
             SqlParametros = cmd.Parameters.Add("@NACIONALIDAD", SqlDbType.VarChar);
             SqlParametros.Value = med.nacionalidad;

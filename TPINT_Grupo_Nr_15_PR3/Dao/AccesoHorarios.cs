@@ -25,10 +25,24 @@ namespace Dao
                 return true;
             }
             return false;
+
+
+            /*CREATE PROCEDURE spAgregarHorario
+                (
+                @LEGAJO nchar(5),
+                 @DIASEMANA int,
+                    @HORAENTRADA time,
+                    @HORASALIDA time
+                ) AS
+                INSERT INTO HorariosMedico(LegajoMedico_Horario, DiaSemana_Horario, HoraIngreso, HoraSalida)
+
+                SELECT @LEGAJO, @DIASEMANA, @HORAENTRADA, @HORASALIDA
+    
+                GO*/
         }
         public void parametrosAgregar(ref SqlCommand cm, ref HorarioMedico hm)
         {
-            SqlParameter parameter = cm.Parameters.Add("@LEGAJOMEDICO", SqlDbType.VarChar);
+            SqlParameter parameter = cm.Parameters.Add("@LEGAJO", SqlDbType.VarChar);
             parameter.Value = hm.LegajoMed;
             parameter = cm.Parameters.Add("@DIASEMANA", SqlDbType.Int);
             parameter.Value = hm.DiaSemana;

@@ -1,6 +1,0 @@
-C:\Users\noe_3\Documents\GITHUB\TIF_PRIII\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Entidades\bin\Debug\Entidades.dll
-C:\Users\noe_3\Documents\GITHUB\TIF_PRIII\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Entidades\bin\Debug\Entidades.pdb
-C:\Users\noe_3\Documents\GITHUB\TIF_PRIII\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Entidades\obj\Debug\Entidades.csproj.AssemblyReference.cache
-C:\Users\noe_3\Documents\GITHUB\TIF_PRIII\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
-C:\Users\noe_3\Documents\GITHUB\TIF_PRIII\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Entidades\obj\Debug\Entidades.dll
-C:\Users\noe_3\Documents\GITHUB\TIF_PRIII\TpIntegrador-Prog3\TPINT_Grupo_Nr_15_PR3\Entidades\obj\Debug\Entidades.pdb

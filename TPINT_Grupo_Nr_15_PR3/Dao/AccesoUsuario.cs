@@ -19,15 +19,26 @@ namespace Dao
             return db.existe(consulta);
         }
 
+        public Usuarios obtenerUsuario(string nombreUsuario)
+        {
+            Usuarios usu = new Usuarios();
+            DataTable dt = new DataTable();
+            string consulta = "SELECT IdUsuario, NombreUsuario, TipoUsuario FROM Usuarios WHERE NombreUsuario = '" + nombreUsuario + "'";
+            dt = db.ObtenerTabla("Usuarios", consulta);
+            usu.iDUsuario = Convert.ToInt32(dt.Rows[0]["IdUsuario"]);
+            usu.nombreUsuario = (dt.Rows[0]["NombreUsuario"]).ToString();
+            usu.tipousuario = (dt.Rows[0]["TipoUsuario"]).ToString();
+
+            return usu;
+        }
+
         public void ParametrosAgregar(ref SqlCommand sc, ref Usuarios usu)
         {
             SqlParameter SqlParametros = new SqlParameter();
-            SqlParametros = sc.Parameters.Add("@IDUSUARIO", SqlDbType.Int);
-            SqlParametros.Value = usu.iDUsuario;
             SqlParametros = sc.Parameters.Add("@NOMBREUSUARIO", SqlDbType.VarChar);
             SqlParametros.Value = usu.nombreUsuario;
-            SqlParametros = sc.Parameters.Add("@CONTRASEÑA", SqlDbType.VarChar);
-            SqlParametros.Value = usu.nombreUsuario;
+            SqlParametros = sc.Parameters.Add("@CONTRASENIA", SqlDbType.VarChar);
+            SqlParametros.Value = usu.contraseña;
             SqlParametros = sc.Parameters.Add("@TIPOUSUARIO", SqlDbType.VarChar);
             SqlParametros.Value = usu.tipousuario;
         }
@@ -41,13 +52,12 @@ namespace Dao
              * Consulta del procedimiento en db
                 CREATE PROCEDURE spAgregarUsuario
                 (
-	                @IDUSUARIO int,
 	                @NOMBREUSUARIO varchar(15),
                     @CONTRASENIA varchar(15),
 	                @TIPOUSUARIO varchar(15)
                 ) AS
-                INSERT INTO Sucursal(IdUsuario, NombreUsuario, Contrasenia, TipoUsario)
-                SELECT @IDUSUARIO,  @NOMBREUSUARIO, @CONSTRASENIA, @TIPOUSUARIO
+                INSERT INTO Sucursal(NombreUsuario, Contrasenia, TipoUsario)
+                SELECT @NOMBREUSUARIO, @CONSTRASENIA, @TIPOUSUARIO
                 GO
              */
         }
@@ -80,12 +90,12 @@ namespace Dao
         public void AgregarParametrosActualizar(ref SqlCommand sc, Usuarios usu)
         {
             SqlParameter sqlParameter = new SqlParameter();
-            sqlParameter = sc.Parameters.Add("@IDUSUARIO", SqlDbType.Int);
-            sqlParameter.Value = usu.iDUsuario;
             sqlParameter = sc.Parameters.Add("@NOMBRE", SqlDbType.VarChar);
             sqlParameter.Value = usu.nombreUsuario;
             sqlParameter = sc.Parameters.Add("@CONTRASEÑA", SqlDbType.VarChar);
             sqlParameter.Value = usu.contraseña;
+            sqlParameter = sc.Parameters.Add("@TIPOUSUARIO", SqlDbType.VarChar);
+            sqlParameter.Value = usu.tipousuario;
         }
 
         public int ActualizarUsuario(Usuarios usu)

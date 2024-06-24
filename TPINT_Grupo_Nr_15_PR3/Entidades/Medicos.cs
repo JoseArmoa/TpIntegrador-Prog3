@@ -13,7 +13,7 @@ namespace Entidades
         private string Apellido;
         private string DNI;
         private int IdEspecialidad;
-        private string FechaNacimiento;
+        private DateTime FechaNacimiento;
         private string Direccion;
         private int IdLocalidad;
         private string Telefono;
@@ -49,7 +49,7 @@ namespace Entidades
             get { return IdEspecialidad; }
             set { IdEspecialidad = value; }
         }
-        public string FechaNac
+        public DateTime FechaNac
         {
             get { return FechaNacimiento; }
             set { FechaNacimiento = value; }

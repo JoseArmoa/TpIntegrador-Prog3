@@ -58,5 +58,10 @@ namespace Negocio
             }
         }
 
+        public Usuarios obtenerUsuario(Usuarios usu)
+        {
+            return accUsuario.obtenerUsuario(usu.nombreUsuario);
+        }
+
     }
 }
