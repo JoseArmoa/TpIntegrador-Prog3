@@ -62,7 +62,6 @@ namespace Vistas.Administrador
         protected void gvListarMedicos_RowEditing(object sender, GridViewEditEventArgs e)
         {
             gvListarMedicos.EditIndex = e.NewEditIndex;
-
             CargarGD();
         }
 
@@ -71,7 +70,7 @@ namespace Vistas.Administrador
             if(e.Row.RowType == DataControlRowType.DataRow)
             {
                 DropDownList ddl = (DropDownList)e.Row.FindControl("ddl_eit_Especialidad");
-                if(ddl != null)
+                if (ddl != null)
                 {
                     ControladorEspecialidades ce = new ControladorEspecialidades();
                     cargarDDL(ddl, ce.getTabla());
@@ -107,6 +106,28 @@ namespace Vistas.Administrador
         {
             gvListarMedicos.EditIndex = -1;
             CargarGD();
+        }
+
+        protected void CargarHorario(ref Medicos medico)
+        {
+            ControladorHorario horario = new ControladorHorario();
+
+            gvHorariosMedico.DataSource = horario.getTabla(ref medico);
+            gvHorariosMedico.DataBind();
+        }
+
+        protected void gvListarMedicos_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if(e.CommandName == "verHorarios")
+            {             
+                int fila = Convert.ToInt32(e.CommandArgument);
+                string Legajo = ( (Label)gvListarMedicos.Rows[fila].FindControl("lbl_it_Legajo") ).Text;
+
+                Medicos med = new Medicos();
+                med.legajo = Legajo;
+            
+                CargarHorario(ref med);          
+            }
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Entidades;
 using Dao;
+using System.Data;
 
 namespace Negocio
 {
@@ -19,6 +20,11 @@ namespace Negocio
                 return true;
             }
             return false;
+        }
+
+        public DataTable getTabla(ref Medicos medico)
+        {
+            return accHor.obtenerTabla(ref medico);
         }
     }
 }

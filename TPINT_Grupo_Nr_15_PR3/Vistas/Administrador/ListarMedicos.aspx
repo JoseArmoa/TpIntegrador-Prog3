@@ -65,7 +65,7 @@
                 <tr>
                     <td class="auto-style3"></td>
                     <td class="auto-style3" id="ddl_eit_Especialidad">
-                        <asp:GridView ID="gvListarMedicos" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" PageSize="6" ShowHeaderWhenEmpty="True" OnRowDeleting="gvListarMedicos_RowDeleting" OnRowEditing="gvListarMedicos_RowEditing" OnRowDataBound="gvListarMedicos_RowDataBound" OnRowUpdating="gvListarMedicos_RowUpdating" OnRowCancelingEdit="gvListarMedicos_RowCancelingEdit">
+                        <asp:GridView ID="gvListarMedicos" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" PageSize="6" ShowHeaderWhenEmpty="True" OnRowDeleting="gvListarMedicos_RowDeleting" OnRowEditing="gvListarMedicos_RowEditing" OnRowDataBound="gvListarMedicos_RowDataBound" OnRowUpdating="gvListarMedicos_RowUpdating" OnRowCancelingEdit="gvListarMedicos_RowCancelingEdit" OnRowCommand="gvListarMedicos_RowCommand">
                             <AlternatingRowStyle BackColor="#DCDCDC" />
                             <Columns>
                                 <asp:TemplateField HeaderText="Acciones">
@@ -127,11 +127,7 @@
                                         <asp:Label ID="lbl_it_Especialidad" runat="server" Text='<%# Bind("Especialidad") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Horarios">
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="lbHorarios" runat="server">Ver Horarios</asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
+                                <asp:ButtonField ButtonType="Button" CommandName="verHorarios" HeaderText="Horarios" Text="Ver Horarios" ShowHeader="True" />
                             </Columns>
                             <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
                             <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
@@ -149,14 +145,16 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">&nbsp;</td>
-                    <td class="auto-style2">&nbsp;</td>
-                    <td class="auto-style2">&nbsp;</td>
+                    <td class="auto-style2"></td>
+                    <td class="auto-style2">
+                        <asp:Label ID="lblPrueba" runat="server"></asp:Label>
+                    </td>
+                    <td class="auto-style2"></td>
                 </tr>
                 <tr>
                     <td class="auto-style2">&nbsp;</td>
                     <td class="auto-style2">
-                        <asp:GridView ID="gvHorariosMedico" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" PageSize="5" ShowHeaderWhenEmpty="True" Visible="False">
+                        <asp:GridView ID="gvHorariosMedico" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" PageSize="5" ShowHeaderWhenEmpty="True">
                             <AlternatingRowStyle BackColor="#DCDCDC" />
                             <Columns>
                                 <asp:TemplateField HeaderText="Acciones">
@@ -166,10 +164,26 @@
                                         <asp:LinkButton ID="lbEliminar0" runat="server">Eliminar</asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Legajo"></asp:TemplateField>
-                                <asp:TemplateField HeaderText="Día"></asp:TemplateField>
-                                <asp:TemplateField HeaderText="Hora Entrada"></asp:TemplateField>
-                                <asp:TemplateField HeaderText="Hora Salida"></asp:TemplateField>
+                                <asp:TemplateField HeaderText="Legajo">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_Legajo_HS" runat="server" Text='<%# Bind("Legajo") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Día">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_Dia_HS" runat="server" Text='<%# Bind("Dia") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Hora Entrada">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_Entrada_HS" runat="server" Text='<%# Bind("Ingreso") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Hora Salida">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_Salida_HS" runat="server" Text='<%# Bind("Salida") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                             </Columns>
                             <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
                             <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />

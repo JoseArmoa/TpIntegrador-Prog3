@@ -51,5 +51,19 @@ namespace Dao
             parameter = cm.Parameters.Add("@HORASALIDA", SqlDbType.Time);
             parameter.Value = hm.HoraSalida;
         }
+
+        public DataTable obtenerTabla(ref Medicos medico)
+        {
+            string consulta = "SELECT * FROM viewHorarios WHERE Legajo = '" + medico.legajo + "'";
+
+            return acceso.ObtenerTabla("viewHorarios", consulta);
+
+            //CREATE VIEW viewHorarios
+            //AS
+            //SELECT LegajoMedico_Horario AS Legajo, Nombre AS Dia, HoraIngreso AS Ingreso, HoraSalida AS Salida
+            //FROM HorariosMedico INNER JOIN DiaSemana ON HorariosMedico.DiaSemana_Horario = DiaSemana.NumDia
+            //GO
+
+        }
     }
 }
