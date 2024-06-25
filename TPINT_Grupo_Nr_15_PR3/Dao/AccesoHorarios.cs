@@ -131,7 +131,7 @@ namespace Dao
             //DiaSemana_Horario = @DIA,
             //HoraIngreso = @INGRESO,
             //HoraSalida = @SALIDA
-            //WHERE LegajoMedico_Horario = @LEGAJO and DiaSemana_Horario = @DIA
+            //WHERE LegajoMedico_Horario = @LEGAJO
             //RETURN
         }
     }
