@@ -60,8 +60,11 @@
                     </td>
                     <td class="auto-style4">
                         <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" ValidationGroup="GrupoBuscar" />
+                        &nbsp;&nbsp;
+                        <asp:Button ID="btnMostrarTodos" runat="server" Text="Mostrar Todos" OnClick="btnMostrarTodos_Click" ValidationGroup="GrupoBuscar" />
                         &nbsp;
-                        </td>
+                        <asp:Button ID="btnAgregar" runat="server" PostBackUrl="~/Administrador/CargarMedico.aspx" Text="Agregar" />
+                    </td>
                 </tr>
                 <tr>
                     <td class="auto-style3"></td>
@@ -147,9 +150,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">
-                        <asp:Button ID="btnAgregar" runat="server" PostBackUrl="~/Administrador/CargarMedico.aspx" Text="Agregar" />
-                    </td>
+                    <td class="auto-style2"></td>
                     <td class="auto-style2">
                         &nbsp;</td>
                     <td class="auto-style2"></td>

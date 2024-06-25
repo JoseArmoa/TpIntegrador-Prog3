@@ -19,6 +19,18 @@ namespace Dao
             return db.existe(consulta);
         }
 
+        public bool comprobarContrasenia(string usu, string pass)
+        {
+            string consulta = "SELECT NombreUsuario, Contrasenia FROM Usuarios WHERE NombreUsuario = '" + usu + "' AND Contrasenia = '" + pass +  "'";
+            return db.existe(consulta);
+        }
+
+        public bool existeNombreUsuario(string usu)
+        {
+            string consulta = "SELECT NombreUsuario FROM Usuarios WHERE NombreUsuario = '" + usu + "'";
+            return db.existe(consulta);
+        }
+
         public Usuarios obtenerUsuario(string nombreUsuario)
         {
             Usuarios usu = new Usuarios();

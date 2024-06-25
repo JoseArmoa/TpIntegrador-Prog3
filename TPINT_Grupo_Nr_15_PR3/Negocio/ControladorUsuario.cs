@@ -13,7 +13,15 @@ namespace Negocio
     {
         AccesoUsuario accUsuario = new AccesoUsuario();
 
+        public bool existeUsuario(string nombreUsuario)
+        {
+            return accUsuario.existeNombreUsuario(nombreUsuario);
+        }
 
+        public bool comprobarContrasenia(string nombreUsuario, string pass)
+        {
+            return accUsuario.comprobarContrasenia(nombreUsuario, pass);
+        }
         public bool agregarUsuario(ref Usuarios usu, ref string mensaje)
         {
 

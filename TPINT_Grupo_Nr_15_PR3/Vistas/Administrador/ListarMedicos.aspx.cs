@@ -209,5 +209,10 @@ namespace Vistas.Administrador
 
             CargarGD(negMedicos.getTablaMedico(legajo));
         }
+
+        protected void btnMostrarTodos_Click(object sender, EventArgs e)
+        {
+            CargarGD();
+        }
     }
 }
