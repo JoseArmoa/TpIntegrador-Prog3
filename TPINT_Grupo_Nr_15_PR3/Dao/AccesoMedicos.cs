@@ -30,6 +30,19 @@ namespace Dao
             //GO
         }
 
+        public DataTable obtenerTablaMedicoPorLegajo(string legajo)
+        {
+            string consulta = "SELECT * FROM viewMedicos WHERE Legajo = '" + legajo + "'";
+
+            return acceso.ObtenerTabla("Medicos", consulta);
+
+            //CREATE VIEW viewMedicos
+            //AS
+            //SELECT LegajoMedico AS Legajo, NombreMedico AS Nombre, ApellidoMedico AS Apellido, DniMedico AS DNI, NombreEspecialidad AS Especialidad
+            //FROM Medicos INNER JOIN Especialidades ON Medicos.IdEspecialidad_Med = Especialidades.IdEspecialidad
+            //GO
+        }
+
         public Boolean agregarMedico(Medicos med)
         {
             SqlCommand cm = new SqlCommand();

@@ -227,6 +227,8 @@
                         <asp:Label ID="lblDiasyHorario" runat="server"></asp:Label>
                     &nbsp;
                         <asp:CustomValidator ID="CustomValidator1" runat="server" OnServerValidate="CustomValidator1_ServerValidate" ValidationGroup="GrupoAgregarMedico">Agregue al menos 1 horario.</asp:CustomValidator>
+&nbsp;
+                        <asp:Label ID="lblHorarioRepetido" runat="server"></asp:Label>
                     </td>
                     <td class="auto-style11"></td>
                 </tr>

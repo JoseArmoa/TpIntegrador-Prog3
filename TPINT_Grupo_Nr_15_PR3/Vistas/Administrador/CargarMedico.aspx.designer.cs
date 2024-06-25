@@ -402,6 +402,15 @@ namespace Vistas.Administrador
         protected global::System.Web.UI.WebControls.CustomValidator CustomValidator1;
 
         /// <summary>
+        /// Control lblHorarioRepetido.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblHorarioRepetido;
+
+        /// <summary>
         /// Control btnAgregar.
         /// </summary>
         /// <remarks>

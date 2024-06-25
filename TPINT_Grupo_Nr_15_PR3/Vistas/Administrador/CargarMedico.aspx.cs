@@ -44,26 +44,44 @@ namespace Vistas.Administrador
         protected void btnAgregarDiayHorario_Click(object sender, EventArgs e)
         {
             HorarioMedico hm = new HorarioMedico();
-            if(lblDiasyHorario.Text == "")
+            lblHorarioRepetido.Text = "";
+
+            TimeSpan horaEntrada = TimeSpan.Parse(ddlHorario.SelectedValue.Trim().Split('a')[0]);
+            TimeSpan horaSalida = TimeSpan.Parse(ddlHorario.SelectedValue.Trim().Split('a')[1]);
+            int diaSemana = Convert.ToInt32(ddlDias.SelectedValue);
+
+            // Verifica si el horario ya existe o se sobrepone con uno existente
+            foreach (var horario in horarios)
+            {
+                if (horario.DiaSemana == diaSemana &&
+                   (horario.HoraEntrada < horaSalida && horaEntrada < horario.HoraSalida))
+                {
+                    lblHorarioRepetido.Text = "El horario ya está agregado o se sobrepone con uno existente";
+                    return;
+                }
+            }
+
+            // Si no, agrega el horario
+            hm.LegajoMed = txtLegajoMedico.Text;
+            hm.DiaSemana = diaSemana;
+            hm.HoraEntrada = horaEntrada;
+            hm.HoraSalida = horaSalida;
+
+            horarios.Add(hm);
+
+            // Actualizar lblDiasyHorario
+            if (lblDiasyHorario.Text == "")
             {
                 lblDiasyHorario.Text = ddlDias.SelectedItem.Text + " " + ddlHorario.SelectedValue;
-                hm.LegajoMed = txtLegajoMedico.Text;
-                hm.DiaSemana = Convert.ToInt32(ddlDias.SelectedValue);
-                hm.HoraEntrada = TimeSpan.Parse(ddlHorario.SelectedValue.Trim().Split('a')[0]);
-                hm.HoraSalida = TimeSpan.Parse(ddlHorario.SelectedValue.Trim().Split('a')[1]);
-
-                horarios.Add(hm);
             }
             else
             {
                 lblDiasyHorario.Text += "<br>" + ddlDias.SelectedItem.Text + " " + ddlHorario.SelectedValue;
-                hm.LegajoMed = txtLegajoMedico.Text;
-                hm.DiaSemana = Convert.ToInt32(ddlDias.SelectedValue);
-                hm.HoraEntrada = TimeSpan.Parse(ddlHorario.SelectedValue.Trim().Split('a')[0]);
-                hm.HoraSalida = TimeSpan.Parse(ddlHorario.SelectedValue.Trim().Split('a')[1]);
-
-                horarios.Add(hm);
             }
+
+            // Resetear los DropdownLists
+            ddlDias.SelectedIndex = 0;
+            ddlHorario.SelectedIndex = 0;
         }
 
         protected void cargarDDL(DropDownList ddl, DataTable dt)
@@ -135,6 +153,26 @@ namespace Vistas.Administrador
                     cargarHorarios(ch);
                     lblMensajeAgregar.Text = "Registro agregado";
 
+                    txtLegajoMedico.Text = "";
+                    txtDniMedico.Text = "";
+                    txtApellidoMedico.Text = "";
+                    txtNombreMedico.Text = "";
+                    txtFNMedico.Text = "";
+                    txtDireccionMedico.Text = "";
+                    ddlEspecialidades.SelectedIndex = 0;
+                    ddlProvincias.SelectedIndex = 0;
+                    ddlLocalidades.SelectedIndex = 0;
+                    txtNacionalidadMedico.Text = "";
+                    txtTelefonoMedico.Text = "";
+                    txtEmailMedico.Text = "" ;
+                    txtSexoMedico.Text = "";
+
+                    txtUsuarioMedico.Text = "";
+                    txtPassMedico.Text = "";
+
+                    lblDiasyHorario.Text = "";
+
+                    horarios = new List<HorarioMedico>();
                 }
                 else
                 {
