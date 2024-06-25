@@ -50,19 +50,19 @@ namespace Vistas.Administrador
             CargarGD();
         }
 
+
+        protected void gvListarMedicos_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            gvListarMedicos.EditIndex = e.NewEditIndex;
+            CargarGD();
+        }
+
         protected void cargarDDL(DropDownList ddl, DataTable dt)
         {
             ddl.DataSource = dt;
             ddl.DataTextField = "Nombre";
             ddl.DataValueField = "Id";
             ddl.DataBind();
-        }
-
-
-        protected void gvListarMedicos_RowEditing(object sender, GridViewEditEventArgs e)
-        {
-            gvListarMedicos.EditIndex = e.NewEditIndex;
-            CargarGD();
         }
 
         protected void gvListarMedicos_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -108,11 +108,11 @@ namespace Vistas.Administrador
             CargarGD();
         }
 
-        protected void CargarHorario(ref Medicos medico)
+        protected void CargarHorario(string legajo)
         {
             ControladorHorario horario = new ControladorHorario();
 
-            gvHorariosMedico.DataSource = horario.getTabla(ref medico);
+            gvHorariosMedico.DataSource = horario.getTabla(legajo);
             gvHorariosMedico.DataBind();
         }
 
@@ -123,11 +123,76 @@ namespace Vistas.Administrador
                 int fila = Convert.ToInt32(e.CommandArgument);
                 string Legajo = ( (Label)gvListarMedicos.Rows[fila].FindControl("lbl_it_Legajo") ).Text;
 
-                Medicos med = new Medicos();
-                med.legajo = Legajo;
-            
-                CargarHorario(ref med);          
+                CargarHorario(Legajo);          
             }
+        }
+
+
+     /// ---------- MODIFICAR Y ELIMINAR HORARIOS MEDICOS -------
+  
+        protected void gvHorariosMedico_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            String legajo = ((Label)gvHorariosMedico.Rows[e.RowIndex].FindControl("lbl_Legajo_HS")).Text;
+            int dia = Convert.ToInt32( ((Label)gvHorariosMedico.Rows[e.RowIndex].FindControl("lbl_Dia_HS")).Text);
+
+            HorarioMedico hm = new HorarioMedico();
+            hm.LegajoMed = legajo;
+            hm.DiaSemana = dia;
+
+            ControladorHorario cHorario = new ControladorHorario();
+            cHorario.EliminarHorario(ref hm);
+
+            CargarHorario(legajo);
+        }
+
+        protected void gvHorariosMedico_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            String legajo = ((Label)gvHorariosMedico.Rows[e.NewEditIndex].FindControl("lbl_Legajo_HS")).Text;
+            gvHorariosMedico.EditIndex = e.NewEditIndex;        
+
+            CargarHorario(legajo);
+        }
+
+        protected void gvHorariosMedico_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                DropDownList ddl = (DropDownList)e.Row.FindControl("ddl_eit_Dias");
+                if (ddl != null)
+                {
+                    ControladorDia cd = new ControladorDia();
+                    cargarDDL(ddl, cd.getTabla());
+                }
+
+            }
+        }
+
+        protected void gvHorariosMedico_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            string Legajo = ((Label)gvHorariosMedico.Rows[e.RowIndex].FindControl("lbl_eit_Legajo")).Text;
+            int Dia = Convert.ToInt32(((DropDownList)gvHorariosMedico.Rows[e.RowIndex].FindControl("ddl_eit_Dias")).SelectedItem.Value);
+            TimeSpan Ingreso = TimeSpan.Parse( ((TextBox)gvHorariosMedico.Rows[e.RowIndex].FindControl("txt_eit_Entrada")).Text );
+            TimeSpan Egreso = TimeSpan.Parse( ((TextBox)gvHorariosMedico.Rows[e.RowIndex].FindControl("txt_eit_Salida")).Text );
+
+            HorarioMedico hm = new HorarioMedico();
+            hm.LegajoMed = Legajo;
+            hm.DiaSemana = Dia;
+            hm.HoraEntrada = Ingreso;
+            hm.HoraSalida = Egreso;
+
+            ControladorHorario ch = new ControladorHorario();
+            ch.ActualizarHorario(ref hm);
+
+            gvHorariosMedico.EditIndex = -1;
+            CargarHorario(Legajo);
+        }
+
+        protected void gvHorariosMedico_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            string Legajo = ((Label)gvHorariosMedico.Rows[e.RowIndex].FindControl("lbl_eit_Legajo")).Text;
+
+            gvHorariosMedico.EditIndex = -1;
+            CargarHorario(Legajo);
         }
     }
 }

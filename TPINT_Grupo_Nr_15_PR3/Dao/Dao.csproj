@@ -49,6 +49,7 @@
     <Compile Include="AccesoPacientes.cs" />
     <Compile Include="AccesoProvincia.cs" />
     <Compile Include="AccesoUsuario.cs" />
+    <Compile Include="AccesoDias.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

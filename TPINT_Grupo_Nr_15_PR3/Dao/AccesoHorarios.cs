@@ -65,5 +65,74 @@ namespace Dao
             //GO
 
         }
+
+        private void AgregarParametrosEliminar(ref SqlCommand sc, ref HorarioMedico hm)
+        {
+            SqlParameter SqlParametros = new SqlParameter();
+            SqlParametros = sc.Parameters.Add("@LEGAJO", SqlDbType.NChar, 5);
+            SqlParametros.Value = hm.LegajoMed;
+            SqlParametros = sc.Parameters.Add("@DIA", SqlDbType.Int);
+            SqlParametros.Value = hm.DiaSemana;
+        }
+
+        public int EliminarHorario(ref HorarioMedico hm)
+        {
+            SqlCommand sc = new SqlCommand();
+            AgregarParametrosEliminar(ref sc, ref hm);
+            return acceso.EjecutarProcedimientoAlmacenado(ref sc, "spEliminarHorario");
+
+            //--spEliminarMedico     ( REALIZA BAJA LOGICA )
+
+            //CREATE PROCEDURE spEliminarHorarios
+            //(
+            //@LEGAJO nchar(5),
+            //@DIA int
+            //)
+            //AS
+            //UPDATE  HorariosMedico
+            //SET
+            //Estado_Horario = 0
+            //WHERE LegajoMedico_Horario = @LEGAJO and DiaSemana_Horario = @DIA
+            //RETURN
+        }
+
+        private void AgregarParametrosActualizar(ref SqlCommand cmd, ref HorarioMedico hm)
+        {
+            SqlParameter SqlParametros = new SqlParameter();
+            SqlParametros = cmd.Parameters.Add("@LEGAJO", SqlDbType.NChar, 5);
+            SqlParametros.Value = hm.LegajoMed;
+            SqlParametros = cmd.Parameters.Add("@DIA", SqlDbType.Int);
+            SqlParametros.Value = hm.DiaSemana;
+            SqlParametros = cmd.Parameters.Add("@INGRESO", SqlDbType.Time);
+            SqlParametros.Value = hm.HoraEntrada;
+            SqlParametros = cmd.Parameters.Add("@SALIDA", SqlDbType.Time);
+            SqlParametros.Value = hm.HoraSalida;
+        }
+
+        public int ActualizarHorario(ref HorarioMedico hm)
+        {
+            SqlCommand cmd = new SqlCommand();
+            AgregarParametrosActualizar(ref cmd, ref hm);
+
+            return acceso.EjecutarProcedimientoAlmacenado(ref cmd, "spActualizarHorarios");
+
+            //-- spActualizarHorarios
+
+            //CREATE PROCEDURE spActualizarHorarios
+            //(
+            //@LEGAJO nchar(5),
+            //@DIA int,
+            //@INGRESO time,
+            //@SALIDA time
+            //)
+            //AS
+            //UPDATE  HorariosMedico
+            //SET
+            //DiaSemana_Horario = @DIA,
+            //HoraIngreso = @INGRESO,
+            //HoraSalida = @SALIDA
+            //WHERE LegajoMedico_Horario = @LEGAJO and DiaSemana_Horario = @DIA
+            //RETURN
+        }
     }
 }

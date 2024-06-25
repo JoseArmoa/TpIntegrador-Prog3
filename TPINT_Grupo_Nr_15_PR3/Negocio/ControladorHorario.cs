@@ -22,9 +22,34 @@ namespace Negocio
             return false;
         }
 
-        public DataTable getTabla(ref Medicos medico)
+        public DataTable getTabla(string Legajo)
         {
+            Medicos medico = new Medicos();
+            medico.legajo = Legajo;
             return accHor.obtenerTabla(ref medico);
+        }
+
+        public bool EliminarHorario(ref HorarioMedico hm)
+        {
+            int filasAfectadas = accHor.EliminarHorario(ref hm);
+            if (filasAfectadas > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool ActualizarHorario(ref HorarioMedico hm)
+        {
+            int filasAfectadas = accHor.ActualizarHorario(ref hm);
+            if (filasAfectadas == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
