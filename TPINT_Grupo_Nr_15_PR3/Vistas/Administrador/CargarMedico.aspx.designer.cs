@@ -69,6 +69,15 @@ namespace Vistas.Administrador
         protected global::System.Web.UI.WebControls.TextBox txtLegajoMedico;
 
         /// <summary>
+        /// Control rvLegajo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rvLegajo;
+
+        /// <summary>
         /// Control txtNombreMedico.
         /// </summary>
         /// <remarks>
@@ -76,6 +85,15 @@ namespace Vistas.Administrador
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNombreMedico;
+
+        /// <summary>
+        /// Control rvNombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rvNombre;
 
         /// <summary>
         /// Control txtApellidoMedico.
@@ -87,6 +105,15 @@ namespace Vistas.Administrador
         protected global::System.Web.UI.WebControls.TextBox txtApellidoMedico;
 
         /// <summary>
+        /// Control rvApellido.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rvApellido;
+
+        /// <summary>
         /// Control txtDniMedico.
         /// </summary>
         /// <remarks>
@@ -94,6 +121,15 @@ namespace Vistas.Administrador
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDniMedico;
+
+        /// <summary>
+        /// Control rvDni.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rvDni;
 
         /// <summary>
         /// Control txtFNMedico.
@@ -105,6 +141,15 @@ namespace Vistas.Administrador
         protected global::System.Web.UI.WebControls.TextBox txtFNMedico;
 
         /// <summary>
+        /// Control rvFecha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rvFecha;
+
+        /// <summary>
         /// Control txtDireccionMedico.
         /// </summary>
         /// <remarks>
@@ -112,6 +157,15 @@ namespace Vistas.Administrador
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDireccionMedico;
+
+        /// <summary>
+        /// Control rvDireccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rvDireccion;
 
         /// <summary>
         /// Control ddlProvincias.
@@ -123,6 +177,15 @@ namespace Vistas.Administrador
         protected global::System.Web.UI.WebControls.DropDownList ddlProvincias;
 
         /// <summary>
+        /// Control rvProvincia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rvProvincia;
+
+        /// <summary>
         /// Control ddlLocalidades.
         /// </summary>
         /// <remarks>
@@ -130,6 +193,15 @@ namespace Vistas.Administrador
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlLocalidades;
+
+        /// <summary>
+        /// Control rvLocalidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rvLocalidad;
 
         /// <summary>
         /// Control txtNacionalidadMedico.
@@ -141,6 +213,15 @@ namespace Vistas.Administrador
         protected global::System.Web.UI.WebControls.TextBox txtNacionalidadMedico;
 
         /// <summary>
+        /// Control rvNacionalidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rvNacionalidad;
+
+        /// <summary>
         /// Control txtSexoMedico.
         /// </summary>
         /// <remarks>
@@ -148,6 +229,15 @@ namespace Vistas.Administrador
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSexoMedico;
+
+        /// <summary>
+        /// Control rvSexo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rvSexo;
 
         /// <summary>
         /// Control txtTelefonoMedico.
@@ -159,6 +249,15 @@ namespace Vistas.Administrador
         protected global::System.Web.UI.WebControls.TextBox txtTelefonoMedico;
 
         /// <summary>
+        /// Control rvTelefono.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rvTelefono;
+
+        /// <summary>
         /// Control txtEmailMedico.
         /// </summary>
         /// <remarks>
@@ -166,6 +265,15 @@ namespace Vistas.Administrador
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEmailMedico;
+
+        /// <summary>
+        /// Control rvEmail.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rvEmail;
 
         /// <summary>
         /// Control ddlEspecialidades.
@@ -177,6 +285,15 @@ namespace Vistas.Administrador
         protected global::System.Web.UI.WebControls.DropDownList ddlEspecialidades;
 
         /// <summary>
+        /// Control rvEspecialidades.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rvEspecialidades;
+
+        /// <summary>
         /// Control txtUsuarioMedico.
         /// </summary>
         /// <remarks>
@@ -186,6 +303,15 @@ namespace Vistas.Administrador
         protected global::System.Web.UI.WebControls.TextBox txtUsuarioMedico;
 
         /// <summary>
+        /// Control rvUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rvUsuario;
+
+        /// <summary>
         /// Control txtPassMedico.
         /// </summary>
         /// <remarks>
@@ -193,6 +319,15 @@ namespace Vistas.Administrador
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPassMedico;
+
+        /// <summary>
+        /// Control rvContraseña.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rvContraseña;
 
         /// <summary>
         /// Control lblMensajeUsuario.
@@ -231,6 +366,24 @@ namespace Vistas.Administrador
         protected global::System.Web.UI.WebControls.Button btnAgregarDiayHorario;
 
         /// <summary>
+        /// Control rvDias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rvDias;
+
+        /// <summary>
+        /// Control rvHorario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rvHorario;
+
+        /// <summary>
         /// Control lblDiasyHorario.
         /// </summary>
         /// <remarks>
@@ -238,6 +391,15 @@ namespace Vistas.Administrador
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDiasyHorario;
+
+        /// <summary>
+        /// Control CustomValidator1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator1;
 
         /// <summary>
         /// Control btnAgregar.
@@ -256,6 +418,24 @@ namespace Vistas.Administrador
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMensajeAgregar;
+
+        /// <summary>
+        /// Control ValidationSummary1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+
+        /// <summary>
+        /// Control ValidationSummary2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary2;
 
         /// <summary>
         /// Control hlVolverInicio.

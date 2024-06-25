@@ -95,53 +95,52 @@ namespace Vistas.Administrador
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
-            string mensaje = "";
-            Medicos med = new Medicos();
-
-            med.legajo = txtLegajoMedico.Text;
-            med.dni = txtDniMedico.Text;
-            med.apellido = txtApellidoMedico.Text;
-            med.nombre = txtNombreMedico.Text;
-            med.FechaNac = DateTime.Parse(txtFNMedico.Text);
-            med.direccion = txtDireccionMedico.Text;
-            med.IDespecialidad = Convert.ToInt32(ddlEspecialidades.SelectedValue);
-            med.iDLocalidad = Convert.ToInt32(ddlLocalidades.SelectedValue);
-            med.nacionalidad = txtNacionalidadMedico.Text;
-            med.telefono = txtTelefonoMedico.Text;
-            med.email = txtEmailMedico.Text;
-            med.sexo = txtSexoMedico.Text;
-
-            Usuarios usuarioMedico = new Usuarios();
-            usuarioMedico.nombreUsuario = txtUsuarioMedico.Text;
-            usuarioMedico.contraseña = txtPassMedico.Text;
-            usuarioMedico.tipousuario = "Medico";
-
-            ControladorUsuario cu = new ControladorUsuario();
-            if(!cu.agregarUsuario(ref usuarioMedico, ref mensaje))
+            if (Page.IsValid)
             {
-                lblMensajeUsuario.Text = mensaje;
-                return;
+                string mensaje = "";
+                Medicos med = new Medicos();
+
+                med.legajo = txtLegajoMedico.Text;
+                med.dni = txtDniMedico.Text;
+                med.apellido = txtApellidoMedico.Text;
+                med.nombre = txtNombreMedico.Text;
+                med.FechaNac = DateTime.Parse(txtFNMedico.Text);
+                med.direccion = txtDireccionMedico.Text;
+                med.IDespecialidad = Convert.ToInt32(ddlEspecialidades.SelectedValue);
+                med.iDLocalidad = Convert.ToInt32(ddlLocalidades.SelectedValue);
+                med.nacionalidad = txtNacionalidadMedico.Text;
+                med.telefono = txtTelefonoMedico.Text;
+                med.email = txtEmailMedico.Text;
+                med.sexo = txtSexoMedico.Text;
+
+                Usuarios usuarioMedico = new Usuarios();
+                usuarioMedico.nombreUsuario = txtUsuarioMedico.Text;
+                usuarioMedico.contraseña = txtPassMedico.Text;
+                usuarioMedico.tipousuario = "Medico";
+
+                ControladorUsuario cu = new ControladorUsuario();
+                if (!cu.agregarUsuario(ref usuarioMedico, ref mensaje))
+                {
+                    lblMensajeUsuario.Text = mensaje;
+                    return;
+                }
+
+
+                med.iDUsuario = cu.obtenerUsuario(usuarioMedico).iDUsuario;
+
+                ControladorHorario ch = new ControladorHorario();
+                ControladorMedicos cm = new ControladorMedicos();
+                if (cm.AgregarMedico(ref med))
+                {
+                    cargarHorarios(ch);
+                    lblMensajeAgregar.Text = "Registro agregado";
+
+                }
+                else
+                {
+                    lblMensajeAgregar.Text = "No se pudo agregar registro";
+                }
             }
-
-
-            med.iDUsuario = cu.obtenerUsuario(usuarioMedico).iDUsuario;
-
-            ControladorHorario ch = new ControladorHorario();
-            ControladorMedicos cm = new ControladorMedicos();
-            if(cm.AgregarMedico(ref med))
-            {
-                cargarHorarios(ch);
-                lblMensajeAgregar.Text = "Registro agregado";
-                
-            }
-            else
-            {
-                lblMensajeAgregar.Text = "No se pudo agregar registro";
-            }
-
-
-
-
         }
 
         void cargarHorarios(ControladorHorario ch)
@@ -150,6 +149,18 @@ namespace Vistas.Administrador
             {
                 HorarioMedico horario = hm;
                 ch.agregarHorario(ref horario);
+            }
+        }
+
+        protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            if(lblDiasyHorario.Text != "")
+            {
+                args.IsValid = true;
+            }
+            else
+            {
+                args.IsValid = false;
             }
         }
     }
