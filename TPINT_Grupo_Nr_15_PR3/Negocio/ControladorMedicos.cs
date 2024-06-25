@@ -18,6 +18,11 @@ namespace Negocio
             return accMed.obtenerTabla();
         }
 
+        public DataTable getTablaMedico(string legajo)
+        {
+            return accMed.obtenerTablaMedicoPorLegajo(legajo);
+        }
+
         public bool AgregarMedico(ref Medicos med)
         {
             if (accMed.agregarMedico(med))

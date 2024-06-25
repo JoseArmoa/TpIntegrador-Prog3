@@ -54,13 +54,14 @@
                 <tr>
                     <td class="auto-style4">Legajo Médico:</td>
                     <td class="auto-style4">
-                        <asp:TextBox ID="txtLegajo" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtLegajo" runat="server" MaxLength="5"></asp:TextBox>
+                    &nbsp;
+                        <asp:RequiredFieldValidator ID="rvLegajo" runat="server" ControlToValidate="txtLegajo" ErrorMessage="Ingrese un legajo" ValidationGroup="GrupoBuscar">*</asp:RequiredFieldValidator>
                     </td>
                     <td class="auto-style4">
-                        <asp:Button ID="btnBuscar" runat="server" Text="Buscar" />
+                        <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" ValidationGroup="GrupoBuscar" />
                         &nbsp;
-                        <asp:Button ID="btnAgregar" runat="server" PostBackUrl="~/Administrador/CargarMedico.aspx" Text="Agregar" />
-                    </td>
+                        </td>
                 </tr>
                 <tr>
                     <td class="auto-style3"></td>
@@ -142,10 +143,13 @@
                     </td>
                     <td class="auto-style3">
                         <asp:ValidationSummary ID="vsEditarMedicos" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="Grupo1" />
+                        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="GrupoBuscar" />
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style2"></td>
+                    <td class="auto-style2">
+                        <asp:Button ID="btnAgregar" runat="server" PostBackUrl="~/Administrador/CargarMedico.aspx" Text="Agregar" />
+                    </td>
                     <td class="auto-style2">
                         &nbsp;</td>
                     <td class="auto-style2"></td>

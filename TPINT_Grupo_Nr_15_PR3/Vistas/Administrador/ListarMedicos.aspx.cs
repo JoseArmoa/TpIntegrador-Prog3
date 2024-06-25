@@ -25,12 +25,19 @@ namespace Vistas.Administrador
             }
         }
 
-        protected void CargarGD()
+        protected void CargarGD(DataTable dt = null)
         {
-            ControladorMedicos negMedicos = new ControladorMedicos();
+            if(dt == null)
+            {
+                ControladorMedicos negMedicos = new ControladorMedicos();
 
-            gvListarMedicos.DataSource = negMedicos.getTabla();
-            gvListarMedicos.DataBind();
+                gvListarMedicos.DataSource = negMedicos.getTabla();
+                gvListarMedicos.DataBind();
+            } else
+            {
+                gvListarMedicos.DataSource = dt;
+                gvListarMedicos.DataBind();
+            }
         }
 
         protected void ButtonbtnVerUsuario_Click(object sender, EventArgs e)
@@ -127,7 +134,6 @@ namespace Vistas.Administrador
             }
         }
 
-
      /// ---------- MODIFICAR Y ELIMINAR HORARIOS MEDICOS -------
   
         protected void gvHorariosMedico_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -193,6 +199,15 @@ namespace Vistas.Administrador
 
             gvHorariosMedico.EditIndex = -1;
             CargarHorario(Legajo);
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            ControladorMedicos negMedicos = new ControladorMedicos();
+
+            string legajo = txtLegajo.Text;
+
+            CargarGD(negMedicos.getTablaMedico(legajo));
         }
     }
 }
