@@ -82,10 +82,10 @@
                     <td class="auto-style9">Dni :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </td>
                     <td class="auto-style13">
-                        <asp:TextBox ID="txtDia" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtDni" runat="server"></asp:TextBox>
                     </td>
                     <td class="auto-style10">
-                        <asp:Button ID="btnBuscar" runat="server" Text="Buscar" />
+                        <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" />
 &nbsp;
                         <asp:Button ID="btnAgregar" runat="server" PostBackUrl="~/CagarPacientes.aspx" Text="Agregar" />
                     </td>
@@ -126,6 +126,8 @@
                         <TitleStyle BackColor="Black" Font-Bold="True" Font-Size="13pt" ForeColor="White" Height="14pt" />
                         <TodayDayStyle BackColor="#CCCC99" />
                     </asp:Calendar>
+                    <br />
+                    <br />
                     <asp:DataList ID="DataList1" runat="server" Visible="False">
                         <ItemTemplate>
                             <br />

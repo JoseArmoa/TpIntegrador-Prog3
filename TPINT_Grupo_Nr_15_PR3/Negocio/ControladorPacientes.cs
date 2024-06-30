@@ -70,5 +70,19 @@ namespace Negocio
             }
         }
 
+        public Pacientes buscarPaciente(ref Pacientes pac)
+        {
+            if(accPacientes.existeDNI(pac))
+            {
+                DataTable paciente = accPacientes.getTablaFiltrada(pac);
+                pac.dni = paciente.Rows[0][0].ToString();
+                pac.nombre = paciente.Rows[0][1].ToString();
+                pac.apellido = paciente.Rows[0][2].ToString();
+
+                return pac;
+            }
+            return null;
+        }
+
     }
 }

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Entidades;
+using Negocio;
 
 namespace Vistas
 {
@@ -50,6 +52,22 @@ namespace Vistas
         protected void ButtonbtnVerUsuario_Click(object sender, EventArgs e)
         {
             PanelUsuario.Visible = !PanelUsuario.Visible;
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            Pacientes paciente = new Pacientes();
+            paciente.dni = txtDni.Text;
+
+            ControladorPacientes cp = new ControladorPacientes();
+            if(cp.buscarPaciente(ref paciente) != null)
+            {
+                lblNombrePaciente.Text = paciente.nombre + " " + paciente.apellido;
+            } 
+            else
+            {
+                lblNombrePaciente.Text = "No existe el paciente";
+            }
         }
     }
 }
