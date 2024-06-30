@@ -102,33 +102,32 @@ namespace Dao
         public void AgregarParametrosActualizar(ref SqlCommand sc, Usuarios usu)
         {
             SqlParameter sqlParameter = new SqlParameter();
-            sqlParameter = sc.Parameters.Add("@NOMBRE", SqlDbType.VarChar);
+            sqlParameter = sc.Parameters.Add("@IDUSUARIO", SqlDbType.Int);
+            sqlParameter.Value = usu.iDUsuario;
+            sqlParameter = sc.Parameters.Add("@NOMBREUSUARIO", SqlDbType.VarChar, 15);
             sqlParameter.Value = usu.nombreUsuario;
-            sqlParameter = sc.Parameters.Add("@CONTRASEÑA", SqlDbType.VarChar);
+            sqlParameter = sc.Parameters.Add("@CONTRASENIA", SqlDbType.VarChar, 15);
             sqlParameter.Value = usu.contraseña;
-            sqlParameter = sc.Parameters.Add("@TIPOUSUARIO", SqlDbType.VarChar);
-            sqlParameter.Value = usu.tipousuario;
         }
 
         public int ActualizarUsuario(Usuarios usu)
         {
             SqlCommand sc = new SqlCommand();
             AgregarParametrosActualizar(ref sc, usu);
-            return db.EjecutarProcedimientoAlmacenado(ref sc, "spActualizarUsuario");
+            return db.EjecutarProcedimientoAlmacenado(ref sc, "spActualizarUsuarios");
 
             /*
-                CREATE PROCEDURE spActualizarPaciente
-            (
-                  @IDUSUARIO int,
-                  @NOMBREUsuario varchar(15),
-                  @CONTRASEÑA varchar(15),
-            )
+                CREATE PROCEDURE spActualizarUsuarios
+                (
+                    @IDUSUARIO int,
+                    @NOMBREUSUARIO varchar(15),
+                    @CONTRASENIA varchar(15)
+                )
                 AS
-                UPDATE Pacientes
+                UPDATE Usuarios
                 SET
-                  IdUsuario = @IDUSUARIO,
-                  NombreUsuario = @NOMBREUSUARIO,
-                  Contrasenia = @CONTRASENIA,               
+                    NombreUsuario = @NOMBREUSUARIO,
+                    Contrasenia = @CONTRASENIA               
                 WHERE IdUsuario = @IDUSUARIO
                 RETURN
              */

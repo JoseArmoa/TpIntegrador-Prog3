@@ -61,7 +61,7 @@
                 <tr>
                     <td class="auto-style5">Nombre Usuario:</td>
                     <td class="auto-style6">
-                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtNombreUsuario" runat="server"></asp:TextBox>
                     </td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
@@ -69,7 +69,7 @@
                 <tr>
                     <td class="auto-style3">Contraseña:</td>
                     <td class="auto-style7">
-                        <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtContaseña" runat="server" TextMode="Password"></asp:TextBox>
                     </td>
                     <td class="auto-style4"></td>
                     <td class="auto-style4"></td>
@@ -77,7 +77,7 @@
                 <tr>
                     <td class="auto-style2">Repetir Contraseña:</td>
                     <td class="auto-style6">
-                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtRepetirContraseña" runat="server" TextMode="Password"></asp:TextBox>
                     </td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
@@ -85,11 +85,22 @@
                 <tr>
                     <td class="auto-style2">&nbsp;</td>
                     <td class="auto-style6">
-                        <asp:Button ID="btnGuardar" runat="server" Text="Guardar" />
+                        <asp:Button ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click" />
 &nbsp;
-                        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" PostBackUrl="~/Medico/Inicio.aspx" />
+                        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
+                    </td>
+                    <td>
+                        <asp:Label ID="lblMensaje" runat="server"></asp:Label>
                     </td>
                     <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style2">&nbsp;</td>
+                    <td class="auto-style6">
+                        &nbsp;</td>
+                    <td>
+                        <asp:LinkButton ID="lbVolverInicio" runat="server" PostBackUrl="~/Medico/Inicio.aspx">Volver al Inicio</asp:LinkButton>
+                    </td>
                     <td>&nbsp;</td>
                 </tr>
             </table>

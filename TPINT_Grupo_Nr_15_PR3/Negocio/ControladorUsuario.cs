@@ -55,15 +55,19 @@ namespace Negocio
 
         public bool ActualizarUsuario(Usuarios usu)
         {
-            int filasAfectadas = accUsuario.ActualizarUsuario(usu);
-            if (filasAfectadas == 1)
+            if (accUsuario.existeUsuario(usu))
             {
-                return true;
+                int filasAfectadas = accUsuario.ActualizarUsuario(usu);
+                if (filasAfectadas == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         public Usuarios obtenerUsuario(Usuarios usu)
