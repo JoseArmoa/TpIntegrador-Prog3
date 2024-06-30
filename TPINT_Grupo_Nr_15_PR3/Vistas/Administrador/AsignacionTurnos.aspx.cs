@@ -25,6 +25,14 @@ namespace Vistas
                 cargarDDL(ddlEspecialidades, ce.getTabla());
                 ListItem lt = new ListItem("-Selecione una Especialidad-", "-1");
                 ddlEspecialidades.Items.Insert(0, lt);
+
+                
+                /////// Falta buscar medico por especialidad seleccionada
+                /////// debería volver a cargarse cada vez que se seleccione otra especialidad
+                ControladorMedicos me = new ControladorMedicos();
+                cargarDDL(ddlMedicos, me.getTabla(), "Legajo");    ///////// Crear metodo en controlador para que traiga nombre + apellido
+                lt = new ListItem("-Selecione un Médico-", "-1");
+                ddlMedicos.Items.Insert(0, lt);
             }
         }
 
@@ -79,11 +87,11 @@ namespace Vistas
             }
         }
 
-        protected void cargarDDL(DropDownList ddl, DataTable dt)
+        protected void cargarDDL(DropDownList ddl, DataTable dt, string value = "Id")
         {
             ddl.DataSource = dt;
             ddl.DataTextField = "Nombre";
-            ddl.DataValueField = "Id";
+            ddl.DataValueField = value;
             ddl.DataBind();
         }
 
