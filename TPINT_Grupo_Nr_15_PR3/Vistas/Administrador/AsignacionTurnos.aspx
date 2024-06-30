@@ -107,7 +107,7 @@
                     <asp:DropDownList ID="ddlEspecialidades" runat="server">
                     </asp:DropDownList>
 &nbsp;&nbsp; Medico:
-                    <asp:DropDownList ID="DropDownList1" runat="server">
+                    <asp:DropDownList ID="ddlMedicos" runat="server">
                     </asp:DropDownList>
                 </td>
             </tr>

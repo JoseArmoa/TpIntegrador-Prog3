@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Entidades;
 using Negocio;
+using System.Data;
 
 namespace Vistas
 {
@@ -16,6 +17,14 @@ namespace Vistas
             if (Session["Usuario"] != null)
             {
                 lblNombreUsuario.Text = Session["Usuario"].ToString();
+            }
+
+            if (!IsPostBack)
+            {
+                ControladorEspecialidades ce = new ControladorEspecialidades();
+                cargarDDL(ddlEspecialidades, ce.getTabla());
+                ListItem lt = new ListItem("-Selecione una Especialidad-", "-1");
+                ddlEspecialidades.Items.Insert(0, lt);
             }
         }
 
@@ -69,5 +78,14 @@ namespace Vistas
                 lblNombrePaciente.Text = "No existe el paciente";
             }
         }
+
+        protected void cargarDDL(DropDownList ddl, DataTable dt)
+        {
+            ddl.DataSource = dt;
+            ddl.DataTextField = "Nombre";
+            ddl.DataValueField = "Id";
+            ddl.DataBind();
+        }
+
     }
 }
