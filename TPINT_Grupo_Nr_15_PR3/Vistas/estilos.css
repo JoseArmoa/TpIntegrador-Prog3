@@ -1,0 +1,108 @@
+﻿
+:root {
+    --celeste: #f0f4f7;
+    --gris: #6c757d;
+    --azul: #007bff;
+    --blanco: #ffffff;
+    --negro: #343a40;
+    --verde: #28a745;
+    --verdeAzulado: #17a2b8;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    width: 100%;
+    background-color: var(--azul);
+    height: 3em;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+}
+
+
+.links {
+    color: var(--blanco);
+    text-decoration: none;
+    cursor: pointer;
+    margin: auto 0;
+}
+
+#lbInicio {
+    font-size: x-large;
+}
+
+.usuario {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#PanelUsuario {
+    background-color: var(--blanco);
+    border: 1px solid var(--verdeAzulado);
+}
+
+.nombreUsuario {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    gap: 6px;
+}
+
+#ButtonbtnVerUsuario {
+    float: right;
+    cursor: pointer;
+}
+
+body {
+    background-color: var(--celeste);
+    color: var(--negro);
+}
+
+.formulario {
+    padding: 0 20px;
+}
+
+.btn {
+    background-color: var(--azul);
+    color: var(--blanco);
+    border-radius: 10px;
+    padding: 0.5em 2em;
+    border: none;
+    cursor: pointer;
+}
+
+.success {
+    background-color: var(--verde);
+}
+
+.secundario {
+    background-color: transparent;
+    border: 1px solid var(--gris);
+    text-decoration: none;
+    color: var(--gris);
+}
+
+.user {
+    background-color: var(--verdeAzulado);
+    border-radius: 5px;
+}
+
+.dark {
+    background-color: var(--gris);
+}
+
+.grid tr td, .grid tr th {
+    padding: 10px;
+}
+
+.grid {
+    width: min-content;
+}

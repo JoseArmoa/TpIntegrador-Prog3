@@ -63,7 +63,7 @@ namespace Vistas.Medico
 
         protected void btnUsuario_Click(object sender, EventArgs e)
         {
-            panelUsuario.Visible = !panelUsuario.Visible;
+            PanelUsuario.Visible = !PanelUsuario.Visible;
         }
     }
 }

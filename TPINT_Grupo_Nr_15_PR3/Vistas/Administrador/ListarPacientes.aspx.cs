@@ -53,7 +53,7 @@ namespace Vistas
 
         protected void ButtonbtnVerUsuario_Click(object sender, EventArgs e)
         {
-            panelUsuario.Visible = !panelUsuario.Visible;
+            PanelUsuario.Visible = !PanelUsuario.Visible;
         }
 
         protected void btnBuscar_Command(object sender, CommandEventArgs e)

@@ -69,16 +69,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Administrador\AsignacionTurnos.aspx" />
-    <Content Include="Administrador\CagarPacientes.aspx" />
+    <Content Include="Administrador\CargarPacientes.aspx" />
     <Content Include="Administrador\CargarMedico.aspx" />
     <Content Include="Administrador\Informes.aspx" />
     <Content Include="Administrador\Inicio.aspx" />
     <Content Include="Administrador\ListarMedicos.aspx" />
     <Content Include="Administrador\ListarPacientes.aspx" />
     <Content Include="Administrador\VerTurnos.aspx" />
-    <Content Include="Medico\AministrarTurnos.aspx" />
+    <Content Include="Medico\AdministrarTurnos.aspx" />
     <Content Include="Medico\EditarUsuario.aspx" />
     <Content Include="Medico\Inicio.aspx" />
+    <Content Include="estilos.css" />
     <Content Include="Web.config" />
     <Content Include="Login.aspx" />
   </ItemGroup>
@@ -90,12 +91,12 @@
     <Compile Include="Administrador\AsignacionTurnos.aspx.designer.cs">
       <DependentUpon>AsignacionTurnos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Administrador\CagarPacientes.aspx.cs">
-      <DependentUpon>CagarPacientes.aspx</DependentUpon>
+    <Compile Include="Administrador\CargarPacientes.aspx.cs">
+      <DependentUpon>CargarPacientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Administrador\CagarPacientes.aspx.designer.cs">
-      <DependentUpon>CagarPacientes.aspx</DependentUpon>
+    <Compile Include="Administrador\CargarPacientes.aspx.designer.cs">
+      <DependentUpon>CargarPacientes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administrador\CargarMedico.aspx.cs">
       <DependentUpon>CargarMedico.aspx</DependentUpon>
@@ -132,12 +133,12 @@
     <Compile Include="Administrador\ListarPacientes.aspx.designer.cs">
       <DependentUpon>ListarPacientes.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Medico\AministrarTurnos.aspx.cs">
-      <DependentUpon>AministrarTurnos.aspx</DependentUpon>
+    <Compile Include="Medico\AdministrarTurnos.aspx.cs">
+      <DependentUpon>AdministrarTurnos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Medico\AministrarTurnos.aspx.designer.cs">
-      <DependentUpon>AministrarTurnos.aspx</DependentUpon>
+    <Compile Include="Medico\AdministrarTurnos.aspx.designer.cs">
+      <DependentUpon>AdministrarTurnos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Medico\EditarUsuario.aspx.cs">
       <DependentUpon>EditarUsuario.aspx</DependentUpon>

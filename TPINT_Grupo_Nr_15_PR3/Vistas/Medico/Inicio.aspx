@@ -16,39 +16,34 @@
             margin-bottom: 0px;
         }
     </style>
+     <link rel="stylesheet" href="..\estilos.css" />
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <table class="auto-style2">
-                <tr>
-                    <td>
-                        <table class="auto-style1">
-                            <tr>
-                                <td>
-                        <asp:Button ID="btnUsuario" runat="server" OnClick="btnUsuario_Click" Text="Usuario" Width="123px" />
-                                    <asp:Panel ID="PanelUsuario" runat="server" Width="244px" Visible="false">
-                                        Usuario :
-                                        <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>
-                                        <br />
-                                        <asp:HyperLink ID="hlCerrarSesion" runat="server" NavigateUrl="~/Login.aspx">CerrarSesion</asp:HyperLink>
-                                        <br />
-                                        <asp:HyperLink ID="hlModificarUsuario" runat="server" NavigateUrl="~/Medico/EditarUsuario.aspx">Editar Usuario</asp:HyperLink>
-                                    </asp:Panel>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
+        <header>
+           <asp:LinkButton class="links" ID="lbInicio" runat="server" PostBackUrl="~/Medico/Inicio.aspx">CLINICA GRUPO 15</asp:LinkButton>
+            <div class="usuario">
+                <asp:Button CssClass="btn user" ID="btnUsuario" runat="server" Height="25px" OnClick="btnUsuario_Click" Text="Usuario" />               
+                <asp:Panel ID="PanelUsuario" runat="server" Height="55px" Visible="false" Width="244px">
+                    <div class="nombreUsuario">
+                        <span>Usuario: </span>
+                        <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>
+                    </div>   
+                    <asp:HyperLink ID="hlCerrarSesion" runat="server" NavigateUrl="~/Login.aspx">Cerrar Sesion</asp:HyperLink> <br />
+                    <asp:HyperLink ID="hlModificarUsuario" runat="server" NavigateUrl="~/Medico/EditarUsuario.aspx">Editar Usuario</asp:HyperLink>
+                </asp:Panel>
+            </div>
+        </header>
+
+        <div class="formulario">
+            <h1>INICIO</h1>
+            <br />
+            <br />
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Medico/AdministrarTurnos.aspx">Administrar Turnos</asp:HyperLink>
+            <br />
+            <br />
+            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Medico/EditarUsuario.aspx">Configurar Usuario</asp:HyperLink>
         </div>
-        <h1>INICIO</h1>
-        <br />
-        <br />
-        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Medico/AministrarTurnos.aspx">Administrar Turnos</asp:HyperLink>
-        <br />
-        <br />
-        <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Medico/EditarUsuario.aspx">Configurar Usuario</asp:HyperLink>
     </form>
 </body>
 </html>

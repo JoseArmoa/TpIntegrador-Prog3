@@ -24,6 +24,42 @@ namespace Vistas
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// Control lbInicio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbInicio;
+
+        /// <summary>
+        /// Control hlAsignacionTurnos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlAsignacionTurnos;
+
+        /// <summary>
+        /// Control hlListarMedicos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlListarMedicos;
+
+        /// <summary>
+        /// Control hlInformes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlInformes;
+
+        /// <summary>
         /// Control ButtonbtnVerUsuario.
         /// </summary>
         /// <remarks>
@@ -33,13 +69,13 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.Button ButtonbtnVerUsuario;
 
         /// <summary>
-        /// Control panelUsuario.
+        /// Control PanelUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panelUsuario;
+        protected global::System.Web.UI.WebControls.Panel PanelUsuario;
 
         /// <summary>
         /// Control lblNombreUsuario.

@@ -45,40 +45,32 @@
         .auto-style16 {
             width: 351px;
         }
-        .auto-style17 {
-            height: 26px;
-        }
-        .auto-style18 {
-            width: 22%;
-            margin-left: 1050px;
-        }
-    </style>
+        </style>
+    <link rel="stylesheet" href="..\estilos.css" />
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <table class="auto-style18">
-                <tr>
-                    <td class="auto-style17">
-                <asp:Button ID="ButtonbtnVerUsuario" runat="server" Text="Usuario" Height="25px" OnClick="ButtonbtnVerUsuario_Click" />
-                        <asp:Panel ID="PanelUsuario" runat="server" Height="56px" Visible ="false">
-                            Usuario :
-                            <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>
-                            <br />
-                            <asp:HyperLink ID="hlCerrarSesion" runat="server" NavigateUrl="~/Login.aspx">Cerrar Sesion</asp:HyperLink>
-                        </asp:Panel>
-                    </td>
-                </tr>
-            </table>
-        </div>
+        <header>
+           <asp:LinkButton class="links" ID="lbInicio" runat="server" PostBackUrl="~/Administrador/Inicio.aspx">CLINICA GRUPO 15</asp:LinkButton>
+            <asp:HyperLink class="links" ID="hlListarMedicos" runat="server" NavigateUrl="~/Administrador/ListarMedicos.aspx">Listar Medicos</asp:HyperLink>
+            <asp:HyperLink class="links" ID="hlListarPacientes" runat="server" NavigateUrl="~/Administrador/ListarPacientes.aspx">Listar Pacientes</asp:HyperLink>
+            <asp:HyperLink class="links" ID="hlTurnos" runat="server" NavigateUrl="~/Administrador/VerTurnos.aspx">Listar Turnos</asp:HyperLink>
+            <div class="usuario">
+                <asp:Button CssClass="btn user" ID="ButtonbtnVerUsuario" runat="server" Height="25px" OnClick="ButtonbtnVerUsuario_Click" Text="Usuario" />               
+                <asp:Panel ID="PanelUsuario" runat="server" Height="46px" Visible="false" Width="248px">
+                    <div class="nombreUsuario">
+                        <span>Usuario: </span>
+                        <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>
+                    </div>                   
+                    <asp:HyperLink ID="hlCerrarSesion" runat="server" NavigateUrl="~/Login.aspx">Cerrar Sesion</asp:HyperLink>
+                </asp:Panel>
+            </div>
+        </header>
         <asp:MultiView ID="MultiView1" runat="server">
             <asp:View ID="VAusentes" runat="server" OnActivate="VAusentes_Activate">
                 <table class="auto-style1">
                     <tr>
-                        <td class="auto-style8"><h1>Porcentajes de Asistencia</h1></td>
-                        <td class="auto-style3">&nbsp;</td>
-                        <td class="auto-style2"></td>
-                        <td class="auto-style2"></td>
+                        <td class="auto-style2" colspan="4"><h1>Porcentajes de Asistencia</h1></td>
                     </tr>
                     <tr>
                         <td class="auto-style9">Desde:
@@ -88,7 +80,7 @@
                             <asp:TextBox ID="TextBox2" runat="server" TextMode="Date"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:Button ID="btnVer" runat="server" Text="Ver" />
+                            <asp:Button CssClass="btn" ID="btnVer" runat="server" Text="Ver" />
                         </td>
                         <td>&nbsp;</td>
                     </tr>

@@ -28,26 +28,31 @@
             height: 28px;
         }
     </style>
+    <link rel="stylesheet" href="..\estilos.css" />
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+       <header>
+           <asp:LinkButton class="links" ID="lbInicio" runat="server" PostBackUrl="~/Administrador/Inicio.aspx">CLINICA GRUPO 15</asp:LinkButton>
+            <asp:HyperLink class="links" ID="hlListarPacientes" runat="server" NavigateUrl="~/Administrador/ListarPacientes.aspx">Listar Pacientes</asp:HyperLink>
+            <asp:HyperLink class="links" ID="hlInformes" runat="server" NavigateUrl="~/Administrador/Informes.aspx">Informes</asp:HyperLink>
+            <asp:HyperLink class="links" ID="hlTurnos" runat="server" NavigateUrl="~/Administrador/VerTurnos.aspx">Listar Turnos</asp:HyperLink>
+            <div class="usuario">
+                <asp:Button CssClass="btn user" ID="ButtonbtnVerUsuario" runat="server" Height="25px" OnClick="ButtonbtnVerUsuario_Click" Text="Usuario" />               
+                <asp:Panel ID="PanelUsuario" runat="server" Height="46px" Visible="false" Width="248px">
+                    <div class="nombreUsuario">
+                        <span>Usuario: </span>
+                        <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>
+                    </div>                   
+                    <asp:HyperLink ID="hlCerrarSesion" runat="server" NavigateUrl="~/Login.aspx">Cerrar Sesion</asp:HyperLink>
+                </asp:Panel>
+            </div>
+        </header>
+
+        <div class="formulario">
             <table class="auto-style1">
                 <tr>
                     <td colspan="3">
-                        <table class="auto-style6">
-                            <tr>
-                                <td class="auto-style5">
-                <asp:Button ID="ButtonbtnVerUsuario" runat="server" Text="Usuario" Height="25px" OnClick="ButtonbtnVerUsuario_Click" />
-                                    <asp:Panel ID="PanelUsuario" runat="server" Visible="false">
-                                        Usuario :
-                                        <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>
-                                        <br />
-                                        <asp:HyperLink ID="hlCerrarSesion" runat="server" NavigateUrl="~/Login.aspx">Cerrar Sesion</asp:HyperLink>
-                                    </asp:Panel>
-                                </td>
-                            </tr>
-                        </table>
                         <h1>Administrar Médicos</h1>
                     </td>
                 </tr>
@@ -59,17 +64,17 @@
                         <asp:RequiredFieldValidator ID="rvLegajo" runat="server" ControlToValidate="txtLegajo" ErrorMessage="Ingrese un legajo" ValidationGroup="GrupoBuscar">*</asp:RequiredFieldValidator>
                     </td>
                     <td class="auto-style4">
-                        <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" ValidationGroup="GrupoBuscar" />
+                        <asp:Button class="btn" ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" ValidationGroup="GrupoBuscar" />
                         &nbsp;&nbsp;
-                        <asp:Button ID="btnMostrarTodos" runat="server" Text="Mostrar Todos" OnClick="btnMostrarTodos_Click" ValidationGroup="GrupoBuscar" />
+                        <asp:Button class="btn" ID="btnMostrarTodos" runat="server" Text="Mostrar Todos" OnClick="btnMostrarTodos_Click" ValidationGroup="GrupoBuscar" />
                         &nbsp;
-                        <asp:Button ID="btnAgregar" runat="server" PostBackUrl="~/Administrador/CargarMedico.aspx" Text="Agregar" />
+                        <asp:Button class="btn secundario" ID="btnAgregar" runat="server" PostBackUrl="~/Administrador/CargarMedico.aspx" Text="Agregar" />
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style3"></td>
                     <td class="auto-style3" id="ddl_eit_Especialidad">
-                        <asp:GridView ID="gvListarMedicos" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" PageSize="6" ShowHeaderWhenEmpty="True" OnRowDeleting="gvListarMedicos_RowDeleting" OnRowEditing="gvListarMedicos_RowEditing" OnRowDataBound="gvListarMedicos_RowDataBound" OnRowUpdating="gvListarMedicos_RowUpdating" OnRowCancelingEdit="gvListarMedicos_RowCancelingEdit" OnRowCommand="gvListarMedicos_RowCommand">
+                        <asp:GridView CssClass="grid" ID="gvListarMedicos" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="10" GridLines="Vertical" PageSize="6" ShowHeaderWhenEmpty="True" OnRowDeleting="gvListarMedicos_RowDeleting" OnRowEditing="gvListarMedicos_RowEditing" OnRowDataBound="gvListarMedicos_RowDataBound" OnRowUpdating="gvListarMedicos_RowUpdating" OnRowCancelingEdit="gvListarMedicos_RowCancelingEdit" OnRowCommand="gvListarMedicos_RowCommand">
                             <AlternatingRowStyle BackColor="#DCDCDC" />
                             <Columns>
                                 <asp:TemplateField HeaderText="Acciones">
@@ -158,7 +163,7 @@
                 <tr>
                     <td class="auto-style2">&nbsp;</td>
                     <td class="auto-style2">
-                        <asp:GridView ID="gvHorariosMedico" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" PageSize="5" ShowHeaderWhenEmpty="True" OnRowCancelingEdit="gvHorariosMedico_RowCancelingEdit" OnRowDataBound="gvHorariosMedico_RowDataBound" OnRowDeleting="gvHorariosMedico_RowDeleting" OnRowEditing="gvHorariosMedico_RowEditing" OnRowUpdating="gvHorariosMedico_RowUpdating">
+                        <asp:GridView CssClass="grid" ID="gvHorariosMedico" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" PageSize="5" ShowHeaderWhenEmpty="True" OnRowCancelingEdit="gvHorariosMedico_RowCancelingEdit" OnRowDataBound="gvHorariosMedico_RowDataBound" OnRowDeleting="gvHorariosMedico_RowDeleting" OnRowEditing="gvHorariosMedico_RowEditing" OnRowUpdating="gvHorariosMedico_RowUpdating">
                             <AlternatingRowStyle BackColor="#DCDCDC" />
                             <Columns>
                                 <asp:TemplateField HeaderText="Acciones">
@@ -221,17 +226,18 @@
                     <td class="auto-style2">&nbsp;</td>
                 </tr>
             </table>
+        
+            <table class="auto-style1">
+                <tr>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <asp:HyperLink CssClass="btn secundario" ID="hlVolverInicio" runat="server" NavigateUrl="~/Administrador/Inicio.aspx">Volver al Inicio</asp:HyperLink>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+            </table>
         </div>
-        <table class="auto-style1">
-            <tr>
-                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:HyperLink ID="hlVolverInicio" runat="server" NavigateUrl="~/Administrador/Inicio.aspx">Volver al Inicio</asp:HyperLink>
-                </td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-            </tr>
-        </table>
     </form>
 </body>
 </html>

@@ -46,27 +46,30 @@
             height: 26px;
         }
     </style>
+     <link rel="stylesheet" href="..\estilos.css" />
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <header>
+           <asp:LinkButton class="links" ID="lbInicio" runat="server" PostBackUrl="~/Administrador/Inicio.aspx">CLINICA GRUPO 15</asp:LinkButton>
+             <asp:HyperLink class="links" ID="HyperLink1" runat="server" NavigateUrl="~/Administrador/ListarPacientes.aspx">Listar Pacientes</asp:HyperLink>
+            <asp:HyperLink class="links" ID="hlTurnos" runat="server" NavigateUrl="~/Administrador/VerTurnos.aspx">Listar Turnos</asp:HyperLink>
+            <asp:HyperLink class="links" ID="hlInformes" runat="server" NavigateUrl="~/Administrador/Informes.aspx">Informes</asp:HyperLink>
+            <div class="usuario">
+                <asp:Button CssClass="btn user" ID="ButtonbtnVerUsuario" runat="server" Height="25px" OnClick="ButtonbtnVerUsuario_Click" Text="Usuario" />               
+                <asp:Panel ID="PanelUsuario" runat="server" Height="46px" Visible="false" Width="248px">
+                    <div class="nombreUsuario">
+                        <span>Usuario: </span>
+                        <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>
+                    </div>   
+                    <asp:HyperLink ID="hlCerrarSesion" runat="server" NavigateUrl="~/Login.aspx">Cerrar Sesion</asp:HyperLink>
+                </asp:Panel>
+            </div>
+        </header>
+        <div class="formulario">
             <table class="auto-style1">
                 <tr>
                     <td colspan="3">
-                        <table class="auto-style3">
-                            <tr>
-                                <td>
-                <asp:Button ID="ButtonbtnVerUsuario" runat="server" Text="Usuario" Height="25px" OnClick="ButtonbtnVerUsuario_Click" />
-                                    <asp:Panel ID="PanelUsuario" runat="server" Visible="false">
-                                        Usuario :
-                                        <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>
-                                        <br />
-                                        <asp:HyperLink ID="hlCerrarSesion" runat="server" NavigateUrl="~/Login.aspx">Cerrar Sesion</asp:HyperLink>
-                                        <br />
-                                    </asp:Panel>
-                                </td>
-                            </tr>
-                        </table>
                         <h1>Agregar Médico</h1>
                     </td>
                 </tr>
@@ -215,7 +218,7 @@
                             <asp:ListItem Value="9:00 a 19:00">Completo</asp:ListItem>
                         </asp:DropDownList>
 &nbsp;
-                        <asp:Button ID="btnAgregarDiayHorario" runat="server" OnClick="btnAgregarDiayHorario_Click" Text="Agregar" ValidationGroup="GrupoAgregarHorario" />
+                        <asp:Button CssClass="btn" ID="btnAgregarDiayHorario" runat="server" OnClick="btnAgregarDiayHorario_Click" Text="Agregar" ValidationGroup="GrupoAgregarHorario" />
                         <asp:RequiredFieldValidator ID="rvDias" runat="server" ControlToValidate="ddlDias" ErrorMessage="Seleccione un Dia" InitialValue="0" ValidationGroup="GrupoAgregarHorario">*</asp:RequiredFieldValidator>
                         <asp:RequiredFieldValidator ID="rvHorario" runat="server" ControlToValidate="ddlHorario" ErrorMessage="Seleccione un Turno" InitialValue="0" ValidationGroup="GrupoAgregarHorario">*</asp:RequiredFieldValidator>
                     </td>
@@ -235,7 +238,7 @@
                 <tr>
                     <td class="auto-style8"></td>
                     <td class="auto-style9">
-                        <asp:Button ID="btnAgregar" runat="server" Text="Agregar" OnClick="btnAgregar_Click" ValidationGroup="GrupoAgregarMedico" />
+                        <asp:Button CssClass="btn success" ID="btnAgregar" runat="server" Text="Agregar" OnClick="btnAgregar_Click" ValidationGroup="GrupoAgregarMedico" />
                     </td>
                     <td class="auto-style9"></td>
                 </tr>
@@ -251,7 +254,9 @@
                     <td>
                         <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="GrupoAgregarMedico" />
                     </td>
-                    <td>&nbsp;</td>
+                    <td>
+                        <asp:HyperLink CssClass="btn secundario" ID="hlVolverInicio" runat="server" NavigateUrl="~/Administrador/Inicio.aspx">Volver al Inicio</asp:HyperLink>
+                    </td>
                 </tr>
                 <tr>
                     <td class="auto-style4">&nbsp;</td>
@@ -259,8 +264,7 @@
                         <asp:ValidationSummary ID="ValidationSummary2" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="GrupoAgregarHorario" />
                     </td>
                     <td>
-                        <asp:HyperLink ID="hlVolverInicio" runat="server" NavigateUrl="~/Administrador/Inicio.aspx">Volver al Inicio</asp:HyperLink>
-                    </td>
+                        &nbsp;</td>
                 </tr>
             </table>
         </div>
