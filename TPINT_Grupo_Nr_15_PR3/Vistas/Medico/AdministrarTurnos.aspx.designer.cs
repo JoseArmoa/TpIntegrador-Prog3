@@ -78,13 +78,31 @@ namespace Vistas.Medico
         protected global::System.Web.UI.WebControls.HyperLink hlModificarUsuario;
 
         /// <summary>
-        /// Control TextBox1.
+        /// Control ValidationSummary1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+
+        /// <summary>
+        /// Control txtFiltarTurnos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFiltarTurnos;
+
+        /// <summary>
+        /// Control RegularExpressionValidator2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator2;
 
         /// <summary>
         /// Control Button1.
@@ -96,13 +114,22 @@ namespace Vistas.Medico
         protected global::System.Web.UI.WebControls.Button Button1;
 
         /// <summary>
-        /// Control gdHoy.
+        /// Control lblmensajes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gdHoy;
+        protected global::System.Web.UI.WebControls.Label lblmensajes;
+
+        /// <summary>
+        /// Control gvTurnos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvTurnos;
 
         /// <summary>
         /// Control lblMensaje.

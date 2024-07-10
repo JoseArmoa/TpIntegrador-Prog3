@@ -47,18 +47,7 @@
         .auto-style17 {
             height: 23px;
         }
-        .auto-style18 {
-            width: 293px;
-            text-align: center;
-        }
-        .auto-style19 {
-            text-align: center;
-            width: 716px;
-        }
-        .auto-style20 {
-            width: 43px;
-        }
-    </style>
+        </style>
      <link rel="stylesheet" href="..\estilos.css" />
 </head>
 <body>
@@ -84,46 +73,52 @@
                         <td class="auto-style6"><strong>TURNOS</strong></td>
                         <td class="auto-style3">&nbsp;</td>
                         <td class="auto-style2">&nbsp;</td>
-                        <td>&nbsp;</td>
+                        <td>
+                            <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="Grupo1" />
+                        </td>
                         <td>&nbsp;</td>
                     </tr>
                     <tr>
                         <td class="auto-style4">&nbsp;</td>
                         <td class="auto-style3">DNI</td>
                         <td class="auto-style2">
-                            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtFiltarTurnos" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:Button CssClass="btn" ID="Button1" runat="server" Text="Buscar" />
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtFiltarTurnos" ErrorMessage="El numero de Dni ingresado no es valido" ValidationExpression="^[1-9]\d*$" ValidationGroup="Grupo1">*</asp:RegularExpressionValidator>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:Button CssClass="btn" ID="Button1" runat="server" Text="Buscar" OnClick="Button1_Click" OnCommand="Button1_Command" ValidationGroup="Grupo1" />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:Label ID="lblmensajes" runat="server"></asp:Label>
                         </td> 
                         <td>&nbsp;</td>
                     </tr>
                 </table>
-                <asp:GridView CssClass="grid" ID="gdHoy" runat="server" AutoGenerateColumns="False" Width="344px">
+                <asp:GridView CssClass="grid" ID="gvTurnos" runat="server" AutoGenerateColumns="False" Width="344px">
                     <Columns>
                         <asp:TemplateField HeaderText="Fecha">
                             <ItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("Fecha") %>'></asp:Label>
+                                <asp:Label ID="lblFecha" runat="server" Text='<%# Bind("FechaTurno") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Hora">
                             <ItemTemplate>
-                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("Hora") %>'></asp:Label>
+                                <asp:Label ID="lblHora" runat="server" Text='<%# Bind("HoraTurno") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Nombre">
                             <ItemTemplate>
-                                <asp:Label ID="Label4" runat="server" Text='<%# Bind("Nombre") %>'></asp:Label>
+                                <asp:Label ID="lblNombre" runat="server" Text='<%# Bind("NombrePaciente") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Apellido">
                             <ItemTemplate>
-                                <asp:Label ID="Label5" runat="server" Text='<%# Bind("Apellido") %>'></asp:Label>
+                                <asp:Label ID="lblApellido" runat="server" Text='<%# Bind("ApellidoPaciente") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="DNI ">
                             <ItemTemplate>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("DNI") %>'></asp:Label>
+                                <asp:Label ID="lblDNI" runat="server" Text='<%# Bind("DniPaciente_TA") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Asistio">
@@ -131,7 +126,7 @@
                                 <asp:CheckBox ID="CheckBox1" runat="server" />
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:CheckBox ID="CheckBox2" runat="server" />
+                                <asp:CheckBox ID="CheckBox2" runat="server" Checked='<%# Bind("Asistio") %>' />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Acciones">
