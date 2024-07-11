@@ -18,7 +18,9 @@ namespace Dao
 
         public DataTable obtenerTabla()
         {
-            string consulta = "SELECT NumDia as Id, Nombre FROM DiaSemana";
+            string consulta = "SELECT NumDia as Id, Nombre FROM DiaSemana " +
+                "WHERE NumDia < 6 " +
+                " ORDER BY Id";
 
             return acceso.ObtenerTabla("DiaSemana", consulta);
         }

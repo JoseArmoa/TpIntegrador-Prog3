@@ -19,7 +19,7 @@ namespace Dao
         {
             SqlCommand cm = new SqlCommand();
             parametrosAgregar(ref cm, ref hm);
-            int filasAfectadas = acceso.EjecutarProcedimientoAlmacenado(ref cm, "sp_Agregar_HorariosXDiaXMedico");
+            int filasAfectadas = acceso.EjecutarProcedimientoAlmacenado(ref cm, "spCargarHorariosXDiaXMedico");
             if(filasAfectadas > 0)
             {
                 return true;
@@ -47,11 +47,11 @@ namespace Dao
         }
         public void parametrosAgregar(ref SqlCommand cm, ref HorarioMedico hm)
         {
-            SqlParameter parameter = cm.Parameters.Add("@INGRESO", SqlDbType.Time);
+            SqlParameter parameter = cm.Parameters.Add("@HORAENTRADA", SqlDbType.Time);
             parameter.Value = hm.HoraEntrada;
-            parameter = cm.Parameters.Add("@SALIDA", SqlDbType.Time);
+            parameter = cm.Parameters.Add("@HORASALIDA", SqlDbType.Time);
             parameter.Value = hm.HoraSalida;
-            parameter = cm.Parameters.Add("@DIA", SqlDbType.Int);
+            parameter = cm.Parameters.Add("@DIASEMANA", SqlDbType.Int);
             parameter.Value = hm.DiaSemana;
             parameter = cm.Parameters.Add("@LEGAJO", SqlDbType.NChar, 5);
             parameter.Value = hm.LegajoMed;
@@ -59,14 +59,15 @@ namespace Dao
 
         public DataTable obtenerTabla(ref Medicos medico)
         {
-            string consulta = "SELECT * FROM viewHorarios WHERE Legajo = '" + medico.legajo + "'";
+            string consulta = "SELECT * FROM viewHorariosMedico WHERE Legajo = '" + medico.legajo + "'";
 
             return acceso.ObtenerTabla("viewHorarios", consulta);
 
-            //CREATE VIEW viewHorarios
+            //CREATE VIEW viewHorariosMedico
             //AS
-            //SELECT LegajoMedico_Horario AS Legajo, Nombre AS Dia, HoraIngreso AS Ingreso, HoraSalida AS Salida
-            //FROM HorariosMedico INNER JOIN DiaSemana ON HorariosMedico.DiaSemana_Horario = DiaSemana.NumDia
+            //SELECT DISTINCT  LegajoMedico_HorXDiaXMed as Legajo, Nombre as Dia, HoraIngresoMedico_HorXDiaXMed as Ingreso, HoraSalidaMedico_HorXDiaXMed as Salida
+            //FROM HorariosXDiaXMedico INNER JOIN DiaSemana
+            //ON DiaSemana_HorXDiaXMed = NumDia
             //GO
 
         }
