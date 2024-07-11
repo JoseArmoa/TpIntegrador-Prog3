@@ -61,7 +61,7 @@ namespace Dao
 	                @LEGAJO nchar(5),
                     @NOMBRE varchar(50),
 	                @APELLIDO varchar(50),
-	                @DNI varchar(10),
+	                @DNI nchar(9),
 	                @IDESPECIALIDAD int,
 	                @FECHANACIMIENTO Date,
 	                @DIRECCION varchar(50),
@@ -82,13 +82,13 @@ namespace Dao
         public void parametrosAgregar(ref SqlCommand cmd, ref Medicos med)
         {
             SqlParameter SqlParametros = new SqlParameter();
-            SqlParametros = cmd.Parameters.Add("@LEGAJO", SqlDbType.VarChar);
+            SqlParametros = cmd.Parameters.Add("@LEGAJO", SqlDbType.NChar,5);
             SqlParametros.Value = med.legajo;
-            SqlParametros = cmd.Parameters.Add("@NOMBRE", SqlDbType.VarChar);
+            SqlParametros = cmd.Parameters.Add("@NOMBRE", SqlDbType.VarChar,50);
             SqlParametros.Value = med.nombre;
-            SqlParametros = cmd.Parameters.Add("@APELLIDO", SqlDbType.VarChar);
+            SqlParametros = cmd.Parameters.Add("@APELLIDO", SqlDbType.VarChar,50);
             SqlParametros.Value = med.apellido;
-            SqlParametros = cmd.Parameters.Add("@DNI", SqlDbType.VarChar);
+            SqlParametros = cmd.Parameters.Add("@DNI", SqlDbType.NChar,9);
             SqlParametros.Value = med.dni;
             SqlParametros = cmd.Parameters.Add("@IDESPECIALIDAD", SqlDbType.Int);
             SqlParametros.Value = med.IDespecialidad;

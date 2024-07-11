@@ -202,20 +202,9 @@
                     <td class="auto-style4">Dia y Horiario de atencion:</td>
                     <td>
                         <asp:DropDownList ID="ddlDias" runat="server">
-                            <asp:ListItem Value="0">-Seleccione un dia-</asp:ListItem>
-                            <asp:ListItem Value="1">Lunes</asp:ListItem>
-                            <asp:ListItem Value="2">Martes</asp:ListItem>
-                            <asp:ListItem Value="3">Miercoles</asp:ListItem>
-                            <asp:ListItem Value="4">Jueves</asp:ListItem>
-                            <asp:ListItem Value="5">Viernes</asp:ListItem>
-                            <asp:ListItem Value="6">Sabado</asp:ListItem>
                         </asp:DropDownList>
 &nbsp;
                         <asp:DropDownList ID="ddlHorario" runat="server">
-                            <asp:ListItem Value="0">-Seleccione un Turno</asp:ListItem>
-                            <asp:ListItem Value="9:00 a 14:00">Mañana</asp:ListItem>
-                            <asp:ListItem Value="14:00 a 19:00">Tarde</asp:ListItem>
-                            <asp:ListItem Value="9:00 a 19:00">Completo</asp:ListItem>
                         </asp:DropDownList>
 &nbsp;
                         <asp:Button CssClass="btn" ID="btnAgregarDiayHorario" runat="server" OnClick="btnAgregarDiayHorario_Click" Text="Agregar" ValidationGroup="GrupoAgregarHorario" />

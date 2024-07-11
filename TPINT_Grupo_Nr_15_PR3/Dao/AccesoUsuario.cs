@@ -68,8 +68,8 @@ namespace Dao
                     @CONTRASENIA varchar(15),
 	                @TIPOUSUARIO varchar(15)
                 ) AS
-                INSERT INTO Sucursal(NombreUsuario, Contrasenia, TipoUsario)
-                SELECT @NOMBREUSUARIO, @CONSTRASENIA, @TIPOUSUARIO
+                INSERT INTO Usuarios(NombreUsuario, Contrasenia, TipoUsuario)
+                SELECT @NOMBREUSUARIO, @CONTRASENIA, @TIPOUSUARIO
                 GO
              */
         }

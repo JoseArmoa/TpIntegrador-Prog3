@@ -33,6 +33,16 @@ namespace Vistas.Administrador
                 cargarDDL(ddlEspecialidades, ce.getTabla());
                 lt = new ListItem("-Selecione una Especialidad-", "-1");
                 ddlEspecialidades.Items.Insert(0, lt);
+
+                ControladorDia cd = new ControladorDia();
+                cargarDDL(ddlDias, cd.getTabla());
+                lt = new ListItem("-Selecione un Dia-", "-1");
+                ddlDias.Items.Insert(0, lt);
+
+                ControladorHorariosTrabajo ht = new ControladorHorariosTrabajo();
+                cargarDDL(ddlHorario, ht.getTabla());
+                lt = new ListItem("-Selecione un Horario-", "-1");
+                ddlHorario.Items.Insert(0, lt);
             }
         }
 
@@ -201,5 +211,6 @@ namespace Vistas.Administrador
                 args.IsValid = false;
             }
         }
+
     }
 }

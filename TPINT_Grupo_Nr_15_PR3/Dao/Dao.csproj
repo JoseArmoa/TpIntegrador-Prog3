@@ -51,6 +51,7 @@
     <Compile Include="AccesoTurnos.cs" />
     <Compile Include="AccesoUsuario.cs" />
     <Compile Include="AccesoDias.cs" />
+    <Compile Include="AccesoHorariosTrabajo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
