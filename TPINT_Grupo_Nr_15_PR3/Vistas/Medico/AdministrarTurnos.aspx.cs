@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
+using Entidades;
 
 namespace Vistas.Medico
 {
@@ -57,9 +58,23 @@ namespace Vistas.Medico
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
-        {   /**
-            //Funcionalidad para guardar la observacion en base de datos
-            **/
+        {
+            Observaciones obs = new Observaciones();
+            ControladorObservaciones contrObs = new ControladorObservaciones();
+            obs.observaciones = txtObservacion.Text.Trim();
+            obs.dnipaciente = lblDni.Text.Trim();
+
+            obs.iDturno = ;
+
+            if(contrObs.agregarObservacion(ref obs))
+            {
+                lblmensajes.Text = "Se agrego la Observacion correctamente";
+            }
+            else
+            {
+                lblmensajes.Text = "La Observacion no se agrego correctamente";
+            }
+
             lblMensaje.Text = "Cambios Guardados correctamente.";
             MultiView1.ActiveViewIndex = -1;
         }
@@ -102,6 +117,18 @@ namespace Vistas.Medico
             {
                 lblmensajes.Text = "";
                 CargarGD();
+            }
+        }
+
+        protected void LinkButton1_Command(object sender, CommandEventArgs e)
+        {
+            if (e.CommandName == "comandoSeleccionar")
+            {
+                string[] arguments = e.CommandArgument.ToString().Split('-');
+                lblNombre.Text = arguments[0];
+                lblApellido.Text = arguments[1];
+                lblDni.Text = arguments[2];
+                lblFecha.Text = arguments[3];
             }
         }
     }

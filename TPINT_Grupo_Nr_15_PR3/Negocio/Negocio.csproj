@@ -47,6 +47,7 @@
     <Compile Include="ControladorHorario.cs" />
     <Compile Include="ControladorLocalidad.cs" />
     <Compile Include="ControladorMedicos.cs" />
+    <Compile Include="ControladorObservaciones.cs" />
     <Compile Include="ControladorPacientes.cs" />
     <Compile Include="ControladorProvincia.cs" />
     <Compile Include="ControladorTurnos.cs" />

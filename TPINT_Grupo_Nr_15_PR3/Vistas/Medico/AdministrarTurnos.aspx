@@ -131,7 +131,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Acciones">
                             <ItemTemplate>
-                                <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Cargar Observacion</asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" CommandArgument='<%# Eval("NombrePaciente ")+"-"+Eval("ApellidoPaciente")+"-"+Eval("DniPaciente_TA")+"-"+Eval("FechaTurno") %>' CommandName="comandoSeleccionar" OnCommand="LinkButton1_Command">Cargar Observacion</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -168,7 +168,7 @@
                             </tr>
                             <tr>
                                 <td class="auto-style11">
-                                    <asp:TextBox ID="TextBox2" runat="server" Height="138px" Width="216px"></asp:TextBox>
+                                    <asp:TextBox ID="txtObservacion" runat="server" Height="138px" Width="216px"></asp:TextBox>
                                 </td>
                                 <td class="auto-style12">&nbsp;</td>
                                 <td class="auto-style13">&nbsp;</td>
@@ -177,7 +177,7 @@
                             <tr>
                                 <td class="auto-style11">&nbsp;</td>
                                 <td class="auto-style12">
-                                    <asp:Button CssClass="btn success" ID="btnGuardar" runat="server" OnClick="btnGuardar_Click" Text="Guardar" />
+                                    <asp:Button CssClass="btn success" ID="btnGuardar" runat="server" OnClick="btnGuardar_Click" Text="Guardar" OnCommand="btnGuardar_Command" />
                                     &nbsp;
                                     <asp:Button CssClass="btn secundario" ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" Text="Cancelar" />
                                 </td>
