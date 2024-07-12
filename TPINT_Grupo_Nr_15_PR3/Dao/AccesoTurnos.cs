@@ -22,7 +22,7 @@ namespace Dao
 
         public DataTable getTablaTurnosListar()
         {
-            string consulta = "Select FechaTurno,HoraTurno,NombrePaciente,ApellidoPaciente,DniPaciente_TA,Asistio " +
+            string consulta = "Select IdTurno AS [ID Turnos],FechaTurno AS Fecha,HoraTurno AS Hora,NombrePaciente AS Nombre,ApellidoPaciente AS Apellido,DniPaciente_TA AS DNI,Asistio AS Asistio " +
                 "From Turnos inner join Pacientes " +
                 "ON DniPaciente = DniPaciente_TA";
             return db.ObtenerTabla("Turnos", consulta);

@@ -23,7 +23,7 @@ namespace Dao
         {
             SqlParameter SqlParametros = new SqlParameter();
             SqlParametros = sc.Parameters.Add("@IDTURNO", SqlDbType.Int);
-            SqlParametros.Value = obs.iDObservacion;
+            SqlParametros.Value = obs.iDturno;
             SqlParametros = sc.Parameters.Add("@OBSERVACIONES", SqlDbType.Text);
             SqlParametros.Value = obs.observaciones;
             SqlParametros = sc.Parameters.Add("@DNIPACIENTE", SqlDbType.NChar);

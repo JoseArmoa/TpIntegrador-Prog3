@@ -31,17 +31,19 @@ namespace Vistas.Medico
             dt.Columns.Add(dc);
             dc = new DataColumn("DNI", Type.GetType("System.String"));
             dt.Columns.Add(dc);
+            dc = new DataColumn("Id Turno", typeof(int));
+            dt.Columns.Add(dc);
 
-           /* DataRow dr = dt.NewRow();
-            dr["Fecha"] = "17/7/2024";
-            dr["Hora"] = "9:00";
-            dr["Nombre"] = "Juan";
-            dr["Apellido"] = "Perez";
-            dr["DNI"] = "11111";
-            dt.Rows.Add(dr);
+            /* DataRow dr = dt.NewRow();
+             dr["Fecha"] = "17/7/2024";
+             dr["Hora"] = "9:00";
+             dr["Nombre"] = "Juan";
+             dr["Apellido"] = "Perez";
+             dr["DNI"] = "11111";
+             dt.Rows.Add(dr);
 
-            gdTurnos.DataSource = dt;
-            gdTurnos.DataBind();*/
+             gdTurnos.DataSource = dt;
+             gdTurnos.DataBind();*/
 
 
             if (!IsPostBack)
@@ -63,10 +65,9 @@ namespace Vistas.Medico
             ControladorObservaciones contrObs = new ControladorObservaciones();
             obs.observaciones = txtObservacion.Text.Trim();
             obs.dnipaciente = lblDni.Text.Trim();
+            obs.iDturno =  int.Parse(lblIdTurno.Text.Trim());
 
-            obs.iDturno = ;
-
-            if(contrObs.agregarObservacion(ref obs))
+            if (contrObs.agregarObservacion(ref obs))
             {
                 lblmensajes.Text = "Se agrego la Observacion correctamente";
             }
@@ -125,10 +126,11 @@ namespace Vistas.Medico
             if (e.CommandName == "comandoSeleccionar")
             {
                 string[] arguments = e.CommandArgument.ToString().Split('-');
-                lblNombre.Text = arguments[0];
-                lblApellido.Text = arguments[1];
-                lblDni.Text = arguments[2];
-                lblFecha.Text = arguments[3];
+                lblNombre.Text = arguments[1];
+                lblApellido.Text = arguments[2];
+                lblDni.Text = arguments[3];
+                lblFecha.Text = arguments[4];
+                lblIdTurno.Text = arguments[0];
             }
         }
     }
