@@ -38,19 +38,35 @@
             <h1>Turnos</h1>
             <br />
             <br />
-            <asp:GridView CssClass="grid" ID="GridView1" runat="server" AutoGenerateColumns="False">
+            <asp:GridView CssClass="grid" ID="gvTurnos" runat="server" AutoGenerateColumns="False">
                 <Columns>
                     <asp:TemplateField HeaderText="Acciones">
                         <ItemTemplate>
-                            <asp:CheckBox ID="cbPresente" runat="server" Text="Asistencia" />
+                            <asp:CheckBox ID="cbPresente" runat="server" Text="Asistencia" Checked='<%# Bind("Asistio") %>' />
                             &nbsp;
-                            <asp:LinkButton ID="LinkButton2" runat="server">Cargar Observacion</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton2" runat="server">Ver Observacion</asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Fecha"></asp:TemplateField>
-                    <asp:TemplateField HeaderText="DNI "></asp:TemplateField>
-                    <asp:TemplateField HeaderText="Nombre"></asp:TemplateField>
-                    <asp:TemplateField HeaderText="Especialidad"></asp:TemplateField>
+                    <asp:TemplateField HeaderText="Fecha">
+                        <ItemTemplate>
+                            <asp:Label ID="lblFecha" runat="server" Text='<%# Bind("FechaTurno") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="DNI ">
+                        <ItemTemplate>
+                            <asp:Label ID="lblDNI" runat="server" Text='<%# Bind("DniPaciente_TA") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Nombre">
+                        <ItemTemplate>
+                            <asp:Label ID="lblNombre" runat="server" Text='<%# Bind("NombrePaciente") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Especialidad">
+                        <ItemTemplate>
+                            <asp:Label ID="lblEspecialidad" runat="server" Text='<%# Bind("NombreEspecialidad") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
             </asp:GridView>
             <br />

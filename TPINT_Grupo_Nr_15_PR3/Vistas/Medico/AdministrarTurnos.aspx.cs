@@ -55,7 +55,7 @@ namespace Vistas.Medico
         protected void CargarGD()
         {
 
-            gvTurnos.DataSource = controlTur.getTablaTurnos();
+            gvTurnos.DataSource = controlTur.getTablaTurnosMedicos();
             gvTurnos.DataBind();
         }
 
