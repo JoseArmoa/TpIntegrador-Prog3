@@ -154,6 +154,22 @@
                     </td>
                 </tr>
                 <tr>
+                    <td class="auto-style3">Sexo:</td>
+                    <td class="auto-style6">
+                        <asp:TextBox ID="txtSexoPaciente" runat="server"></asp:TextBox>
+                        <asp:RegularExpressionValidator ID="revSexoPaciente" runat="server" ControlToValidate="txtSexoPaciente" ErrorMessage="El sexo ingresado no es valido" ValidationExpression="^[A-Za-z]+$" ValidationGroup="Grupo1">*</asp:RegularExpressionValidator>
+                    </td>
+                    <td class="auto-style4">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style3">Nacionalidad:</td>
+                    <td class="auto-style6">
+                        <asp:TextBox ID="txtNacionalidadPaciente" runat="server"></asp:TextBox>
+                        <asp:RegularExpressionValidator ID="revNacionalidadPaciente" runat="server" ControlToValidate="txtNacionalidadPaciente" ErrorMessage="Nacionalidad no valida" ValidationExpression="^[A-Za-z]+$" ValidationGroup="Grupo1">*</asp:RegularExpressionValidator>
+                    </td>
+                    <td class="auto-style4">&nbsp;</td>
+                </tr>
+                <tr>
                     <td class="auto-style3">Direccion :</td>
                     <td class="auto-style6">
                         <asp:TextBox ID="txtDireccionPacientes" runat="server"></asp:TextBox>

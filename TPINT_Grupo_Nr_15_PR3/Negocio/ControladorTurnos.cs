@@ -13,9 +13,14 @@ namespace Negocio
     {
         AccesoTurnos acceTur = new AccesoTurnos();
 
-        public DataTable getTablaTurnos()
+        public DataTable getTablaTurnosMedicos()
         {
-            return acceTur.getTablaTurnosListar();
+            return acceTur.getTablaTurnosListarMedico();
+        }
+
+        public DataTable getTablaTurnosAdministrador()
+        {
+            return acceTur.getTablaTurnosListarAdministrador();
         }
 
         public DataTable filtrarTurnoPorDNI(string dniTur)

@@ -204,6 +204,42 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary3;
 
         /// <summary>
+        /// Control txtSexoPaciente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSexoPaciente;
+
+        /// <summary>
+        /// Control revSexoPaciente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revSexoPaciente;
+
+        /// <summary>
+        /// Control txtNacionalidadPaciente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNacionalidadPaciente;
+
+        /// <summary>
+        /// Control revNacionalidadPaciente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revNacionalidadPaciente;
+
+        /// <summary>
         /// Control txtDireccionPacientes.
         /// </summary>
         /// <remarks>
