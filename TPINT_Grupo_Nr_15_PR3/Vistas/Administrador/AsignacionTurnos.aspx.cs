@@ -59,8 +59,8 @@ namespace Vistas
             if(e.Day.Date < hoy || !ct.hayDisponibles(legajo, e.Day.Date))
             {
                 e.Day.IsSelectable = false;
-                e.Cell.Enabled = false;
-                
+                e.Cell.Attributes.Add("style", "color: #d3d3d3; cursor: not-allowed;");
+
             }
         }
 
