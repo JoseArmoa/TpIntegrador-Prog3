@@ -54,6 +54,7 @@ namespace Vistas
 
                 lblNombre.Text = arguments[0];
                 lblDni.Text = arguments[1];
+                lblObservacion.Text = arguments[2];
             }
         }
     }

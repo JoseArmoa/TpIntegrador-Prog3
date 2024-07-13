@@ -70,7 +70,7 @@
                         <ItemTemplate>
                             <asp:CheckBox ID="cbPresente" runat="server" Text="Asistencia" Checked='<%# Bind("Asistio") %>' />
                             &nbsp;
-                            <asp:LinkButton ID="LinkButton2" runat="server" CommandArgument='<%# Eval("NombrePaciente") + "-" + Eval("DniPaciente_TA") %>' CommandName="comandoTurnos" OnClick="LinkButton2_Click" OnCommand="LinkButton2_Command">Ver Observacion</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton2" runat="server" CommandArgument='<%# Eval("NombrePaciente") + "-" + Eval("DniPaciente_TA") +"-"+Eval("Observacion") %>' CommandName="comandoTurnos" OnClick="LinkButton2_Click" OnCommand="LinkButton2_Command">Ver Observacion</asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Fecha">

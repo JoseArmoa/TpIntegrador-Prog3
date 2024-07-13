@@ -31,8 +31,8 @@ namespace Dao
 
         public DataTable getTablaTurnosListarAdministrador()
         {
-            string consulta = "Select Asistio,Turnos.FechaTurno, Turnos.DniPaciente_TA,Pacientes.NombrePaciente,Especialidades.NombreEspecialidad " +
-                                "From((((Especialidades inner join Medicos " +
+            string consulta = "Select Asistio,Turnos.FechaTurno, Turnos.DniPaciente_TA,Pacientes.NombrePaciente,Especialidades.NombreEspecialidad,Observacion " +
+                                "From(((((Especialidades inner join Medicos " +
                                 "ON IdEspecialidad = IdEspecialidad_Med) inner join HorariosXDiaXMedico " +
                                 "ON LegajoMedico = LegajoMedico_HorXDiaXMed) inner join HorariosXDiaXMedicoXDl " +
                                 "ON LegajoMedico_HorXDiaXMed = HorariosXDiaXMedicoXDl.LegajoMedico " +
@@ -42,7 +42,8 @@ namespace Dao
                                 "AND DiaSemana = DiaSemana_Turno " +
                                 "AND FechaDisponible = FechaTurno " +
                                 "AND HorariosXDiaXMedicoXDl.HoraDisponible = HoraTurno) inner join Pacientes " +
-                                "ON DniPaciente_TA = DniPaciente";
+                                "ON DniPaciente_TA = DniPaciente) inner join Observaciones " +
+                                "ON Pacientes.DniPaciente = DniPaciente_Obs";
             return db.ObtenerTabla("Turnos", consulta);
         }
 
