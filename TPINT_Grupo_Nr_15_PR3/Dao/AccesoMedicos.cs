@@ -32,7 +32,7 @@ namespace Dao
 
         public DataTable obtenerTablaXEspecialidad(string especialidad)
         {
-            string consulta = "SELECT Legajo, Nombre FROM viewMedicos " +
+            string consulta = "SELECT Legajo, Nombre + ' ' +Apellido as Nombre FROM viewMedicos " +
                               "WHERE Especialidad = '" + especialidad + "'";
 
             return acceso.ObtenerTabla("Medicos", consulta);

@@ -40,6 +40,11 @@ namespace Negocio
             return acceTur.comprobarDisponibilidad(legajo, fecha);
         }
 
+        public DataTable getTurnosDisponibles(string legajo, string fecha)
+        {
+            return acceTur.getTurnosDisponibles(legajo, fecha);
+        }
+
 
     }
 }

@@ -97,15 +97,21 @@
                         <asp:DropDownList ID="ddlEspecialidades" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlEspecialidades_SelectedIndexChanged">
                         </asp:DropDownList>
     &nbsp;&nbsp; Medico:
-                        <asp:DropDownList ID="ddlMedicos" runat="server" Enabled="False">
+                        <asp:DropDownList ID="ddlMedicos" runat="server" Enabled="False" AutoPostBack="True" OnSelectedIndexChanged="ddlMedicos_SelectedIndexChanged">
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="rvMedicos" runat="server" ControlToValidate="ddlMedicos" ErrorMessage="Seleccione un Medico" InitialValue="-1" ValidationGroup="GrupoBtnCalendario">*</asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style2">
+                        &nbsp;</td>
+                    <td>
                         <asp:Button class="btn" ID="btnTurnos" runat="server" OnClick="btnTurnos_Click" Text="Ver Turnos Disponibles" ValidationGroup="GrupoBtnCalendario" />
                     </td>
+                </tr>
+                <tr>
+                    <td class="auto-style2">
+                        &nbsp;</td>
                     <td>
                         <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="Black" DayNameFormat="Shortest" Font-Names="Times New Roman" Font-Size="10pt" ForeColor="Black" Height="220px" NextPrevFormat="FullMonth" OnDayRender="Calendar1_DayRender" OnSelectionChanged="Calendar1_SelectionChanged" TitleFormat="Month" Visible="False" Width="400px">
                             <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" ForeColor="#333333" Height="10pt" />
@@ -122,9 +128,9 @@
                         <asp:DataList ID="DataList1" runat="server" Visible="False">
                             <ItemTemplate>
                                 <br />
-                                <asp:Label ID="lblHorario" runat="server" Text="Label"></asp:Label>
+                                <asp:Label ID="lblHorario" runat="server" Text='<%# Bind("Hora") %>'></asp:Label>
                                 <br />
-                                <asp:Button CssClass="btn" ID="btnSeleccionar" runat="server" CommandName="Seleccionar" Text="Seleccionar" />
+                                <asp:Button CssClass="btn" ID="btnSeleccionar" runat="server" CommandName="Seleccionar" Text="Seleccionar" CommandArgument='<%# Eval("Hora") %>' Height="26px" OnCommand="btnSeleccionar_Command" />
                             </ItemTemplate>
                         </asp:DataList>
                     </td>
@@ -146,7 +152,7 @@
                 <tr>
                     <td class="auto-style11"></td>
                     <td class="auto-style14">
-                        <asp:Button class="btn success" ID="btnAceptar" runat="server" Text="Aceptar" />
+                        <asp:Button class="btn success" ID="btnAceptar" runat="server" Text="Aceptar" OnClick="btnAceptar_Click" />
                     </td>
                     <td class="auto-style12"></td>
                 </tr>

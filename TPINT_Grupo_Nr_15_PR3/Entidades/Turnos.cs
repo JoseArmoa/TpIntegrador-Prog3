@@ -12,7 +12,7 @@ namespace Entidades
         private string Medico;
         private int Dia;
         private DateTime Fecha;
-        private DateTime Hora;
+        private TimeSpan Hora;
         private string DniPaciente;
         private bool Asistio;
 
@@ -40,7 +40,7 @@ namespace Entidades
             set { Fecha = value; }
         }
 
-        public DateTime hora
+        public TimeSpan hora
         {
             get { return Hora; }
             set { Hora = value; }

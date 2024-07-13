@@ -12,6 +12,7 @@ namespace Vistas
 {
     public partial class CargarTurnos : System.Web.UI.Page
     {
+        public Pacientes paciente = new Pacientes();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["Usuario"] != null)
@@ -33,12 +34,20 @@ namespace Vistas
         protected void btnTurnos_Click(object sender, EventArgs e)
         {
             Calendar1.Visible = !Calendar1.Visible;
+            if (Calendar1.Visible) DataList1.Visible = false;
         }
 
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         {
             DataList1.Visible = true;
-           
+
+            ControladorTurnos ct = new ControladorTurnos();
+
+            string legajo = ddlMedicos.SelectedItem.Value;
+            string fecha = Calendar1.SelectedDate.ToShortDateString();
+
+            DataList1.DataSource = ct.getTurnosDisponibles(legajo, fecha);
+            DataList1.DataBind();
             /*
              * 
              * Aca crearia una funcion para cargar el datalist con una lista de horarios que contenga el nombre del medico y el horario disponible segun la especialidad seleccionada en la fecha que se selecciono. 
@@ -71,7 +80,7 @@ namespace Vistas
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
-            Pacientes paciente = new Pacientes();
+            
             paciente.dni = txtDni.Text;
 
             ControladorPacientes cp = new ControladorPacientes();
@@ -109,6 +118,34 @@ namespace Vistas
                 ddlMedicos.SelectedIndex = 0;
                 ddlMedicos.Enabled = false;
             }
+
+            Calendar1.Visible = false;
+            DataList1.Visible = false;
+
+        }
+
+        protected void btnSeleccionar_Command(object sender, CommandEventArgs e)
+        {
+            lblHorario.Text = e.CommandArgument.ToString();
+            lblMedicoAsignado.Text = ddlMedicos.SelectedItem.Text; 
+        }
+
+        protected void ddlMedicos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Calendar1.Visible = false;
+            DataList1.Visible = false;
+        }
+
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+            Turnos turno = new Turnos();
+            turno.dnipaciente = paciente.dni;
+            turno.fecha = DateTime.Parse(lblFecha.Text);
+            turno.hora = TimeSpan.Parse(lblHorario.Text);
+            turno.medico = ddlMedicos.SelectedItem.Value;
+            turno.dia = ((int)DateTime.Parse(lblFecha.Text).DayOfWeek);
+
+
         }
     }
 }

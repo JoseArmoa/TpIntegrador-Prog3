@@ -20,32 +20,6 @@ namespace Vistas.Medico
                 lblNombreUsuario.Text = Session["Usuario"].ToString();
             }
 
-            DataTable dt = new DataTable();
-            DataColumn dc = new DataColumn("Fecha",Type.GetType("System.String"));
-            dt.Columns.Add(dc);
-            dc = new DataColumn("Hora", Type.GetType("System.String"));
-            dt.Columns.Add(dc);
-            dc = new DataColumn("Nombre", Type.GetType("System.String"));
-            dt.Columns.Add(dc);
-            dc = new DataColumn("Apellido", Type.GetType("System.String"));
-            dt.Columns.Add(dc);
-            dc = new DataColumn("DNI", Type.GetType("System.String"));
-            dt.Columns.Add(dc);
-            dc = new DataColumn("Id Turno", typeof(int));
-            dt.Columns.Add(dc);
-
-            /* DataRow dr = dt.NewRow();
-             dr["Fecha"] = "17/7/2024";
-             dr["Hora"] = "9:00";
-             dr["Nombre"] = "Juan";
-             dr["Apellido"] = "Perez";
-             dr["DNI"] = "11111";
-             dt.Rows.Add(dr);
-
-             gdTurnos.DataSource = dt;
-             gdTurnos.DataBind();*/
-
-
             if (!IsPostBack)
             {
                 CargarGD();

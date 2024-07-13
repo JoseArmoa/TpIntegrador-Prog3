@@ -56,6 +56,8 @@ namespace Dao
             return db.ObtenerTabla("Turnos", consulta);
         }
 
+
+        //Comprueba que en la fecha pasado como parametro exista por lo menos un turno sin asignar
         public bool comprobarDisponibilidad(string legajo, DateTime fecha)
         {
             string consulta = "SELECT dbo.HorasDisponibles(@LEGAJO, @FECHA) as Existe";
@@ -64,11 +66,29 @@ namespace Dao
             SqlParameter SqlParametros = new SqlParameter();
             SqlParametros = cmd.Parameters.Add("@LEGAJO", SqlDbType.NChar, 5);
             SqlParametros.Value = legajo;
-            SqlParametros = cmd.Parameters.Add("@FECHA", SqlDbType.Date, 5);
+            SqlParametros = cmd.Parameters.Add("@FECHA", SqlDbType.Date);
             SqlParametros.Value = fecha;
 
             return db.esVerdadero(ref cmd, consulta);
         }
 
+
+        //Obtiene una tabla de horarios disponibles segun la fecha y el legajo pasado como parametro.
+        public DataTable getTurnosDisponibles(string legajo, string fecha)
+        {
+            string consulta = "SELECT HoraDisponible as Hora, FechaDisponible " +
+                              "FROM HorariosXDiaXMedicoXDl " +
+                              "WHERE LegajoMedico = @LEGAJO  and FechaDisponible = @FECHA and Asignado = 0 ";
+
+            SqlCommand cmd = new SqlCommand();
+
+            SqlParameter SqlParametros = new SqlParameter();
+            SqlParametros = cmd.Parameters.Add("@LEGAJO", SqlDbType.NChar, 5);
+            SqlParametros.Value = legajo;
+            SqlParametros = cmd.Parameters.Add("@FECHA", SqlDbType.Date);
+            SqlParametros.Value = fecha;
+
+            return db.ObtenerTabla("Horarios", consulta, cmd);
+        }
     }
 }
