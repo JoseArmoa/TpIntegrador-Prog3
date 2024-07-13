@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
+using Entidades;
 
 namespace Vistas.Medico
 {
@@ -30,17 +31,19 @@ namespace Vistas.Medico
             dt.Columns.Add(dc);
             dc = new DataColumn("DNI", Type.GetType("System.String"));
             dt.Columns.Add(dc);
+            dc = new DataColumn("Id Turno", typeof(int));
+            dt.Columns.Add(dc);
 
-           /* DataRow dr = dt.NewRow();
-            dr["Fecha"] = "17/7/2024";
-            dr["Hora"] = "9:00";
-            dr["Nombre"] = "Juan";
-            dr["Apellido"] = "Perez";
-            dr["DNI"] = "11111";
-            dt.Rows.Add(dr);
+            /* DataRow dr = dt.NewRow();
+             dr["Fecha"] = "17/7/2024";
+             dr["Hora"] = "9:00";
+             dr["Nombre"] = "Juan";
+             dr["Apellido"] = "Perez";
+             dr["DNI"] = "11111";
+             dt.Rows.Add(dr);
 
-            gdTurnos.DataSource = dt;
-            gdTurnos.DataBind();*/
+             gdTurnos.DataSource = dt;
+             gdTurnos.DataBind();*/
 
 
             if (!IsPostBack)
@@ -52,14 +55,27 @@ namespace Vistas.Medico
         protected void CargarGD()
         {
 
-            gvTurnos.DataSource = controlTur.getTablaTurnos();
+            gvTurnos.DataSource = controlTur.getTablaTurnosMedicos();
             gvTurnos.DataBind();
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
-        {   /**
-            //Funcionalidad para guardar la observacion en base de datos
-            **/
+        {
+            Observaciones obs = new Observaciones();
+            ControladorObservaciones contrObs = new ControladorObservaciones();
+            obs.observaciones = txtObservacion.Text.Trim();
+            obs.dnipaciente = lblDni.Text.Trim();
+            obs.iDturno =  int.Parse(lblIdTurno.Text.Trim());
+
+            if (contrObs.agregarObservacion(ref obs))
+            {
+                lblmensajes.Text = "Se agrego la Observacion correctamente";
+            }
+            else
+            {
+                lblmensajes.Text = "La Observacion no se agrego correctamente";
+            }
+
             lblMensaje.Text = "Cambios Guardados correctamente.";
             MultiView1.ActiveViewIndex = -1;
         }
@@ -102,6 +118,19 @@ namespace Vistas.Medico
             {
                 lblmensajes.Text = "";
                 CargarGD();
+            }
+        }
+
+        protected void LinkButton1_Command(object sender, CommandEventArgs e)
+        {
+            if (e.CommandName == "comandoSeleccionar")
+            {
+                string[] arguments = e.CommandArgument.ToString().Split('-');
+                lblNombre.Text = arguments[1];
+                lblApellido.Text = arguments[2];
+                lblDni.Text = arguments[3];
+                lblFecha.Text = arguments[4];
+                lblIdTurno.Text = arguments[0];
             }
         }
     }

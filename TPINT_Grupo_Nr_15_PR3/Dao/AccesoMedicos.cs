@@ -30,6 +30,20 @@ namespace Dao
             //GO
         }
 
+        public DataTable obtenerTablaXEspecialidad(string especialidad)
+        {
+            string consulta = "SELECT Legajo, Nombre FROM viewMedicos " +
+                              "WHERE Especialidad = '" + especialidad + "'";
+
+            return acceso.ObtenerTabla("Medicos", consulta);
+
+            //CREATE VIEW viewMedicos
+            //AS
+            //SELECT LegajoMedico AS Legajo, NombreMedico AS Nombre, ApellidoMedico AS Apellido, DniMedico AS DNI, NombreEspecialidad AS Especialidad
+            //FROM Medicos INNER JOIN Especialidades ON Medicos.IdEspecialidad_Med = Especialidades.IdEspecialidad
+            //GO
+        }
+
         public DataTable obtenerTablaMedicoPorLegajo(string legajo)
         {
             string consulta = "SELECT * FROM viewMedicos WHERE Legajo = '" + legajo + "'";
@@ -68,13 +82,12 @@ namespace Dao
 	                @IDLOCALIDAD int,
 	                @TELEFONO varchar(11),
 	                @EMAIL varchar(50),
-	                @IDUSUARIO int,
 	                @NACIONALIDAD varchar(15),
 	                @SEXO varchar(15)
 	                )
 	                AS
-	                INSERT INTO Medicos(LegajoMedico,NombreMedico,ApellidoMedico,DniMedico,IdEspecialidad_Med,FechaNacimiento,Direccion_Med,IdLocalidad_Med,Telefono_Med,Email_Med,IdUsuario_Med,Sexo_Med,Nacionalidad)
-	                SELECT @LEGAJO ,@NOMBRE,@APELLIDO,@DNI, @IDESPECIALIDAD, @FECHANACIMIENTO, @DIRECCION,@IDLOCALIDAD,@TELEFONO,@EMAIL,@IDUSUARIO,@SEXO,@NACIONALIDAD
+	                INSERT INTO Medicos(LegajoMedico,NombreMedico,ApellidoMedico,DniMedico,IdEspecialidad_Med,FechaNacimiento,Direccion_Med,IdLocalidad_Med,Telefono_Med,Email_Med,Sexo_Med,Nacionalidad)
+	                SELECT @LEGAJO ,@NOMBRE,@APELLIDO,@DNI, @IDESPECIALIDAD, @FECHANACIMIENTO, @DIRECCION,@IDLOCALIDAD,@TELEFONO,@EMAIL,@SEXO,@NACIONALIDAD
 	                GO
              */
         }
@@ -102,8 +115,6 @@ namespace Dao
             SqlParametros.Value = med.telefono;
             SqlParametros = cmd.Parameters.Add("@EMAIL", SqlDbType.VarChar);
             SqlParametros.Value = med.email;
-            SqlParametros = cmd.Parameters.Add("@IDUSUARIO", SqlDbType.Int);
-            SqlParametros.Value = med.iDUsuario;
             SqlParametros = cmd.Parameters.Add("@NACIONALIDAD", SqlDbType.VarChar);
             SqlParametros.Value = med.nacionalidad;
             SqlParametros = cmd.Parameters.Add("@SEXO", SqlDbType.VarChar);

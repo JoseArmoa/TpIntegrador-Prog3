@@ -94,16 +94,17 @@
                     <td class="auto-style9">Especialidad :
                     </td>
                     <td class="auto-style10">
-                        <asp:DropDownList ID="ddlEspecialidades" runat="server">
+                        <asp:DropDownList ID="ddlEspecialidades" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlEspecialidades_SelectedIndexChanged">
                         </asp:DropDownList>
     &nbsp;&nbsp; Medico:
-                        <asp:DropDownList ID="ddlMedicos" runat="server">
+                        <asp:DropDownList ID="ddlMedicos" runat="server" Enabled="False">
                         </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="rvMedicos" runat="server" ControlToValidate="ddlMedicos" ErrorMessage="Seleccione un Medico" InitialValue="-1" ValidationGroup="GrupoBtnCalendario">*</asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style2">
-                        <asp:Button class="btn" ID="btnTurnos" runat="server" OnClick="btnTurnos_Click" Text="Ver Turnos Disponibles" />
+                        <asp:Button class="btn" ID="btnTurnos" runat="server" OnClick="btnTurnos_Click" Text="Ver Turnos Disponibles" ValidationGroup="GrupoBtnCalendario" />
                     </td>
                     <td>
                         <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="Black" DayNameFormat="Shortest" Font-Names="Times New Roman" Font-Size="10pt" ForeColor="Black" Height="220px" NextPrevFormat="FullMonth" OnDayRender="Calendar1_DayRender" OnSelectionChanged="Calendar1_SelectionChanged" TitleFormat="Month" Visible="False" Width="400px">

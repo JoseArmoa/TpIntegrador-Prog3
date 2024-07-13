@@ -68,6 +68,14 @@ namespace Dao
             return FilasCambiadas;
         }
 
+        public bool esVerdadero(ref SqlCommand cmd, string consulta)
+        {
+            SqlConnection Conexion = ObtenerConeccion();
+            cmd.Connection = Conexion;
+            cmd.CommandText = consulta;
+            return Convert.ToBoolean(cmd.ExecuteScalar());
+        }
+
         public Boolean existe(string consulta)
         {
             SqlConnection conexion = ObtenerConeccion();

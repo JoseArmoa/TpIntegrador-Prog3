@@ -44,6 +44,21 @@ namespace Dao
             return usu;
         }
 
+        public Usuarios obtenerUsuarioXMedico(string legajo)
+        {
+            Usuarios usu = new Usuarios();
+            DataTable dt = new DataTable();
+            string consulta = "SELECT IdUsuario, NombreUsuario, TipoUsuario " +
+                               "FROM Usuarios INNER JOIN Medicos " +
+                               "ON IdUsuario = IdUsuario_Med " +
+                               "WHERE LegajoMedico = '" + legajo + "'";
+            dt = db.ObtenerTabla("Usuarios", consulta);
+            usu.iDUsuario = Convert.ToInt32(dt.Rows[0]["IdUsuario"]);
+            usu.nombreUsuario = (dt.Rows[0]["NombreUsuario"]).ToString();
+            usu.tipousuario = (dt.Rows[0]["TipoUsuario"]).ToString();
+
+            return usu;
+        }
         public void ParametrosAgregar(ref SqlCommand sc, ref Usuarios usu)
         {
             SqlParameter SqlParametros = new SqlParameter();

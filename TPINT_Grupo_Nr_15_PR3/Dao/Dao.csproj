@@ -46,6 +46,7 @@
     <Compile Include="AccesoHorarios.cs" />
     <Compile Include="AccesoLocalidad.cs" />
     <Compile Include="AccesoMedicos.cs" />
+    <Compile Include="AccesoObservacion.cs" />
     <Compile Include="AccesoPacientes.cs" />
     <Compile Include="AccesoProvincia.cs" />
     <Compile Include="AccesoTurnos.cs" />

@@ -7,10 +7,36 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <style type="text/css">
-        .auto-style1 {
-            width: 27%;
-            height: 28px;
-            margin-left: 967px;
+        .auto-style2 {
+            width: 100%;
+        }
+        .auto-style4 {
+            width: 319px;
+        }
+        .auto-style5 {
+            width: 620px;
+            height: 26px;
+        }
+        .auto-style6 {
+            width: 319px;
+            height: 26px;
+        }
+        .auto-style7 {
+            height: 26px;
+        }
+        .auto-style9 {
+            width: 620px;
+            height: 49px;
+        }
+        .auto-style10 {
+            width: 319px;
+            height: 49px;
+        }
+        .auto-style11 {
+            height: 49px;
+        }
+        .auto-style13 {
+            width: 620px;
         }
     </style>
     <link rel="stylesheet" href="..\estilos.css" />
@@ -38,21 +64,82 @@
             <h1>Turnos</h1>
             <br />
             <br />
-            <asp:GridView CssClass="grid" ID="GridView1" runat="server" AutoGenerateColumns="False">
+            <asp:GridView CssClass="grid" ID="gvTurnos" runat="server" AutoGenerateColumns="False">
                 <Columns>
                     <asp:TemplateField HeaderText="Acciones">
                         <ItemTemplate>
-                            <asp:CheckBox ID="cbPresente" runat="server" Text="Asistencia" />
+                            <asp:CheckBox ID="cbPresente" runat="server" Text="Asistencia" Checked='<%# Bind("Asistio") %>' />
                             &nbsp;
-                            <asp:LinkButton ID="LinkButton2" runat="server">Cargar Observacion</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton2" runat="server" CommandArgument='<%# Eval("NombrePaciente") + "-" + Eval("DniPaciente_TA") +"-"+Eval("Observacion") %>' CommandName="comandoTurnos" OnClick="LinkButton2_Click" OnCommand="LinkButton2_Command">Ver Observacion</asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Fecha"></asp:TemplateField>
-                    <asp:TemplateField HeaderText="DNI "></asp:TemplateField>
-                    <asp:TemplateField HeaderText="Nombre"></asp:TemplateField>
-                    <asp:TemplateField HeaderText="Especialidad"></asp:TemplateField>
+                    <asp:TemplateField HeaderText="Fecha">
+                        <ItemTemplate>
+                            <asp:Label ID="lblFecha" runat="server" Text='<%# Bind("FechaTurno") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="DNI ">
+                        <ItemTemplate>
+                            <asp:Label ID="lblDNI" runat="server" Text='<%# Bind("DniPaciente_TA") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Nombre">
+                        <ItemTemplate>
+                            <asp:Label ID="lblNombre" runat="server" Text='<%# Bind("NombrePaciente") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Especialidad">
+                        <ItemTemplate>
+                            <asp:Label ID="lblEspecialidad" runat="server" Text='<%# Bind("NombreEspecialidad") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
             </asp:GridView>
+            <br />
+            <asp:MultiView ID="MultiViewObservacion" runat="server">
+                <asp:View ID="View1" runat="server">
+                    <table class="auto-style2">
+                        <tr>
+                            <td class="auto-style13">El Nombre del paciente de esta Observacion es :
+                                <asp:Label ID="lblNombre" runat="server"></asp:Label>
+                            </td>
+                            <td class="auto-style4">&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style5">DNI:&nbsp;&nbsp;
+                                <asp:Label ID="lblDni" runat="server"></asp:Label>
+                            </td>
+                            <td class="auto-style6"></td>
+                            <td class="auto-style7"></td>
+                            <td class="auto-style7"></td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style5">Observacion:&nbsp;&nbsp;&nbsp;&nbsp;
+                                <asp:Label ID="lblObservacion" runat="server"></asp:Label>
+                            </td>
+                            <td class="auto-style6"></td>
+                            <td class="auto-style7"></td>
+                            <td class="auto-style7"></td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style9">
+                                <asp:Button ID="btnOcultar" runat="server" Height="34px" OnClick="btnCancelar_Click" Text="Ocultar" Width="162px" />
+                            </td>
+                            <td class="auto-style10"></td>
+                            <td class="auto-style11"></td>
+                            <td class="auto-style11"></td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style13">&nbsp;</td>
+                            <td class="auto-style4">&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+                </asp:View>
+            </asp:MultiView>
             <br />
             <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

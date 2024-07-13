@@ -205,7 +205,7 @@ GO
 
 
 INSERT INTO HorariosTrabajo(HoraIngreso,HoraSalida,TipoHorario)
-SELECT '8:00', '14:00','Mañana' UNION
+SELECT '8:00', '14:00','Maï¿½ana' UNION
 SELECT '14:00', '19:00','Tarde' UNION
 SELECT '8:00', '19:00','Doble Jornada'
 GO
@@ -221,11 +221,11 @@ SELECT 7,'Domingo'
 GO
 
 INSERT INTO Especialidades (NombreEspecialidad)
-SELECT  'Cardiología' UNION
-SELECT  'Pediatría' UNION
-SELECT  'Dermatología' UNION
-SELECT  'Neurología' UNION
-SELECT  'Ginecología'
+SELECT  'Cardiologï¿½a' UNION
+SELECT  'Pediatrï¿½a' UNION
+SELECT  'Dermatologï¿½a' UNION
+SELECT  'Neurologï¿½a' UNION
+SELECT  'Ginecologï¿½a'
 GO
 
 INSERT INTO Provincias (NombreProvincia) SELECT 'Buenos Aires' UNION 
@@ -241,7 +241,7 @@ SELECT 2,'San Justo' UNION
 SELECT 3,'Bella Vista' UNION 
 SELECT 3,'Lavalle' UNION 
 SELECT 4,'El Colorado' UNION
-SELECT 4,'Fortín Soledad'
+SELECT 4,'Fortï¿½n Soledad'
 GO
 
  CREATE PROCEDURE spEliminarPacientes
@@ -312,25 +312,24 @@ GO
  GO
 
 CREATE PROCEDURE spAgregarMedico
- (
-	@LEGAJO nchar(5),
-    @NOMBRE varchar(50),
-	@APELLIDO varchar(50),
-    @DNI varchar(10),
-	@IDESPECIALIDAD int,
-	@FECHANACIMIENTO Date,
-	@DIRECCION varchar(50),
-	@IDLOCALIDAD int,
-	@TELEFONO varchar(11),
-    @EMAIL varchar(50),
-	@NACIONALIDAD varchar(15),
-	@SEXO varchar(15)
- )
- AS
- INSERT INTO Medicos(LegajoMedico,NombreMedico,ApellidoMedico,DniMedico,IdEspecialidad_Med,FechaNacimiento,Direccion_Med,IdLocalidad_Med,Telefono_Med,Email_Med,Sexo_Med,Nacionalidad)
- SELECT @LEGAJO ,@NOMBRE,@APELLIDO,@DNI, @IDESPECIALIDAD, @FECHANACIMIENTO, @DIRECCION,@IDLOCALIDAD,@TELEFONO,@EMAIL,@SEXO,@NACIONALIDAD
- GO
-
+(
+@LEGAJO nchar(5),
+@NOMBRE varchar(50),
+@APELLIDO varchar(50),
+@DNI nchar(9),
+@IDESPECIALIDAD int,
+@FECHANACIMIENTO Date,
+@DIRECCION varchar(50),
+@IDLOCALIDAD int,
+@TELEFONO varchar(11),
+@EMAIL varchar(50),
+@NACIONALIDAD varchar(15),
+@SEXO varchar(15)
+)
+AS
+INSERT INTO Medicos(LegajoMedico,NombreMedico,ApellidoMedico,DniMedico,IdEspecialidad_Med,FechaNacimiento,Direccion_Med,IdLocalidad_Med,Telefono_Med,Email_Med,Sexo_Med,Nacionalidad)
+SELECT @LEGAJO ,@NOMBRE,@APELLIDO,@DNI, @IDESPECIALIDAD, @FECHANACIMIENTO, @DIRECCION,@IDLOCALIDAD,@TELEFONO,@EMAIL,@SEXO,@NACIONALIDAD
+GO
 
  CREATE PROCEDURE spActualizarMedicos
  (
@@ -590,8 +589,9 @@ SELECT '44444', '39748590', 'Jose', 'Armoa', 1, 1, '1996/10/05'
 
 EXEC spCargarHorariosXDiaXMedico '44444',1,'8:00','14:00'
 EXEC spCargarHorariosXDiaXMedico '44444',4,'14:00','19:00'
-EXEC spVerDisponibles '11111', '2024/07/19' 
-go
+EXEC spCargarHorariosXDiaXMedico '55555',3,'14:00','19:00'
+EXEC spVerDisponibles '66666', '2024/07/17' 
+
 
 CREATE VIEW viewHorariosMedico
 AS
@@ -599,4 +599,37 @@ SELECT DISTINCT  LegajoMedico_HorXDiaXMed as Legajo, Nombre as Dia, HoraIngresoM
 FROM HorariosXDiaXMedico INNER JOIN DiaSemana 
 ON DiaSemana_HorXDiaXMed = NumDia
 GO
+
+
+CREATE FUNCTION HorasDisponibles
+(
+    @LEGAJO nchar(5),
+    @FECHA Date
+)
+RETURNS BIT
+AS
+BEGIN
+    DECLARE @Existe BIT;
+
+    -- Verifica si existen horas disponibles
+    IF EXISTS (
+        SELECT 1
+        FROM HorariosXDiaXMedicoXDl
+        WHERE LegajoMedico = @LEGAJO 
+          AND FechaDisponible = @FECHA 
+          AND Asignado = 0
+    )
+    BEGIN
+        SET @Existe = 1;  -- Verdadero, hay horas disponibles
+    END
+    ELSE
+    BEGIN
+        SET @Existe = 0;  -- Falso, no hay horas disponibles
+    END
+
+    RETURN @Existe;
+END;
+GO
+
+SELECT dbo.HorasDisponibles('99999', '2024/07/15') as Existe
 

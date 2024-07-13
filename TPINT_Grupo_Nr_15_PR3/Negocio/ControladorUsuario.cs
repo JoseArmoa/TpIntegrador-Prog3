@@ -75,5 +75,9 @@ namespace Negocio
             return accUsuario.obtenerUsuario(usu.nombreUsuario);
         }
 
+        public Usuarios obtenerUsuarioXMedico(ref Medicos med)
+        {
+            return accUsuario.obtenerUsuarioXMedico(med.legajo);
+        }
     }
 }

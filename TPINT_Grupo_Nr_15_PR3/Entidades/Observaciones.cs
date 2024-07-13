@@ -6,26 +6,28 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class Observaciones
+    public class Observaciones
     {
         private string Observacion;
-        private int ID_Observaciones;
+        private int ID_Turno;
+        private string DniPaciente;
 
-        Observaciones()
+        public int iDturno
         {
-
-        }
-
-        public int iDLocalidad
-        {
-            get { return ID_Observaciones; }
-            set { ID_Observaciones = value; }
+            get { return ID_Turno; }
+            set { ID_Turno = value; }
         }
 
         public string observaciones
         {
             get { return Observacion; }
             set { Observacion = value; }
+        }
+
+        public string dnipaciente
+        {
+            get { return DniPaciente; }
+            set { DniPaciente = value; }
         }
     }
 }
