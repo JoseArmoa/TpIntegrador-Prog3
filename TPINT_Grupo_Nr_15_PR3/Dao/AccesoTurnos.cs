@@ -17,7 +17,7 @@ namespace Dao
         public Boolean existeDNITurno(Turnos tur)
         {
             string consulta = "SELECT * FROM Pacientes " +
-                "WHERE DniPaciente_TA = '" + tur.dnipaciente + "'";
+                "WHERE DniPaciente = '" + tur.dnipaciente + "'";
             return db.existe(consulta);
         }
 
