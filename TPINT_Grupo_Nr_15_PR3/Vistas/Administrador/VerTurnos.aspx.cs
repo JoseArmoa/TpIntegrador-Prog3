@@ -35,5 +35,26 @@ namespace Vistas
         {
             PanelUsuario.Visible = !PanelUsuario.Visible;
         }
+
+        protected void LinkButton2_Click(object sender, EventArgs e)
+        {
+            MultiViewObservacion.ActiveViewIndex = 0;
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            MultiViewObservacion.ActiveViewIndex = -1;
+        }
+
+        protected void LinkButton2_Command(object sender, CommandEventArgs e)
+        {
+            if(e.CommandName == "comandoTurnos")
+            {
+                string[] arguments = e.CommandArgument.ToString().Split('-');
+
+                lblNombre.Text = arguments[0];
+                lblDni.Text = arguments[1];
+            }
+        }
     }
 }
