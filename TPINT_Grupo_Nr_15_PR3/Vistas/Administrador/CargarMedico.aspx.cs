@@ -125,7 +125,6 @@ namespace Vistas.Administrador
         {
             if (Page.IsValid)
             {
-                string mensaje = "";
                 Medicos med = new Medicos();
 
                 med.legajo = txtLegajoMedico.Text;
@@ -141,27 +140,16 @@ namespace Vistas.Administrador
                 med.email = txtEmailMedico.Text;
                 med.sexo = txtSexoMedico.Text;
 
-                Usuarios usuarioMedico = new Usuarios();
-                usuarioMedico.nombreUsuario = txtUsuarioMedico.Text;
-                usuarioMedico.contraseña = txtPassMedico.Text;
-                usuarioMedico.tipousuario = "Medico";
-
-                ControladorUsuario cu = new ControladorUsuario();
-                if (!cu.agregarUsuario(ref usuarioMedico, ref mensaje))
-                {
-                    lblMensajeUsuario.Text = mensaje;
-                    return;
-                }
-
-
-                med.iDUsuario = cu.obtenerUsuario(usuarioMedico).iDUsuario;
-
                 ControladorHorario ch = new ControladorHorario();
                 ControladorMedicos cm = new ControladorMedicos();
                 if (cm.AgregarMedico(ref med))
                 {
                     cargarHorarios(ch);
-                    lblMensajeAgregar.Text = "Registro agregado";
+
+                    ControladorUsuario cu = new ControladorUsuario();
+                    Usuarios usu = cu.obtenerUsuarioXMedico(ref med);
+                    lblMensajeAgregar.Text = "Registro agregado" +
+                                             "<br> Usuario asignado: " + usu.nombreUsuario;
 
                     txtLegajoMedico.Text = "";
                     txtDniMedico.Text = "";
@@ -176,10 +164,6 @@ namespace Vistas.Administrador
                     txtTelefonoMedico.Text = "";
                     txtEmailMedico.Text = "" ;
                     txtSexoMedico.Text = "";
-
-                    txtUsuarioMedico.Text = "";
-                    txtPassMedico.Text = "";
-
                     lblDiasyHorario.Text = "";
 
                     horarios = new List<HorarioMedico>();

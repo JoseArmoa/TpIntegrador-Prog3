@@ -330,51 +330,6 @@ namespace Vistas.Administrador
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rvEspecialidades;
 
         /// <summary>
-        /// Control txtUsuarioMedico.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsuarioMedico;
-
-        /// <summary>
-        /// Control rvUsuario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rvUsuario;
-
-        /// <summary>
-        /// Control txtPassMedico.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPassMedico;
-
-        /// <summary>
-        /// Control rvContraseña.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rvContraseña;
-
-        /// <summary>
-        /// Control lblMensajeUsuario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensajeUsuario;
-
-        /// <summary>
         /// Control ddlDias.
         /// </summary>
         /// <remarks>

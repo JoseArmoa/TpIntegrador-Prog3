@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Entidades;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace Dao
 {
@@ -35,6 +36,20 @@ namespace Dao
                 "ON DniPaciente = DniPaciente_TA" +
                 " WHERE DniPaciente_TA = '" + tur.dnipaciente + "'";
             return db.ObtenerTabla("Turnos", consulta);
+        }
+
+        public bool comprobarDisponibilidad(string legajo, DateTime fecha)
+        {
+            string consulta = "SELECT dbo.HorasDisponibles(@LEGAJO, @FECHA) as Existe";
+            SqlCommand cmd = new SqlCommand();
+
+            SqlParameter SqlParametros = new SqlParameter();
+            SqlParametros = cmd.Parameters.Add("@LEGAJO", SqlDbType.NChar, 5);
+            SqlParametros.Value = legajo;
+            SqlParametros = cmd.Parameters.Add("@FECHA", SqlDbType.Date, 5);
+            SqlParametros.Value = fecha;
+
+            return db.esVerdadero(ref cmd, consulta);
         }
 
     }

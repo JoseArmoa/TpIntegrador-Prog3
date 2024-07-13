@@ -94,10 +94,10 @@
                     <td class="auto-style9">Especialidad :
                     </td>
                     <td class="auto-style10">
-                        <asp:DropDownList ID="ddlEspecialidades" runat="server">
+                        <asp:DropDownList ID="ddlEspecialidades" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlEspecialidades_SelectedIndexChanged">
                         </asp:DropDownList>
     &nbsp;&nbsp; Medico:
-                        <asp:DropDownList ID="ddlMedicos" runat="server">
+                        <asp:DropDownList ID="ddlMedicos" runat="server" Enabled="False">
                         </asp:DropDownList>
                     </td>
                 </tr>

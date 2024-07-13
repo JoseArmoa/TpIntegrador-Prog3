@@ -25,12 +25,6 @@ namespace Vistas
                 cargarDDL(ddlEspecialidades, ce.getTabla());
                 ListItem lt = new ListItem("-Selecione una Especialidad-", "-1");
                 ddlEspecialidades.Items.Insert(0, lt);
-
-                
-                /////// Falta buscar medico por especialidad seleccionada
-                /////// debería volver a cargarse cada vez que se seleccione otra especialidad
-                ControladorMedicos me = new ControladorMedicos();
-                cargarDDL(ddlMedicos, me.getTabla(), "Legajo");    ///////// Crear metodo en controlador para que traiga nombre + apellido
                 lt = new ListItem("-Selecione un Médico-", "-1");
                 ddlMedicos.Items.Insert(0, lt);
             }
@@ -59,10 +53,14 @@ namespace Vistas
 
             //Ahora cargamos el calendario con la condicion de que no se pueda seleccionar una fecha anterior al dia actual, luego creare una funcion que no deje seleccionar en una fecha que no tenga turnos disponibles segun la especialidad.
             DateTime hoy = System.DateTime.Today;
+            ControladorTurnos ct = new ControladorTurnos();
+            string legajo = ddlMedicos.SelectedItem.Value;
 
-            if(e.Day.Date < hoy)
+            if(e.Day.Date < hoy || !ct.hayDisponibles(legajo, e.Day.Date))
             {
                 e.Day.IsSelectable = false;
+                e.Cell.Enabled = false;
+                
             }
         }
 
@@ -95,5 +93,22 @@ namespace Vistas
             ddl.DataBind();
         }
 
+        protected void ddlEspecialidades_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(ddlEspecialidades.SelectedValue != "-1")
+            {
+                string especialidad = ddlEspecialidades.SelectedItem.Text;
+                ControladorMedicos me = new ControladorMedicos();
+                cargarDDL(ddlMedicos, me.getTablaXEspecialidad(especialidad), "Legajo");
+                ListItem lt = new ListItem("-Selecione un Médico-", "-1");
+                ddlMedicos.Items.Insert(0, lt);
+                ddlMedicos.Enabled = true;
+            }
+            else
+            {
+                ddlMedicos.SelectedIndex = 0;
+                ddlMedicos.Enabled = false;
+            }
+        }
     }
 }

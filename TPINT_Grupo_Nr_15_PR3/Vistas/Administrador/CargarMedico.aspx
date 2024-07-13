@@ -181,24 +181,6 @@
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="auto-style4">Usuario:</td>
-                    <td>
-                        <asp:TextBox ID="txtUsuarioMedico" runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rvUsuario" runat="server" ControlToValidate="txtUsuarioMedico" ErrorMessage="Ingrese un nombre de ususario" ValidationGroup="GrupoAgregarMedico">*</asp:RequiredFieldValidator>
-                    </td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style4">Password:</td>
-                    <td>
-                        <asp:TextBox ID="txtPassMedico" runat="server" TextMode="Password"></asp:TextBox>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:RequiredFieldValidator ID="rvContraseña" runat="server" ControlToValidate="txtPassMedico" ErrorMessage="Ingresa una contraseña" ValidationGroup="GrupoAgregarMedico">*</asp:RequiredFieldValidator>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Label ID="lblMensajeUsuario" runat="server"></asp:Label>
-                    </td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
                     <td class="auto-style4">Dia y Horiario de atencion:</td>
                     <td>
                         <asp:DropDownList ID="ddlDias" runat="server">

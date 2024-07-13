@@ -18,6 +18,10 @@ namespace Negocio
             return accMed.obtenerTabla();
         }
 
+        public DataTable getTablaXEspecialidad(string especialidad)
+        {
+            return accMed.obtenerTablaXEspecialidad(especialidad);
+        }
         public DataTable getTablaMedico(string legajo)
         {
             return accMed.obtenerTablaMedicoPorLegajo(legajo);

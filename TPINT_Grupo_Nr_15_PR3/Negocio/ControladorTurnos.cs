@@ -30,6 +30,11 @@ namespace Negocio
 
         }
 
+        public bool hayDisponibles(string legajo, DateTime fecha)
+        {
+            return acceTur.comprobarDisponibilidad(legajo, fecha);
+        }
+
 
     }
 }
