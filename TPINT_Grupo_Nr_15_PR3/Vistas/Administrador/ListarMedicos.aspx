@@ -20,14 +20,7 @@
         .auto-style2 {
             height: 31px;
         }
-        .auto-style5 {
-            height: 24px;
-        }
-        .auto-style6 {
-            width: 100%;
-            height: 28px;
-        }
-    </style>
+        </style>
     <link rel="stylesheet" href="..\estilos.css" />
 </head>
 <body>
@@ -163,42 +156,20 @@
                 <tr>
                     <td class="auto-style2">&nbsp;</td>
                     <td class="auto-style2">
-                        <asp:GridView CssClass="grid" ID="gvHorariosMedico" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" PageSize="5" ShowHeaderWhenEmpty="True" OnRowCancelingEdit="gvHorariosMedico_RowCancelingEdit" OnRowDataBound="gvHorariosMedico_RowDataBound" OnRowDeleting="gvHorariosMedico_RowDeleting" OnRowEditing="gvHorariosMedico_RowEditing" OnRowUpdating="gvHorariosMedico_RowUpdating">
+                        <asp:GridView CssClass="grid" ID="gvHorariosMedico" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" PageSize="5" ShowHeaderWhenEmpty="True" >
                             <AlternatingRowStyle BackColor="#DCDCDC" />
                             <Columns>
-                                <asp:TemplateField HeaderText="Acciones">
-                                    <EditItemTemplate>
-                                        <asp:LinkButton ID="lb_eit_Actualizar" runat="server" CommandName="Update" ValidationGroup="Grupo2">Actualizar</asp:LinkButton>
-                                        <br />
-                                        <asp:LinkButton ID="lb_eit_Cancelar" runat="server" CommandName="Cancel">Cancelar</asp:LinkButton>
-                                    </EditItemTemplate>
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="lb_eit_Editar" runat="server" CommandName="Edit">Editar</asp:LinkButton>
-                                    <br />
-                                        <asp:LinkButton ID="lb_eit_Eliminar" runat="server" CommandName="Delete" OnClientClick="return confirm('¿Estás seguro de que quieres eliminar este registro?');">Eliminar</asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Legajo">
-                                    <EditItemTemplate>
-                                        <asp:Label ID="lbl_eit_Legajo" runat="server" Text='<%# Bind("Legajo") %>'></asp:Label>
-                                    </EditItemTemplate>
                                     <ItemTemplate>
                                         <asp:Label ID="lbl_Legajo_HS" runat="server" Text='<%# Bind("Legajo") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Día">
-                                    <EditItemTemplate>
-                                        <asp:DropDownList ID="ddl_eit_Dias" runat="server" ValidationGroup="Grupo2">
-                                        </asp:DropDownList>
-                                    </EditItemTemplate>
                                     <ItemTemplate>
                                         <asp:Label ID="lbl_Dia_HS" runat="server" Text='<%# Bind("Dia") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Hora Entrada">
-                                    <EditItemTemplate>
-                                        <asp:TextBox ID="txt_eit_Entrada" runat="server" TextMode="Time" Text='<%# Bind("Ingreso") %>' ValidationGroup="Grupo2"></asp:TextBox>
-                                    </EditItemTemplate>
                                     <ItemTemplate>
                                         <asp:Label ID="lbl_Entrada_HS" runat="server" Text='<%# Bind("Ingreso") %>'></asp:Label>
                                     </ItemTemplate>

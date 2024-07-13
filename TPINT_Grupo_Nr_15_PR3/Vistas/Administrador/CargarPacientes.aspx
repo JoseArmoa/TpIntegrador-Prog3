@@ -140,6 +140,7 @@
                         <asp:TextBox ID="txtDNIPacientes" runat="server"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtDNIPacientes" ErrorMessage="El Paciente debe ingresar su Dni" ValidationGroup="Grupo1">*</asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtDNIPacientes" ErrorMessage="El numero de Dni  ingresado no es valido" ValidationExpression="^[1-9]\d*$" ValidationGroup="Grupo1">*</asp:RegularExpressionValidator>
+                        <asp:RangeValidator ID="rvDniPacientes" runat="server" ControlToValidate="txtDNIPacientes" ErrorMessage="El numero de DNI no es valido" MaximumValue="999999999" MinimumValue="100000000" Type="Integer" ValidationGroup="Grupo1">*</asp:RangeValidator>
                         <table class="auto-style10">
                             <tr>
                                 <td>
