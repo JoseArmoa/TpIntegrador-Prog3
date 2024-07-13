@@ -1,3 +1,6 @@
+USE master
+GO
+
 CREATE DATABASE Clinica
 GO
 
@@ -34,7 +37,7 @@ CREATE TABLE Usuarios
 (
 IdUsuario int identity(1,1),
 CONSTRAINT PK_Usuarios primary key(IdUsuario),
-NombreUsuario varchar(15) unique not null,
+NombreUsuario varchar(30) unique not null,
 Contrasenia varchar(15)not null,
 TipoUsuario varchar(15) not null,
 Estado bit default (1)
@@ -171,7 +174,7 @@ GO
 
 CREATE TABLE Turnos
 (
-IdTurno int,
+IdTurno int identity,
 CONSTRAINT PK_Turnos primary key(IdTurno),
 
 LegajoMedico_Turno nchar(5),
@@ -202,17 +205,28 @@ Observacion text not null
 )
 GO
 
+CREATE TABLE TurnosCancelados
+(
+IDTurnoCancelado int,
+DniPaciente_TC nchar(10),
+FechaCancelo date,
+CONSTRAINT PK_TurnosCancelados primary key (IDTurnoCancelado),
+CONSTRAINT FK_Turnos foreign key(IDTurnoCancelado) REFERENCES Turnos(IdTurno),
+CONSTRAINT FK_DniPaciente foreign key (DniPaciente_TC) REFERENCES Pacientes(DniPaciente)
+)
+GO
+
 
 
 INSERT INTO HorariosTrabajo(HoraIngreso,HoraSalida,TipoHorario)
-SELECT '8:00', '14:00','Maï¿½ana' UNION
+SELECT '8:00', '14:00','Mañana' UNION
 SELECT '14:00', '19:00','Tarde' UNION
 SELECT '8:00', '19:00','Doble Jornada'
 GO
 
 INSERT INTO DiaSemana(NumDIa,Nombre)
 SELECT 1,'Lunes' UNION
-SELECT 2,'Martes' UNION
+SELECT 2,'Marter' UNION
 SELECT 3,'Miercoles' UNION
 SELECT 4,'Jueves' UNION
 SELECT 5,'Viernes' UNION
@@ -221,36 +235,326 @@ SELECT 7,'Domingo'
 GO
 
 INSERT INTO Especialidades (NombreEspecialidad)
-SELECT  'Cardiologï¿½a' UNION
-SELECT  'Pediatrï¿½a' UNION
-SELECT  'Dermatologï¿½a' UNION
-SELECT  'Neurologï¿½a' UNION
-SELECT  'Ginecologï¿½a'
+SELECT 'Cardiología' UNION
+SELECT 'Pediatría' UNION
+SELECT 'Dermatología' UNION
+SELECT 'Neurología' UNION
+SELECT 'Ginecología' UNION
+SELECT 'Psiquiatría' UNION
+SELECT 'Urología' UNION
+SELECT 'Cirugía Plástica' UNION
+SELECT 'Traumatología' UNION
+SELECT 'Otorrinolaringología'
 GO
 
-INSERT INTO Provincias (NombreProvincia) SELECT 'Buenos Aires' UNION 
-SELECT 'Cordoba' UNION 
-SELECT 'Corrientes' UNION
-SELECT 'Formosa'
+
+
+--Agregue Provincias Restantes
+INSERT INTO Provincias (NombreProvincia)
+SELECT 'Buenos Aires' UNION 
+SELECT 'Catamarca' UNION 
+SELECT 'Chaco' UNION 
+SELECT 'Chubut' UNION 
+SELECT 'Córdoba' UNION 
+SELECT 'Corrientes' UNION 
+SELECT 'Entre Ríos' UNION 
+SELECT 'Formosa' UNION 
+SELECT 'Jujuy' UNION 
+SELECT 'La Pampa' UNION 
+SELECT 'La Rioja' UNION 
+SELECT 'Mendoza' UNION 
+SELECT 'Misiones' UNION 
+SELECT 'Neuquén' UNION 
+SELECT 'Río Negro' UNION 
+SELECT 'Salta' UNION 
+SELECT 'San Juan' UNION 
+SELECT 'San Luis' UNION 
+SELECT 'Santa Cruz' UNION 
+SELECT 'Santa Fe' UNION 
+SELECT 'Santiago del Estero' UNION 
+SELECT 'Tierra del Fuego' UNION 
+SELECT 'Tucumán' 
 GO
 
-INSERT INTO Localidades (IdProvinciaLocalidad,NombreLocalidad) SELECT 1,'Berazategui' UNION 
-SELECT 1, 'Hurlingham' UNION 
-SELECT 2,'General Roca'  UNION 
-SELECT 2,'San Justo' UNION 
-SELECT 3,'Bella Vista' UNION 
-SELECT 3,'Lavalle' UNION 
-SELECT 4,'El Colorado' UNION
-SELECT 4,'Fortï¿½n Soledad'
+
+-- Buenos Aires
+INSERT INTO Localidades (NombreLocalidad, IdProvinciaLocalidad)
+SELECT 'La Plata', 1 UNION 
+SELECT 'Mar del Plata', 1 UNION 
+SELECT 'Tandil', 1 UNION 
+SELECT 'Bahía Blanca', 1 UNION 
+SELECT 'Olavarría', 1 UNION 
+SELECT 'Junín', 1 UNION 
+SELECT 'San Nicolás', 1 UNION 
+SELECT 'Pergamino', 1 UNION 
+SELECT 'Lanús', 1 UNION 
+SELECT 'Lomas de Zamora', 1 UNION 
+SELECT 'Avellaneda', 1 UNION 
+SELECT 'Morón', 1 UNION
+SELECT 'Quilmes', 1 UNION 
+SELECT 'Vicente López', 1 UNION 
+SELECT 'San Fernando', 1 UNION
+SELECT 'González Catán', 1 UNION
+SELECT 'San Justo', 1 UNION 
+SELECT 'Sáenz Peña', 1 UNION 
+SELECT 'Sarandí', 1 UNION 
+SELECT 'San Martín', 1 UNION 
+SELECT 'Rafael Calzada', 1 UNION
+SELECT 'Belén de Escobar',1 
 GO
+
+-- Catamarca
+INSERT INTO Localidades (NombreLocalidad, IdProvinciaLocalidad)
+SELECT 'San Fernando del Valle de Catamarca', 2 UNION 
+SELECT 'Fray Mamerto Esquiú', 2 UNION 
+SELECT 'Belén', 2 UNION 
+SELECT 'Santa María', 2 UNION 
+SELECT 'Hualfín', 2
+GO
+
+-- Chaco 
+INSERT INTO Localidades (NombreLocalidad, IdProvinciaLocalidad)
+SELECT 'Resistencia', 3 UNION 
+SELECT 'San Fernando del Valle de Catamarca', 3 UNION 
+SELECT 'Barranqueras', 3 UNION 
+SELECT 'Fontana', 3 UNION 
+SELECT 'Vilelas', 3 UNION 
+SELECT 'Sáenz Peña', 3 UNION 
+SELECT 'Villa Ángela', 3 UNION 
+SELECT 'Charata', 3 UNION 
+SELECT 'Las Breñas', 3 UNION 
+SELECT 'San Bernardo', 3
+GO
+
+-- Chubut 
+INSERT INTO Localidades (NombreLocalidad, IdProvinciaLocalidad)
+SELECT 'Rawson', 4 UNION 
+SELECT 'Trelew', 4 UNION 
+SELECT 'Comodoro Rivadavia', 4 UNION 
+SELECT 'Puerto Madryn', 4 UNION
+SELECT 'El Maitén', 4 UNION 
+SELECT 'Sarmiento', 4 UNION 
+SELECT 'Tecka', 4 UNION 
+SELECT 'Cushamen', 4 UNION 
+SELECT 'Rada Tilly', 4 UNION 
+SELECT 'Paso de Indios', 4 UNION 
+SELECT 'José de San Martín', 4
+GO
+
+-- Córdoba 
+INSERT INTO Localidades (NombreLocalidad, IdProvinciaLocalidad)
+SELECT 'Córdoba', 5 UNION 
+SELECT 'Villa María', 5 UNION 
+SELECT 'Villa Carlos Paz', 5 UNION 
+SELECT 'Río Cuarto', 5 UNION 
+SELECT 'Bell Ville', 5 UNION 
+SELECT 'Morteros', 5 UNION 
+SELECT 'Jesús María', 5 UNION 
+SELECT 'Córdoba' ,5 UNION 
+SELECT 'Laguna Larga', 5  UNION 
+SELECT 'Calchín', 5
+GO
+
+-- Corrientes 
+INSERT INTO Localidades (NombreLocalidad, IdProvinciaLocalidad)
+SELECT 'Corrientes', 6 UNION 
+SELECT 'Goya', 6 UNION 
+SELECT 'Paso de los Libres', 6 UNION 
+SELECT 'Mercedes', 6 UNION 
+SELECT 'Bella Vista', 6 UNION 
+SELECT 'Santa Lucía', 6 UNION 
+SELECT 'Saladas', 6 UNION 
+SELECT 'Ituzaingó', 6 UNION 
+SELECT 'Riachuelo', 6
+GO
+
+-- Entre Ríos 
+INSERT INTO Localidades (NombreLocalidad, IdProvinciaLocalidad)
+SELECT 'Paraná', 7 UNION 
+SELECT 'Concordia', 7 UNION 
+SELECT 'Gualeguaychú', 7 UNION 
+SELECT 'Gualeguay', 7 UNION 
+SELECT 'Chajarí', 7 UNION 
+SELECT 'Villaguay', 7 UNION 
+SELECT 'Colón', 7 UNION 
+SELECT 'Federal', 7
+GO
+
+-- Formosa 
+INSERT INTO Localidades (NombreLocalidad, IdProvinciaLocalidad)
+SELECT 'Formosa', 8 UNION 
+SELECT 'Clorinda', 8 UNION 
+SELECT 'Pirané', 8 UNION 
+SELECT 'Las Lomitas', 8 
+GO
+
+-- Jujuy 
+INSERT INTO Localidades (NombreLocalidad, IdProvinciaLocalidad)
+SELECT 'San Salvador de Jujuy', 9 UNION 
+SELECT 'Palpala', 9 UNION 
+SELECT 'Perico', 9 UNION 
+SELECT 'El Carmen', 9 UNION 
+SELECT 'San Francisco', 9 UNION 
+SELECT 'Yala', 9 UNION 
+SELECT 'Monterrico', 9 UNION 
+SELECT 'Fresno', 9 UNION 
+SELECT 'La Esperanza', 9
+GO
+
+-- La Pampa 
+INSERT INTO Localidades (NombreLocalidad, IdProvinciaLocalidad)
+SELECT 'Santa Rosa', 10 UNION 
+SELECT 'General Pico', 10 UNION 
+SELECT 'Realicó', 10 UNION 
+SELECT 'Rancul', 10 UNION 
+SELECT 'La Maruja', 10 UNION 
+SELECT 'Catriló', 10 UNION 
+SELECT 'La Adela', 10 UNION 
+SELECT 'Conhello', 10 UNION 
+SELECT 'Cabrera', 10
+GO
+
+-- La Rioja 
+INSERT INTO Localidades (NombreLocalidad, IdProvinciaLocalidad)
+SELECT 'La Rioja', 11 UNION 
+SELECT 'Chilecito', 11 UNION 
+SELECT 'Villa Unión', 11 UNION 
+SELECT 'Famatina', 11 UNION 
+SELECT 'Sanagasta', 11
+GO
+
+-- Mendoza 
+INSERT INTO Localidades (NombreLocalidad, IdProvinciaLocalidad)
+SELECT 'Mendoza', 12 UNION 
+SELECT 'San Rafael', 12 UNION 
+SELECT 'Godoy Cruz', 12 UNION 
+SELECT 'Luján de Cuyo', 12 UNION 
+SELECT 'Santa Rosa', 12 UNION 
+SELECT 'Junín', 12 UNION 
+SELECT 'La Paz', 12 UNION 
+SELECT 'San Carlos', 12 UNION 
+SELECT 'Las Heras', 12 UNION 
+SELECT 'La Consulta', 12
+GO
+
+-- Misiones 
+INSERT INTO Localidades (NombreLocalidad, IdProvinciaLocalidad)
+SELECT 'Posadas', 13 UNION 
+SELECT 'Oberá', 13 UNION 
+SELECT 'Eldorado', 13 UNION 
+SELECT 'Iguazú', 13 UNION 
+SELECT 'Posadas', 13 
+GO
+
+-- Neuquén 
+INSERT INTO Localidades (NombreLocalidad, IdProvinciaLocalidad)
+SELECT 'Neuquén', 14 UNION 
+SELECT 'San Martín de los Andes', 14 UNION 
+SELECT 'Villa La Angostura', 14 UNION 
+SELECT 'Zapala', 14 UNION 
+SELECT 'Plottier', 14 UNION 
+SELECT 'Las Lajas', 14 
+GO
+
+-- Río Negro 
+INSERT INTO Localidades (NombreLocalidad, IdProvinciaLocalidad)
+SELECT 'Viedma', 15 UNION 
+SELECT 'San Carlos de Bariloche', 15 UNION 
+SELECT 'General Roca', 15 UNION 
+SELECT 'Cipolletti', 15 UNION 
+SELECT 'Catriel', 15
+GO
+
+-- Salta 
+INSERT INTO Localidades (NombreLocalidad, IdProvinciaLocalidad)
+SELECT 'Salta', 16 UNION 
+SELECT 'San Lorenzo', 16 UNION 
+SELECT 'Rosario de la Frontera', 16 UNION
+SELECT 'Cerrillos', 16 UNION 
+SELECT 'Campo Quijano', 16 UNION 
+SELECT 'La Merced', 16 UNION 
+SELECT 'La Caldera', 16
+GO
+
+-- San Juan 
+INSERT INTO Localidades (NombreLocalidad, IdProvinciaLocalidad)
+SELECT 'San Juan', 17 UNION 
+SELECT 'Rivadavia', 17 UNION 
+SELECT 'Rawson', 17 UNION 
+SELECT 'Jáchal', 17 UNION 
+SELECT 'Caucete', 17 UNION 
+SELECT 'Santa Lucía', 17 UNION 
+SELECT 'Calingasta', 17 UNION 
+SELECT 'Pocito', 17
+GO
+
+-- San Luis 
+INSERT INTO Localidades (NombreLocalidad, IdProvinciaLocalidad)
+SELECT 'San Luis', 18 UNION 
+SELECT 'Villa Mercedes', 18 UNION 
+SELECT 'La Punta', 18 UNION
+SELECT 'San Jerónimo', 18 UNION
+SELECT 'Renca', 18 UNION 
+SELECT 'Los Molles', 18
+GO
+
+-- Santa Cruz 
+INSERT INTO Localidades (NombreLocalidad, IdProvinciaLocalidad)
+SELECT 'Río Gallegos', 19 UNION 
+SELECT 'El Calafate', 19 UNION 
+SELECT 'Caleta Olivia', 19 UNION 
+SELECT 'Trescientos Treinta y Tres', 19 UNION
+SELECT 'San Julián', 19 UNION 
+SELECT 'El Paraíso', 19
+GO
+
+-- Santa Fe 
+INSERT INTO Localidades (NombreLocalidad, IdProvinciaLocalidad)
+SELECT 'Santa Fe', 20 UNION 
+SELECT 'Rosario', 20 UNION 
+SELECT 'Villa Constitución', 20 UNION 
+SELECT 'El Trébol', 20 UNION
+SELECT 'Gálvez', 20 UNION
+SELECT 'Pujato', 20 UNION 
+SELECT 'Firmat', 20
+GO
+
+-- Santiago del Estero 
+INSERT INTO Localidades (NombreLocalidad, IdProvinciaLocalidad)
+SELECT 'Santiago del Estero', 21 UNION
+SELECT 'La Banda', 21 UNION
+SELECT 'Termas de Río Hondo', 21 UNION 
+SELECT 'Loreto', 21 UNION  
+SELECT 'Colonia Dora', 21 UNION 
+SELECT 'Bandera', 21
+GO
+
+-- Tierra del Fuego 
+INSERT INTO Localidades (NombreLocalidad, IdProvinciaLocalidad)
+SELECT 'Ushuaia', 22 UNION 
+SELECT 'Río Grande', 22 UNION 
+SELECT 'Tolhuin', 22 UNION 
+SELECT 'Puerto Almanza', 22 UNION
+SELECT 'Río Irigoyen', 22 
+GO
+
+-- Tucumán 
+INSERT INTO Localidades (NombreLocalidad, IdProvinciaLocalidad)
+SELECT 'San Miguel de Tucumán', 23 UNION 
+SELECT 'Concepción', 23 UNION 
+SELECT 'Yerba Buena', 23 UNION 
+SELECT 'Tafí Viejo', 23 UNION 
+SELECT 'Ranchillos', 23 UNION 
+SELECT 'El Manantial', 23
+GO
+
 
  CREATE PROCEDURE spEliminarPacientes
  (
    @DNIPACIENTE nchar(5)
  )
  AS
- Update Pacientes
- SET Estado_Paciente = 0
+ DELETE FROM Pacientes
  WHERE DniPaciente = @DNIPACIENTE
  RETURN
  GO
@@ -312,24 +616,24 @@ GO
  GO
 
 CREATE PROCEDURE spAgregarMedico
-(
-@LEGAJO nchar(5),
-@NOMBRE varchar(50),
-@APELLIDO varchar(50),
-@DNI nchar(9),
-@IDESPECIALIDAD int,
-@FECHANACIMIENTO Date,
-@DIRECCION varchar(50),
-@IDLOCALIDAD int,
-@TELEFONO varchar(11),
-@EMAIL varchar(50),
-@NACIONALIDAD varchar(15),
-@SEXO varchar(15)
-)
-AS
-INSERT INTO Medicos(LegajoMedico,NombreMedico,ApellidoMedico,DniMedico,IdEspecialidad_Med,FechaNacimiento,Direccion_Med,IdLocalidad_Med,Telefono_Med,Email_Med,Sexo_Med,Nacionalidad)
-SELECT @LEGAJO ,@NOMBRE,@APELLIDO,@DNI, @IDESPECIALIDAD, @FECHANACIMIENTO, @DIRECCION,@IDLOCALIDAD,@TELEFONO,@EMAIL,@SEXO,@NACIONALIDAD
-GO
+ (
+	@LEGAJO nchar(5),
+    @NOMBRE varchar(50),
+	@APELLIDO varchar(50),
+    @DNI varchar(10),
+	@IDESPECIALIDAD int,
+	@FECHANACIMIENTO Date,
+	@DIRECCION varchar(50),
+	@IDLOCALIDAD int,
+	@TELEFONO varchar(11),
+    @EMAIL varchar(50),
+	@NACIONALIDAD varchar(15),
+	@SEXO varchar(15)
+ )
+ AS
+ INSERT INTO Medicos(LegajoMedico,NombreMedico,ApellidoMedico,DniMedico,IdEspecialidad_Med,FechaNacimiento,Direccion_Med,IdLocalidad_Med,Telefono_Med,Email_Med,Sexo_Med,Nacionalidad)
+ SELECT @LEGAJO ,@NOMBRE,@APELLIDO,@DNI, @IDESPECIALIDAD, @FECHANACIMIENTO, @DIRECCION,@IDLOCALIDAD,@TELEFONO,@EMAIL,@SEXO,@NACIONALIDAD
+ GO
 
  CREATE PROCEDURE spActualizarMedicos
  (
@@ -421,31 +725,11 @@ GO
  GO
 
 
- CREATE PROCEDURE spPorcentajeTurnosPorEspecialidad
- (
-	@IdEspecialidad int
- )
- AS
- SELECT 
- NombreEspecialidad,
- SUM(CASE WHEN IdEspecialidad = @IdEspecialidad THEN 1 END)* 100 / COUNT(Turnos.IdTurno) AS [Promedio Por Especialidad]
- FROM (((Especialidades INNER JOIN Medicos
- ON IdEspecialidad = IdEspecialidad_Med) INNER JOIN HorariosXDiaXMedico
- ON Medicos.LegajoMedico=LegajoMedico_HorXDiaXMed) INNER JOIN HorariosXDiaXMedicoXDl
- ON LegajoMedico_HorXDiaXMed=HorariosXDiaXMedicoXDl.LegajoMedico
- AND DiaSemana_HorXDiaXMed=DiaSemana 
- AND HoraTrabajo_HorXDiaXMed=HoraDisponible) INNER JOIN Turnos
- ON DiaSemana=DiaSemana_Turno
- AND FechaDisponible=FechaTurno
- AND HoraDisponible=HoraTurno
- AND HorariosXDiaXMedicoXDl.LegajoMedico=LegajoMedico_Turno
- GROUP BY(NombreEspecialidad)
- GO
-
  CREATE VIEW viewMedicos
  AS
  SELECT LegajoMedico AS Legajo, NombreMedico AS Nombre, ApellidoMedico AS Apellido, DniMedico AS DNI, NombreEspecialidad AS Especialidad
  FROM Medicos INNER JOIN Especialidades ON Medicos.IdEspecialidad_Med = Especialidades.IdEspecialidad
+ WHERE Estado_Med = 1
  GO
 
 
@@ -571,36 +855,6 @@ SELECT  Concat( (Convert(varchar(5), HoraIngreso, 108)),' a ' ,(Convert(varchar(
 FROM HorariosTrabajo
 GO
 
-
-
-EXEC spHabilitarDias  '2024/12/31'
-
-DELETE  FROM DiasLaborales WHERE FechaDia = '2024/7/9'
-GO
-DELETE  FROM DiasLaborales WHERE FechaDia = '2024/10/11'
-GO
-DELETE  FROM DiasLaborales WHERE FechaDia = '2024/11/18'
-GO
-DELETE  FROM DiasLaborales WHERE FechaDia = '2024/12/25'
-GO
-
-INSERT INTO Medicos(LegajoMedico, DniMedico, NombreMedico, ApellidoMedico, IdEspecialidad_Med, IdLocalidad_Med,FechaNacimiento)
-SELECT '44444', '39748590', 'Jose', 'Armoa', 1, 1, '1996/10/05'
-
-EXEC spCargarHorariosXDiaXMedico '44444',1,'8:00','14:00'
-EXEC spCargarHorariosXDiaXMedico '44444',4,'14:00','19:00'
-EXEC spCargarHorariosXDiaXMedico '55555',3,'14:00','19:00'
-EXEC spVerDisponibles '66666', '2024/07/17' 
-
-
-CREATE VIEW viewHorariosMedico
-AS
-SELECT DISTINCT  LegajoMedico_HorXDiaXMed as Legajo, Nombre as Dia, HoraIngresoMedico_HorXDiaXMed as Ingreso, HoraSalidaMedico_HorXDiaXMed as Salida
-FROM HorariosXDiaXMedico INNER JOIN DiaSemana 
-ON DiaSemana_HorXDiaXMed = NumDia
-GO
-
-
 CREATE FUNCTION HorasDisponibles
 (
     @LEGAJO nchar(5),
@@ -631,5 +885,166 @@ BEGIN
 END;
 GO
 
-SELECT dbo.HorasDisponibles('99999', '2024/07/15') as Existe
 
+EXEC spHabilitarDias  '2024/12/31'
+
+DELETE  FROM DiasLaborales WHERE FechaDia = '2024/7/9'
+GO
+DELETE  FROM DiasLaborales WHERE FechaDia = '2024/10/11'
+GO
+DELETE  FROM DiasLaborales WHERE FechaDia = '2024/11/18'
+GO
+DELETE  FROM DiasLaborales WHERE FechaDia = '2024/12/25'
+GO
+
+-- Insertar médicos
+
+
+INSERT INTO Medicos (LegajoMedico, NombreMedico, ApellidoMedico, DniMedico, FechaNacimiento, IdEspecialidad_Med, IdLocalidad_Med, Telefono_Med, Direccion_Med, Email_Med, Sexo_Med, Nacionalidad)
+SELECT '00001', 'Emiliano', 'Martínez', '123456789', '1992-09-02', 1, 9, '01111111111', 'Calle Falsa 123', 'emartinez@mail.com', 'Masculino', 'Argentina' UNION
+SELECT '00007', 'Leandro', 'Paredes', '445678901', '1994-06-29', 2,17, '01111111114', 'Calle Falsa 606', 'lparedes@mail.com', 'Masculino', 'Argentina' UNION
+SELECT '00008', 'Enzo', 'Fernández', '889012345', '2001-01-17', 3, 18, '05555555556', 'Calle Falsa 909', 'efernandez@mail.com', 'Masculino', 'Argentina' UNION
+SELECT '00009', 'Lionel', 'Messi', '112345678', '1987-06-24', 4,158, '08888888889', 'Calle Falsa 101', 'lmessi@mail.com', 'Masculino', 'Argentina' UNION
+SELECT '00011', 'Julián', 'Álvarez', '156789012', '2000-01-31', 5, 50, '01111111113', 'Calle Falsa 404', 'jalvarez@mail.com', 'Masculino', 'Argentina' UNION
+SELECT '00015', 'Vanina', 'Correa', '567890123', '1983-08-14', 6, 166, '01111111115', 'Calle Falsa 505', 'vcorrea@mail.com', 'Femenino', 'Argentina' UNION
+SELECT '00016', 'Estefanía', 'Banini', '678901234', '1990-06-21', 7,75, '01111111116', 'Calle Falsa 606', 'ebanini@mail.com', 'Femenino', 'Argentina' UNION
+SELECT '00017', 'Aldana', 'Cometti', '789012345', '1996-03-03', 8,52, '01111111117', 'Calle Falsa 707', 'acometti@mail.com', 'Femenino', 'Argentina' UNION
+SELECT '00018', 'Florencia', 'Bonsegundo', '890123456', '1993-07-14', 9,67, '01111111118', 'Calle Falsa 808', 'fbonsegundo@mail.com', 'Femenino', 'Argentina' UNION
+SELECT '00019', 'Sole', 'Jaimes', '901234567', '1989-01-20', 10,95, '01111111119', 'Calle Falsa 909', 'sjaimes@mail.com', 'Femenino', 'Argentina' 
+GO
+
+EXEC spCargarHorariosXDiaXMedico '00001',1,'8:00','14:00'
+GO
+EXEC spCargarHorariosXDiaXMedico '00007',2,'14:00','19:00'
+GO
+EXEC spCargarHorariosXDiaXMedico '00008',3,'8:00','14:00'
+GO
+EXEC spCargarHorariosXDiaXMedico '00011',5,'8:00','14:00'
+GO
+EXEC spCargarHorariosXDiaXMedico '00015',1,'14:00','19:00'
+GO
+EXEC spCargarHorariosXDiaXMedico '00016',2,'8:00','14:00'
+GO
+EXEC spCargarHorariosXDiaXMedico '00017',3,'14:00','19:00'
+GO
+EXEC spCargarHorariosXDiaXMedico '00018',4,'8:00','14:00'
+GO
+EXEC spCargarHorariosXDiaXMedico '00019',5,'14:00','19:00'
+GO
+EXEC spCargarHorariosXDiaXMedico '00001',3,'8:00','19:00'
+GO
+EXEC spCargarHorariosXDiaXMedico '00001',5,'8:00','19:00'
+GO
+EXEC spCargarHorariosXDiaXMedico '00009',1,'8:00','19:00'
+GO
+EXEC spCargarHorariosXDiaXMedico '00009',2,'8:00','19:00'
+GO
+EXEC spCargarHorariosXDiaXMedico '00009',3,'8:00','14:00'
+GO
+EXEC spCargarHorariosXDiaXMedico '00009',4,'8:00','19:00'
+GO
+EXEC spCargarHorariosXDiaXMedico '00009',5,'8:00','19:00'
+GO
+
+
+
+
+-- Insertar pacientes 
+INSERT INTO Pacientes (DniPaciente, NombrePaciente, ApellidoPaciente, FechaNacimiento, IdLocalidad_Paciente, Telefono_Paciente, Direccion_Paciente, Email_Paciente, Sexo_Paciente, Nacionalidad)
+SELECT '778901234', 'Alexis', 'Mac Allister', '1998-12-24', 111, '04444444445', 'Calle Falsa 808', 'amacallister@mail.com', 'Masculino', 'Argentina' UNION
+SELECT '134567890', 'Lautaro', 'Martínez', '1997-08-22',2, '01010101011', 'Avenida Siempreviva 789', 'lmartinez@mail.com', 'Masculino', 'Argentina' UNION
+SELECT '145678901', 'Paulo', 'Dybala', '1993-11-15',53, '01111111112', 'Calle Falsa 303', 'pdybala@mail.com', 'Masculino', 'Argentina' UNION
+SELECT '167890123', 'Nicolás', 'González', '1998-04-06',3, '01111111114', 'Calle Falsa 505', 'ngonzalez@mail.com', 'Masculino', 'Argentina' UNION
+SELECT '167890125', 'Vanina', 'Preininger', '1994-06-11', 1, '01111111134', 'Calle Falsa 2424', 'vpreininger@mail.com', 'Femenino', 'Argentina' UNION
+SELECT '178901234', 'Camila', 'Gómez Ares', '1994-12-26', 24, '01111111135', 'Calle Falsa 2525', 'cgomez@mail.com', 'Femenino', 'Argentina' UNION
+SELECT '189012345', 'Daiana', 'Chávez', '1996-07-25', 59, '01111111136', 'Calle Falsa 2626', 'dchavez@mail.com', 'Femenino', 'Argentina' UNION
+SELECT '190123456', 'Evelina', 'Cabrera', '1988-06-26',48, '01111111137', 'Calle Falsa 2727', 'ecabrera@mail.com', 'Femenino', 'Argentina' UNION
+SELECT '201234567', 'Vanina', 'Correa', '1983-08-14',38, '01111111138', 'Calle Falsa 2828', 'vcorrea2@mail.com', 'Femenino', 'Argentina' 
+GO
+
+
+
+EXEC spVerDisponibles '11111', '2024/07/19'
+GO
+
+CREATE VIEW viewHorariosMedico
+AS
+SELECT DISTINCT  LegajoMedico_HorXDiaXMed as Legajo, Nombre as Dia, HoraIngresoMedico_HorXDiaXMed as Ingreso, HoraSalidaMedico_HorXDiaXMed as Salida
+FROM HorariosXDiaXMedico INNER JOIN DiaSemana 
+ON DiaSemana_HorXDiaXMed = NumDia
+GO
+
+
+
+CREATE TRIGGER tr_TurnosCancelados
+ON Turnos AFTER DELETE
+AS 
+BEGIN
+--CUANDO BORRAMOS UN TURNOS LO INSERTAMOS EN LA TABLA TURNOS CANCELADOS
+
+INSERT INTO TurnosCancelados(IDTurnoCancelado,DniPaciente_TC,FechaCancelo)
+SELECT IdTurno,DniPaciente_TA,FechaTurno FROM deleted
+END
+GO
+
+
+--MEDICOS DISPONIBLES Y SU ESPECIALIDAD
+SELECT E.NombreEspecialidad, HDM.LegajoMedico_HorXDiaXMed
+FROM ((Especialidades AS E INNER JOIN Medicos AS M
+ON E.IdEspecialidad = M.IdEspecialidad_Med) INNER JOIN HorariosXDiaXMedico AS HDM
+ON M.LegajoMedico = HDM.LegajoMedico_HorXDiaXMed)
+GO
+
+--PROVINCIA DE LOS PACIENTES
+SELECT P.NombreProvincia, PA.NombrePaciente + PA.ApellidoPaciente AS [Nombre Completo]
+FROM (Provincias AS P INNER JOIN Localidades AS L
+ON P.IdProvincia = L.IdProvinciaLocalidad) INNER JOIN Pacientes AS PA
+ON L.IdLocalidad = PA.IdLocalidad_Paciente
+GO
+
+--LOS TURNOS CANCELADOS DE CADA PACIENTE
+SELECT P.NombrePaciente + P.ApellidoPaciente AS [Nombre Completo], TC.FechaCancelo AS [Fecha Cancelada]
+FROM (Pacientes AS P INNER JOIN Turnos AS T
+ON P.DniPaciente = T.DniPaciente_TA) INNER JOIN TurnosCancelados AS TC
+ON T.IdTurno = TC.IDTurnoCancelado
+AND T.DniPaciente_TA = TC.DniPaciente_TC
+AND T.FechaTurno = TC.FechaCancelo
+GO
+
+INSERT INTO Pacientes(DniPaciente,NombrePaciente,ApellidoPaciente,FechaNacimiento,IdLocalidad_Paciente,Telefono_Paciente,Direccion_Paciente,Email_Paciente,Sexo_Paciente,Nacionalidad,Estado_Paciente)
+SELECT '10023','Luciano','Ramirez','2004-03-21',1,'1568552025','ituzaingo200','luciano_ram','Masculino','Argentina',1
+GO
+
+INSERT INTO Medicos(LegajoMedico,NombreMedico,ApellidoMedico,DniMedico,FechaNacimiento,IdEspecialidad_Med,IdLocalidad_Med, Telefono_Med,Direccion_Med,Email_Med,Sexo_Med,Nacionalidad,Estado_Med)
+SELECT '2001','Agustina','Villalba','41','2001-09-03',1,1,'1564885692','sucre101','agus_villalba','Femenino','Argentina',1
+GO
+
+INSERT INTO HorariosXDiaXMedico(HoraIngresoMedico_HorXDiaXMed,HoraSalidaMedico_HorXDiaXMed,DiaSemana_HorXDiaXMed,HoraTrabajo_HorXDiaXMed,LegajoMedico_HorXDiaXMed,Habilitado)
+SELECT '08:00','14:00',4,'09:00','2001',1
+GO
+
+INSERT INTO Turnos(LegajoMedico_Turno,DiaSemana_Turno,HoraTurno,FechaTurno,DniPaciente_TA,Asistio)
+SELECT '2001',4,'09:00','2024-07-18','10023',1
+GO
+
+SELECT * FROM Pacientes
+
+Select IdTurno AS [ID Turnos],FechaTurno AS Fecha,HoraTurno AS Hora,NombrePaciente AS Nombre,ApellidoPaciente AS Apellido,DniPaciente_TA AS DNI,Asistio AS Asistio
+From Turnos inner join Pacientes 
+ON DniPaciente = DniPaciente_TA
+GO
+
+Select Turnos.FechaTurno, Turnos.DniPaciente_TA,Pacientes.NombrePaciente,Especialidades.NombreEspecialidad, Asistio,Observacion
+From (((((Especialidades inner join Medicos
+ON IdEspecialidad = IdEspecialidad_Med) inner join HorariosXDiaXMedico
+ON LegajoMedico = LegajoMedico_HorXDiaXMed) inner join HorariosXDiaXMedicoXDl
+ON LegajoMedico_HorXDiaXMed = HorariosXDiaXMedicoXDl.LegajoMedico
+AND DiaSemana_HorXDiaXMed =DiaSemana
+AND HoraTrabajo_HorXDiaXMed = HoraDisponible) inner join Turnos
+ON HorariosXDiaXMedicoXDl.LegajoMedico = LegajoMedico_Turno
+AND DiaSemana = DiaSemana_Turno
+AND FechaDisponible = FechaTurno
+AND HorariosXDiaXMedicoXDl.HoraDisponible = HoraTurno) inner join Pacientes
+ON DniPaciente_TA = DniPaciente) inner join Observaciones
+ON DniPaciente = DniPaciente_Obs
+GO

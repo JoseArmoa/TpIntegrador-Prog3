@@ -16,7 +16,7 @@ namespace Dao
 
         public Boolean existeDNITurno(Turnos tur)
         {
-            string consulta = "SELECT * FROM Pacientes " +
+            string consulta = "SELECT * FROM Turnos " +
                 "WHERE DniPaciente_TA = '" + tur.dnipaciente + "'";
             return db.existe(consulta);
         }
@@ -49,7 +49,7 @@ namespace Dao
 
         public DataTable getTablaFiltradaTurnos(Turnos tur)
         {
-            string consulta = "Select FechaTurno,HoraTurno,NombrePaciente,ApellidoPaciente,DniPaciente_TA,Asistio " +
+            string consulta = "Select IdTurno AS [ID Turnos], FechaTurno as Fecha,HoraTurno as Hora,NombrePaciente as Nombre,ApellidoPaciente as Apellido,DniPaciente_TA as DNI,Asistio " +
                 "From Turnos inner join Pacientes " +
                 "ON DniPaciente = DniPaciente_TA" +
                 " WHERE DniPaciente_TA = '" + tur.dnipaciente + "'";
