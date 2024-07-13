@@ -43,15 +43,27 @@ namespace Dao
             }
         }
 
-        public DataTable ObtenerTabla(string NombreTabla, string consulta)
+        public DataTable ObtenerTabla(string NombreTabla, string consulta,SqlCommand cmd = null)
         {
             DataSet ds = new DataSet();
+            if (cmd == null)
+            {
+                SqlConnection coneccion = ObtenerConeccion();
+                SqlDataAdapter adaptador = ObtenerAdaptador(consulta, coneccion);
 
-            SqlConnection coneccion = ObtenerConeccion();
-            SqlDataAdapter adaptador = ObtenerAdaptador(consulta, coneccion);
+                adaptador.Fill(ds, NombreTabla);
+                coneccion.Close();
+            }
+            else
+            {
+                SqlConnection coneccion = ObtenerConeccion();
+                cmd.Connection = coneccion;
+                cmd.CommandText = consulta;
+                SqlDataAdapter adaptador = new SqlDataAdapter(cmd);
 
-            adaptador.Fill(ds, NombreTabla);
-            coneccion.Close();
+                adaptador.Fill(ds, NombreTabla);
+                coneccion.Close();
+            }
 
             return ds.Tables[NombreTabla];
         }
@@ -73,7 +85,9 @@ namespace Dao
             SqlConnection Conexion = ObtenerConeccion();
             cmd.Connection = Conexion;
             cmd.CommandText = consulta;
-            return Convert.ToBoolean(cmd.ExecuteScalar());
+            bool resultado = Convert.ToBoolean(cmd.ExecuteScalar());
+            Conexion.Close();
+            return resultado;
         }
 
         public Boolean existe(string consulta)
@@ -83,8 +97,10 @@ namespace Dao
             SqlDataReader datos = comando.ExecuteReader();
             if (datos.Read())
             {
+                conexion.Close();
                 return true;
             }
+            conexion.Close();
             return false;
         }
 
