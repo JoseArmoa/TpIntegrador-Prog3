@@ -1,6 +1,3 @@
-USE master
-GO
-
 CREATE DATABASE Clinica
 GO
 
@@ -215,7 +212,7 @@ GO
 
 INSERT INTO DiaSemana(NumDIa,Nombre)
 SELECT 1,'Lunes' UNION
-SELECT 2,'Marter' UNION
+SELECT 2,'Martes' UNION
 SELECT 3,'Miercoles' UNION
 SELECT 4,'Jueves' UNION
 SELECT 5,'Viernes' UNION
@@ -252,7 +249,8 @@ GO
    @DNIPACIENTE nchar(5)
  )
  AS
- DELETE FROM Pacientes
+ Update Pacientes
+ SET Estado_Paciente = 0
  WHERE DniPaciente = @DNIPACIENTE
  RETURN
  GO
@@ -325,14 +323,14 @@ CREATE PROCEDURE spAgregarMedico
 	@IDLOCALIDAD int,
 	@TELEFONO varchar(11),
     @EMAIL varchar(50),
-	@IDUSUARIO int,
 	@NACIONALIDAD varchar(15),
 	@SEXO varchar(15)
  )
  AS
- INSERT INTO Medicos(LegajoMedico,NombreMedico,ApellidoMedico,DniMedico,IdEspecialidad_Med,FechaNacimiento,Direccion_Med,IdLocalidad_Med,Telefono_Med,Email_Med,IdUsuario_Med,Sexo_Med,Nacionalidad)
- SELECT @LEGAJO ,@NOMBRE,@APELLIDO,@DNI, @IDESPECIALIDAD, @FECHANACIMIENTO, @DIRECCION,@IDLOCALIDAD,@TELEFONO,@EMAIL,@IDUSUARIO,@SEXO,@NACIONALIDAD
+ INSERT INTO Medicos(LegajoMedico,NombreMedico,ApellidoMedico,DniMedico,IdEspecialidad_Med,FechaNacimiento,Direccion_Med,IdLocalidad_Med,Telefono_Med,Email_Med,Sexo_Med,Nacionalidad)
+ SELECT @LEGAJO ,@NOMBRE,@APELLIDO,@DNI, @IDESPECIALIDAD, @FECHANACIMIENTO, @DIRECCION,@IDLOCALIDAD,@TELEFONO,@EMAIL,@SEXO,@NACIONALIDAD
  GO
+
 
  CREATE PROCEDURE spActualizarMedicos
  (
@@ -593,6 +591,7 @@ SELECT '44444', '39748590', 'Jose', 'Armoa', 1, 1, '1996/10/05'
 EXEC spCargarHorariosXDiaXMedico '44444',1,'8:00','14:00'
 EXEC spCargarHorariosXDiaXMedico '44444',4,'14:00','19:00'
 EXEC spVerDisponibles '11111', '2024/07/19' 
+go
 
 CREATE VIEW viewHorariosMedico
 AS
@@ -600,3 +599,4 @@ SELECT DISTINCT  LegajoMedico_HorXDiaXMed as Legajo, Nombre as Dia, HoraIngresoM
 FROM HorariosXDiaXMedico INNER JOIN DiaSemana 
 ON DiaSemana_HorXDiaXMed = NumDia
 GO
+

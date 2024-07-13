@@ -17,7 +17,8 @@ namespace Entidades
         private int ID_Localidad;
         private string Telefono;
         private string Email;
-
+        private string Sexo;
+        private string Nacionalidad;
 
         public Pacientes()
         {
@@ -68,6 +69,15 @@ namespace Entidades
             get { return Email; }
             set { Email = value; }
         }
-
+        public string sexo
+        {
+            get { return Sexo; }
+            set { Sexo = value; }
+        }
+        public string nacionalidad
+        {
+            get { return Nacionalidad; }
+            set { Nacionalidad = value; }
+        }
     }
 }

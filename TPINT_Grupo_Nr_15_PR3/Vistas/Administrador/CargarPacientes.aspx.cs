@@ -58,6 +58,8 @@ namespace Vistas
             paciente.email = txtEmailPacientes.Text.Trim();
             paciente.telefono = txtTelefonoPacientes.Text.Trim();
             paciente.iDProvincia = Convert.ToInt32(ddlProvinciaPacientes.SelectedValue);
+            paciente.sexo = txtSexoPaciente.Text.Trim();
+            paciente.nacionalidad = txtNacionalidadPaciente.Text.Trim();
             // Convertir la cadena de fecha a DateTime
             DateTime fechaNacimiento;
             if (DateTime.TryParseExact(txtFechaNacimientoPaciente.Text.Trim(), formatoFecha, CultureInfo.InvariantCulture, DateTimeStyles.None, out fechaNacimiento))
@@ -92,6 +94,8 @@ namespace Vistas
             txtFechaNacimientoPaciente.Text = "";
             txtEmailPacientes.Text = "";
             txtTelefonoPacientes.Text = "";
+            txtSexoPaciente.Text = "";
+            txtNacionalidadPaciente.Text = "";
         }
 
         protected void ddlProvinciaPacientes_SelectedIndexChanged(object sender, EventArgs e)

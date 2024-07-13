@@ -44,6 +44,10 @@ namespace Dao
             SqlParametros.Value = pac.email;
             SqlParametros = sc.Parameters.Add("@TELEFONO", SqlDbType.NChar);
             SqlParametros.Value = pac.telefono;
+            SqlParametros = sc.Parameters.Add("@NACIONALIDAD", SqlDbType.VarChar);
+            SqlParametros.Value = pac.nacionalidad;
+            SqlParametros = sc.Parameters.Add("@SEXO", SqlDbType.VarChar);
+            SqlParametros.Value = pac.sexo;
             SqlParametros = sc.Parameters.Add("@FECHANAC", SqlDbType.DateTime);
             SqlParametros.Value = pac.FechNac;
         }
