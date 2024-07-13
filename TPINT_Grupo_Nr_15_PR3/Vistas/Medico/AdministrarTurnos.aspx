@@ -98,32 +98,32 @@
                     <Columns>
                         <asp:TemplateField HeaderText="ID Turnos">
                             <ItemTemplate>
-                                <asp:Label ID="lblIdTurnos" runat="server" Text='<%# Bind("IdTurno") %>'></asp:Label>
+                                <asp:Label ID="lblIdTurnos" runat="server" Text='<%# Bind("[Id Turnos]") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Fecha">
                             <ItemTemplate>
-                                <asp:Label ID="lblFecha" runat="server" Text='<%# Bind("FechaTurno") %>'></asp:Label>
+                                <asp:Label ID="lblFecha" runat="server" Text='<%# Bind("Fecha") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Hora">
                             <ItemTemplate>
-                                <asp:Label ID="lblHora" runat="server" Text='<%# Bind("HoraTurno") %>'></asp:Label>
+                                <asp:Label ID="lblHora" runat="server" Text='<%# Bind("Hora") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Nombre">
                             <ItemTemplate>
-                                <asp:Label ID="lblNombre" runat="server" Text='<%# Bind("NombrePaciente") %>'></asp:Label>
+                                <asp:Label ID="lblNombre" runat="server" Text='<%# Bind("Nombre") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Apellido">
                             <ItemTemplate>
-                                <asp:Label ID="lblApellido" runat="server" Text='<%# Bind("ApellidoPaciente") %>'></asp:Label>
+                                <asp:Label ID="lblApellido" runat="server" Text='<%# Bind("Apellido") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="DNI ">
                             <ItemTemplate>
-                                <asp:Label ID="lblDNI" runat="server" Text='<%# Bind("DniPaciente_TA") %>'></asp:Label>
+                                <asp:Label ID="lblDNI" runat="server" Text='<%# Bind("DNI") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Asistio">
@@ -136,7 +136,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Acciones">
                             <ItemTemplate>
-                                <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" CommandArgument='<%# Eval("IdTurno")+"-"+Eval("NombrePaciente ")+"-"+Eval("ApellidoPaciente")+"-"+Eval("DniPaciente_TA")+"-"+Eval("FechaTurno") %>' CommandName="comandoSeleccionar" OnCommand="LinkButton1_Command">Cargar Observacion</asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" CommandArgument='<%# Eval("[Id Turnos]")+"-"+Eval("Nombre")+"-"+Eval("Apellido")+"-"+Eval("DNI")+"-"+Eval("Fecha") %>' CommandName="comandoSeleccionar" OnCommand="LinkButton1_Command">Cargar Observacion</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
