@@ -53,7 +53,7 @@ namespace Vistas.Administrador
 
         protected void gvListarMedicos_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            String legajo = ((Label)gvListarMedicos.Rows[e.RowIndex].FindControl("lbl_eit_Legajo")).Text;
+            String legajo = ((Label)gvListarMedicos.Rows[e.RowIndex].FindControl("lbl_it_Legajo")).Text;
             Medicos medico = new Medicos();
             medico.legajo = legajo;
 

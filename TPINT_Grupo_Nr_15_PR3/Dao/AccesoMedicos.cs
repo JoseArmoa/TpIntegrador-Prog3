@@ -142,7 +142,7 @@ namespace Dao
         {
             SqlCommand sc = new SqlCommand();
             AgregarParametrosEliminar(ref sc, medico);
-            return acceso.EjecutarProcedimientoAlmacenado(ref sc, "spEliminarMedico");
+            return acceso.EjecutarProcedimientoAlmacenado(ref sc, "spEliminarMedicos");
 
             //--spEliminarMedico     ( REALIZA BAJA LOGICA )
 
@@ -155,7 +155,6 @@ namespace Dao
             //SET
             //Estado_Med = 0
             //WHERE LegajoMedico = @LEGAJO
-            //RETURN
         }
 
         private void AgregarParametrosActualizar(ref SqlCommand cmd, Medicos med)

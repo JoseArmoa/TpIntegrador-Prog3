@@ -603,17 +603,17 @@ GO
  RETURN
  GO
 
- CREATE PROCEDURE spEliminarMedicos
+ALTER PROCEDURE spEliminarMedicos
  (
 	@LEGAJO nchar(5)
  )
  AS 
  UPDATE	Medicos
- SET 
- Estado_Med = 0
+ SET Estado_Med = 0
  WHERE LegajoMedico = @LEGAJO
- RETURN
  GO
+
+ exec spEliminarMedicos '00001'
 
 CREATE PROCEDURE spAgregarMedico
  (
@@ -861,11 +861,37 @@ WHERE LegajoMedico = @Legajo and HoraDisponible = @Hora and DiaSemana = @Dia and
 END
 GO
 
-CREATE VIEW view_HorariosTrabajo
+--En caso de que se de de baja un medico, se deshabilitan todos los horariosXdiaXmedicos cargados
+CREATE TRIGGER TR_DESHABILITAR_HORARIOSXDIAXMEDICO
+ON Medicos AFTER UPDATE
 AS
-SELECT  Concat( (Convert(varchar(5), HoraIngreso, 108)),' a ' ,(Convert(varchar(5), HoraSalida, 108)) ) AS Id,
-		TipoHorario AS Nombre
-FROM HorariosTrabajo
+BEGIN
+	IF UPDATE(Estado_Med)
+	BEGIN
+	DECLARE @LEGAJO nchar(5)= (SELECT LegajoMedico FROM inserted)
+	UPDATE HorariosXDiaXMedico
+	SET Habilitado = 0
+	WHERE LegajoMedico_HorXDiaXMed = @LEGAJO
+	END
+END
+GO
+
+--SI se da de baja un horarioXdiaXmedico se deshabilitan de la tabla HorariosXdiaXmedicoXdl
+ALTER TRIGGER TR_DESHABILITAR_HORARIOSXDIAXMEDICOXDL
+ON HorariosXDiaXMedico AFTER UPDATE
+AS
+BEGIN
+	IF UPDATE(Habilitado)
+	BEGIN
+		UPDATE HorariosXDiaXMedicoXDl
+		SET  Asignado = 1
+		FROM HorariosXDiaXMedicoXDl hxdxd
+        INNER JOIN inserted i
+        ON hxdxd.LegajoMedico = i.LegajoMedico_HorXDiaXMed
+        AND hxdxd.DiaSemana = i.DiaSemana_HorXDiaXMed
+        AND hxdxd.HoraDisponible = i.HoraTrabajo_HorXDiaXMed;
+	END
+END
 GO
 
 CREATE FUNCTION HorasDisponibles
@@ -897,6 +923,7 @@ BEGIN
     RETURN @Existe;
 END;
 GO
+
 
 
 EXEC spHabilitarDias  '2024/12/31'
@@ -975,6 +1002,8 @@ SELECT '190123456', 'Evelina', 'Cabrera', '1988-06-26',48, '01111111137', 'Calle
 SELECT '201234567', 'Vanina', 'Correa', '1983-08-14',38, '01111111138', 'Calle Falsa 2828', 'vcorrea2@mail.com', 'Femenino', 'Argentina' 
 GO
 
+INSERT INTO Usuarios(NombreUsuario, Contrasenia, TipoUsuario)
+SELECT 'Adminitrador', 'admin1234', 'Admin'
 
 EXEC spVerDisponibles '11111', '2024/07/19'
 GO
@@ -1060,3 +1089,8 @@ AND HorariosXDiaXMedicoXDl.HoraDisponible = HoraTurno) inner join Pacientes
 ON DniPaciente_TA = DniPaciente) inner join Observaciones
 ON DniPaciente = DniPaciente_Obs
 GO
+
+DECLARE @FILTRO varchar(20) = 'ma'
+
+SELECT * FROM viewMedicos 
+WHERE LOWER(Legajo) LIKE '%@FILTRO%' OR LOWER(Nombre) LIKE '%@FILTRO%' OR LOWER(Apellido) LIKE '%@FILTRO%' OR LOWER(Especialidad) LIKE '%@FILTRO%'
