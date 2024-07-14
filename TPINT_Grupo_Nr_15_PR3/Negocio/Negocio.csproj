@@ -45,6 +45,7 @@
     <Compile Include="ControladorDia.cs" />
     <Compile Include="ControladorEspecialidades.cs" />
     <Compile Include="ControladorHorario.cs" />
+    <Compile Include="ControladorInformes.cs" />
     <Compile Include="ControladorLocalidad.cs" />
     <Compile Include="ControladorMedicos.cs" />
     <Compile Include="ControladorObservaciones.cs" />

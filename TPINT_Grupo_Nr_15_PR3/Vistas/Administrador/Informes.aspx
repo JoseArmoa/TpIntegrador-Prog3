@@ -13,16 +13,8 @@
         .auto-style2 {
             height: 23px;
         }
-        .auto-style3 {
-            height: 23px;
-            width: 176px;
-        }
         .auto-style7 {
             width: 176px;
-        }
-        .auto-style8 {
-            height: 23px;
-            width: 168px;
         }
         .auto-style9 {
             width: 168px;
@@ -70,38 +62,51 @@
             <asp:View ID="VAusentes" runat="server" OnActivate="VAusentes_Activate">
                 <table class="auto-style1">
                     <tr>
-                        <td class="auto-style2" colspan="4"><h1>Porcentajes de Asistencia</h1></td>
+                        <td class="auto-style2" colspan="4"><h1>Cantidad de Asistencias</h1></td>
                     </tr>
                     <tr>
                         <td class="auto-style9">Desde:
-                            <asp:TextBox ID="TextBox1" runat="server" TextMode="Date"></asp:TextBox>
+                            <asp:TextBox ID="txtInicio" runat="server" TextMode="Date"></asp:TextBox>
                         </td>
                         <td class="auto-style7">Hasta:
-                            <asp:TextBox ID="TextBox2" runat="server" TextMode="Date"></asp:TextBox>
+                            <asp:TextBox ID="txtFinal" runat="server" TextMode="Date"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:Button CssClass="btn" ID="btnVer" runat="server" Text="Ver" />
+                            <asp:Button CssClass="btn" ID="btnVer" runat="server" Text="Ver" OnClick="btnVer_Click" />
                         </td>
                         <td>&nbsp;</td>
                     </tr>
                     <tr>
                         <td class="auto-style9">&nbsp;</td>
-                        <td class="auto-style7">&nbsp;</td>
+                        <td class="auto-style7">
+                            <asp:Label ID="lblInforme1" runat="server"></asp:Label>
+                        </td>
                         <td>
-                            <asp:Chart ID="Chart1" runat="server">
+                            &nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style9">&nbsp;</td>
+                        <td class="auto-style7">
+                            <asp:Label ID="lblInforme2" runat="server"></asp:Label>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style9">&nbsp;</td>
+                        <td class="auto-style7">
+                            <asp:Chart ID="Chart1" runat="server" Visible="False">
                                 <series>
-                                <asp:Series ChartType="Pie" Name="Series1"></asp:Series>
+                                    <asp:Series ChartArea="ChartArea1" ChartType="Pie" Name="Series1">
+                                    </asp:Series>
                                 </series>
                                 <chartareas>
-                                <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
+                                    <asp:ChartArea Name="ChartArea1">
+                                    </asp:ChartArea>
                                 </chartareas>
                             </asp:Chart>
                         </td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style9">&nbsp;</td>
-                        <td class="auto-style7">&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                     </tr>

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Negocio;
 
 namespace Vistas.Administrador
 {
@@ -39,26 +40,9 @@ namespace Vistas.Administrador
 
         protected void VAusentes_Activate(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
-            DataColumn dc = new DataColumn("Asistio/No Asistio", Type.GetType("System.String"));
-            dt.Columns.Add(dc);
-            dc = new DataColumn("Porcentaje", Type.GetType("System.Decimal"));
-            dt.Columns.Add(dc);
-
-            DataRow dr = dt.NewRow();
-            dr["Asistio/No Asistio"] = "Asistio";
-            dr["Porcentaje"] = 35.5M;
-            dt.Rows.Add(dr);
-
-            dr = dt.NewRow();
-            dr["Asistio/No Asistio"] = "No Asistio";
-            dr["Porcentaje"] = 64.5M;
-            dt.Rows.Add(dr);
-
-            foreach (DataRow d in dt.Rows)
-            {
-                Chart1.Series[0].Points.AddXY(d[0], d[1]);
-            }
+            lblInforme1.Text = "";
+            lblInforme2.Text = "";
+            Chart1.Visible = false;
         }
 
         protected void VEspecialidades_Activate(object sender, EventArgs e)
@@ -138,6 +122,28 @@ namespace Vistas.Administrador
         protected void ButtonbtnVerUsuario_Click(object sender, EventArgs e)
         {
             PanelUsuario.Visible = !PanelUsuario.Visible;
+        }
+
+        protected void btnVer_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            ControladorInformes ci = new ControladorInformes();
+            DateTime inicio = DateTime.Parse(txtInicio.Text);
+            DateTime final = DateTime.Parse(txtFinal.Text);
+            dt = ci.getTablaAsistencias(inicio, final);
+            int cantAsistencias = Convert.ToInt32(dt.Rows[0][1]);
+            int cantInasitencias = Convert.ToInt32(dt.Rows[1][1]);
+            int totalTurno = cantAsistencias + cantInasitencias;
+            decimal PorcentajeAsistencia = totalTurno > 0 ? (decimal)cantAsistencias / totalTurno * 100 : 0;
+
+            foreach (DataRow d in dt.Rows)
+            {
+                Chart1.Series[0].Points.AddXY(d[0], d[1]);
+            }
+            Chart1.Visible = true;
+
+            lblInforme1.Text = "Desde la fecha " + txtInicio.Text + " hasta " + txtFinal.Text + " hubo un total de " + totalTurno + " turnos.";
+            lblInforme2.Text = $"Solo el {PorcentajeAsistencia:F2}% asistió.";
         }
     }
 }

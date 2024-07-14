@@ -114,22 +114,22 @@ namespace Vistas.Administrador
         protected global::System.Web.UI.WebControls.View VAusentes;
 
         /// <summary>
-        /// Control TextBox1.
+        /// Control txtInicio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtInicio;
 
         /// <summary>
-        /// Control TextBox2.
+        /// Control txtFinal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtFinal;
 
         /// <summary>
         /// Control btnVer.
@@ -139,6 +139,24 @@ namespace Vistas.Administrador
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnVer;
+
+        /// <summary>
+        /// Control lblInforme1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblInforme1;
+
+        /// <summary>
+        /// Control lblInforme2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblInforme2;
 
         /// <summary>
         /// Control Chart1.

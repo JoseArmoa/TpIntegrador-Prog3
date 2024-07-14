@@ -1090,12 +1090,6 @@ ON DniPaciente_TA = DniPaciente) inner join Observaciones
 ON DniPaciente = DniPaciente_Obs
 GO
 
-<<<<<<< HEAD
-DECLARE @FILTRO varchar(20) = 'ma'
-
-SELECT * FROM viewMedicos 
-WHERE LOWER(Legajo) LIKE '%@FILTRO%' OR LOWER(Nombre) LIKE '%@FILTRO%' OR LOWER(Apellido) LIKE '%@FILTRO%' OR LOWER(Especialidad) LIKE '%@FILTRO%'
-=======
 CREATE TRIGGER TR_CREARUSUARIO_Admin
 ON Administradores
 AFTER INSERT
@@ -1148,6 +1142,20 @@ BEGIN
         CTE_Contador;
 END;
 
+SELECT  
+SUM(CASE WHEN Asistio = 1 THEN 1 ElSE 0 END) as SiAsistio,
+SUM(CASE WHEN Asistio = 0 THEN 1 ElSE 0 END) as NoAsistio,
+COUNT(*) as Total
+FROM Turnos
+WHERE FechaTurno >= '2024/07/14' and FechaTurno <= '2024/12/30'
+
+
+SELECT 'Asistio' as Tipo, SUM(CASE WHEN Asistio = 1 THEN 1 ElSE 0 END) as Cantidad
+FROM Turnos
+UNION
+SELECT 'No asistio' as Tipo, SUM(CASE WHEN Asistio = 0 THEN 1 ElSE 0 END) as Cantidad
+FROM Turnos
+WHERE FechaTurno >= '2024/07/14' and FechaTurno <= '2024/12/30'
+
 EXEC CalcularPorcentajeAsistencias '2024/07/14', '2024/12/30'
 GO
->>>>>>> 62052a64819dceca638a4096f0fdfa3af38c8546
