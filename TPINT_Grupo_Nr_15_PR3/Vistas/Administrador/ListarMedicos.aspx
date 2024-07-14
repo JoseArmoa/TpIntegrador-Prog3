@@ -148,14 +148,15 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style2"></td>
-                    <td class="auto-style2">
+                    <td>&nbsp;</td>
+                    <td>
                         &nbsp;</td>
-                    <td class="auto-style2"></td>
+                    <td>
+                        &nbsp;</td>
                 </tr>
                 <tr>
                     <td class="auto-style2">&nbsp;</td>
-                    <td class="auto-style2">
+                    <td class="auto-style2 nombreUsuario">
                         <asp:GridView CssClass="grid" ID="gvHorariosMedico" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" PageSize="5" ShowHeaderWhenEmpty="True" >
                             <AlternatingRowStyle BackColor="#DCDCDC" />
                             <Columns>
@@ -193,6 +194,7 @@
                             <SortedDescendingCellStyle BackColor="#CAC9C9" />
                             <SortedDescendingHeaderStyle BackColor="#000065" />
                         </asp:GridView>
+                        <asp:Button CssClass="btn" ID="btnOcultarHorarios" runat="server" OnClick="btnOcultarHorarios_Click" Text="Ocultar Horarios" />
                     </td>
                     <td class="auto-style2">&nbsp;</td>
                 </tr>
