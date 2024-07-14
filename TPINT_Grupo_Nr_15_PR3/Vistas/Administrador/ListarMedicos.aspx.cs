@@ -22,6 +22,8 @@ namespace Vistas.Administrador
             if(!IsPostBack)
             {
                 CargarGD();
+                gvHorariosMedico.Visible = false;
+                btnOcultarHorarios.Visible = false;
             }
         }
 
@@ -130,7 +132,9 @@ namespace Vistas.Administrador
                 int fila = Convert.ToInt32(e.CommandArgument);
                 string Legajo = ( (Label)gvListarMedicos.Rows[fila].FindControl("lbl_it_Legajo") ).Text;
 
-                CargarHorario(Legajo);          
+                CargarHorario(Legajo);
+                gvHorariosMedico.Visible= true;
+                btnOcultarHorarios.Visible = true;
             }
         }
 
@@ -213,6 +217,12 @@ namespace Vistas.Administrador
         protected void btnMostrarTodos_Click(object sender, EventArgs e)
         {
             CargarGD();
+        }
+
+        protected void btnOcultarHorarios_Click(object sender, EventArgs e)
+        {
+            gvHorariosMedico.Visible = false;
+            btnOcultarHorarios.Visible = false;
         }
     }
 }
