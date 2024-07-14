@@ -139,6 +139,11 @@ namespace Vistas
                 gvObservaciones.DataBind();
             }
         }
+
+        protected void gvListarPacientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 
