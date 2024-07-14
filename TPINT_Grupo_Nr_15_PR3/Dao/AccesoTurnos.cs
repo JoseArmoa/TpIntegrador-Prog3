@@ -90,5 +90,28 @@ namespace Dao
 
             return db.ObtenerTabla("Horarios", consulta, cmd);
         }
+
+        public int agregarTurno(ref Turnos tu)
+        {
+            SqlCommand cmd = new SqlCommand();
+            agregarParametrosTurno(ref cmd,ref tu);
+            int filas = db.EjecutarProcedimientoAlmacenado(ref cmd, "spAgregarTurnos");
+            return filas;
+        }
+
+        public void agregarParametrosTurno(ref SqlCommand cmd, ref Turnos tu)
+        {
+            SqlParameter sqlParametros = new SqlParameter();
+            sqlParametros = cmd.Parameters.Add("@LEGAJOMED", SqlDbType.NChar, 5);
+            sqlParametros.Value = tu.medico;
+            sqlParametros = cmd.Parameters.Add("@FECHATURNO", SqlDbType.DateTime);
+            sqlParametros.Value = tu.fecha;
+            sqlParametros = cmd.Parameters.Add("@HORATURNO", SqlDbType.Time);
+            sqlParametros.Value = tu.hora;
+            sqlParametros = cmd.Parameters.Add("@DIASEMANA", SqlDbType.Int);
+            sqlParametros.Value = tu.dia;
+            sqlParametros = cmd.Parameters.Add("@DNIPACIENTE", SqlDbType.NChar, 10);
+            sqlParametros.Value = tu.dnipaciente;
+        }
     }
 }

@@ -45,6 +45,16 @@ namespace Negocio
             return acceTur.getTurnosDisponibles(legajo, fecha);
         }
 
+        public bool asignarTurno(ref Turnos tu)
+        {
+            if(acceTur.agregarTurno(ref tu) > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
 
     }
 }

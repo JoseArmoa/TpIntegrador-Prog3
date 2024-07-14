@@ -38,7 +38,7 @@ CREATE TABLE Usuarios
 IdUsuario int identity(1,1),
 CONSTRAINT PK_Usuarios primary key(IdUsuario),
 NombreUsuario varchar(30) unique not null,
-Contrasenia varchar(15)not null,
+Contrasenia varchar(30)not null,
 TipoUsuario varchar(15) not null,
 Estado bit default (1)
 )
@@ -656,7 +656,6 @@ CREATE PROCEDURE spAgregarMedico
 
  CREATE PROCEDURE spAgregarTurnos
  (
-	@IDTURNO int,
 	@LEGAJOMED nchar(5),
 	@DIASEMANA int,
 	@HORATURNO time,
@@ -664,8 +663,8 @@ CREATE PROCEDURE spAgregarMedico
 	@DNIPACIENTE nchar(10)
  )
  AS
- INSERT INTO Turnos (IdTurno,LegajoMedico_Turno,DiaSemana_Turno,HoraTurno,FechaTurno,DniPaciente_TA)
- SELECT @IDTURNO,@LEGAJOMED,@DIASEMANA,@HORATURNO,@FECHATURNO,@DNIPACIENTE
+ INSERT INTO Turnos (LegajoMedico_Turno,DiaSemana_Turno,HoraTurno,FechaTurno,DniPaciente_TA)
+ SELECT @LEGAJOMED,@DIASEMANA,@HORATURNO,@FECHATURNO,@DNIPACIENTE
  GO
 
  CREATE PROCEDURE spActualizarTurno
@@ -848,6 +847,20 @@ ON U.NombreUsuario = CONCAT(I.ApellidoMedico, LEFT(I.DniMedico,4))
 END
 GO
 
+CREATE TRIGGER TR_ASIGNARTURNO
+ON Turnos AFTER INSERT
+AS
+BEGIN
+DECLARE @Hora Time = (SELECT HoraTurno FROM inserted)
+DECLARE @Fecha Date = (SELECT FechaTurno FROM inserted)
+DECLARE @Legajo nchar(5) = (SELECT LegajoMedico_Turno FROM inserted)
+DECLARE @Dia int = (SELECT DiaSemana_Turno FROM inserted)
+UPDATE HorariosXDiaXMedicoXDl
+SET Asignado = 1
+WHERE LegajoMedico = @Legajo and HoraDisponible = @Hora and DiaSemana = @Dia and FechaDisponible = @Fecha
+END
+GO
+
 CREATE VIEW view_HorariosTrabajo
 AS
 SELECT  Concat( (Convert(varchar(5), HoraIngreso, 108)),' a ' ,(Convert(varchar(5), HoraSalida, 108)) ) AS Id,
@@ -961,7 +974,6 @@ SELECT '189012345', 'Daiana', 'Chávez', '1996-07-25', 59, '01111111136', 'Calle 
 SELECT '190123456', 'Evelina', 'Cabrera', '1988-06-26',48, '01111111137', 'Calle Falsa 2727', 'ecabrera@mail.com', 'Femenino', 'Argentina' UNION
 SELECT '201234567', 'Vanina', 'Correa', '1983-08-14',38, '01111111138', 'Calle Falsa 2828', 'vcorrea2@mail.com', 'Femenino', 'Argentina' 
 GO
-
 
 
 EXEC spVerDisponibles '11111', '2024/07/19'

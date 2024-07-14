@@ -15,6 +15,10 @@ namespace Vistas.Medico
             {
                 lblNombreUsuario.Text = Session["Usuario"].ToString();
             }
+            else
+            {
+                Response.Redirect("../Login.aspx");
+            }
         }
 
         protected void btnUsuario_Click(object sender, EventArgs e)

@@ -19,6 +19,10 @@ namespace Vistas.Medico
             {
                 lblNombreUsuario.Text = Session["Usuario"].ToString();
             }
+            else
+            {
+                Response.Redirect("../Login.aspx");
+            }
 
             if (!IsPostBack)
             {

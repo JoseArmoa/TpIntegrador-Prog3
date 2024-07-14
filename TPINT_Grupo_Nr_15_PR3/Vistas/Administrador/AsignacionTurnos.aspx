@@ -125,7 +125,7 @@
                         </asp:Calendar>
                         <br />
                         <br />
-                        <asp:DataList ID="DataList1" runat="server" Visible="False">
+                        <asp:DataList ID="dtHorariosDisponibles" runat="server" Visible="False">
                             <ItemTemplate>
                                 <br />
                                 <asp:Label ID="lblHorario" runat="server" Text='<%# Bind("Hora") %>'></asp:Label>
@@ -154,7 +154,9 @@
                     <td class="auto-style14">
                         <asp:Button class="btn success" ID="btnAceptar" runat="server" Text="Aceptar" OnClick="btnAceptar_Click" />
                     </td>
-                    <td class="auto-style12"></td>
+                    <td class="auto-style12">
+                        <asp:Label ID="lblMensaje" runat="server"></asp:Label>
+                    </td>
                 </tr>
                 <tr>
                     <td class="auto-style2">&nbsp;</td>

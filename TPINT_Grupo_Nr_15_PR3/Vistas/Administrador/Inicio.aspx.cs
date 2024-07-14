@@ -15,6 +15,10 @@ namespace Vistas
             {
                 lblNombreUsuario.Text = Session["Usuario"].ToString();
             }
+            else
+            {
+                Response.Redirect("../Login.aspx");
+            }
         }
 
 

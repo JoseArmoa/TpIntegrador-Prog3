@@ -168,13 +168,13 @@ namespace Vistas
         protected global::System.Web.UI.WebControls.Calendar Calendar1;
 
         /// <summary>
-        /// Control DataList1.
+        /// Control dtHorariosDisponibles.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList DataList1;
+        protected global::System.Web.UI.WebControls.DataList dtHorariosDisponibles;
 
         /// <summary>
         /// Control lblFecha.
@@ -211,6 +211,15 @@ namespace Vistas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAceptar;
+
+        /// <summary>
+        /// Control lblMensaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMensaje;
 
         /// <summary>
         /// Control hlVolverInicio.
