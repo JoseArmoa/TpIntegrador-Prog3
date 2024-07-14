@@ -29,5 +29,31 @@ namespace Dao
             SqlParametros = sc.Parameters.Add("@DNIPACIENTE", SqlDbType.NChar);
             SqlParametros.Value = obs.dnipaciente;
         }
+
+        public int MostrarObservacion(ref Observaciones obs)
+        {
+            SqlCommand sc = new SqlCommand();
+            ParametrosMostrar(ref sc, ref obs);
+            return db.EjecutarProcedimientoAlmacenado(ref sc, "spMostrarObservacion");
+        }
+
+        public void ParametrosMostrar(ref SqlCommand sc, ref Observaciones obs)
+        {
+            SqlParameter sqlpram = new SqlParameter();
+            sqlpram = sc.Parameters.Add("@DNIPACIENTE", SqlDbType.NChar);
+            sqlpram.Value = obs.dnipaciente;
+        }
+
+        public DataTable obtenerTabla(ref Observaciones obs)
+        {
+            string consulta = "SELECT FechaTurno,Observaciones.Observacion " +
+                "FROM (Pacientes inner join Turnos " +
+                "ON Pacientes.DniPaciente = Turnos.DniPaciente_TA) inner join Observaciones " +
+                "ON Turnos.IdTurno = Observaciones.IdTurno_Obs " +
+                "AND Turnos.DniPaciente_TA = Observaciones.DniPaciente_Obs " +
+                " WHERE DniPaciente_Obs= '" + obs.dnipaciente + "'";
+
+            return db.ObtenerTabla("Observaciones", consulta);
+        }
     }
 }

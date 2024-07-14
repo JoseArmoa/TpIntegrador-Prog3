@@ -94,7 +94,7 @@
                         <td>&nbsp;</td>
                     </tr>
                 </table>
-                <asp:GridView CssClass="grid" ID="gvTurnos" runat="server" AutoGenerateColumns="False" Width="344px">
+                <asp:GridView CssClass="grid" ID="gvTurnos" runat="server" AutoGenerateColumns="False" Width="344px" AllowPaging="True" PageSize="5">
                     <Columns>
                         <asp:TemplateField HeaderText="ID Turnos">
                             <ItemTemplate>

@@ -113,6 +113,32 @@ namespace Vistas
             CargarGD();
 
         }
+
+        protected void lbObservaciones_Click(object sender, EventArgs e)
+        {
+            MultiViewObservacion.ActiveViewIndex = 0;
+        }
+
+        protected void btnOcultar_Click(object sender, EventArgs e)
+        {
+            MultiViewObservacion.ActiveViewIndex = -1;
+        }
+
+        protected void lbObservaciones_Command(object sender, CommandEventArgs e)
+        {
+            Observaciones obs = new Observaciones();
+            ControladorObservaciones constr = new ControladorObservaciones();
+
+            if (e.CommandName == "comandoObservaiones")
+            {
+                string arguments = (string)e.CommandArgument;
+
+                obs.dnipaciente = arguments;
+
+                gvObservaciones.DataSource = constr.getTablaObservaciones(ref obs);
+                gvObservaciones.DataBind();
+            }
+        }
     }
 
 
