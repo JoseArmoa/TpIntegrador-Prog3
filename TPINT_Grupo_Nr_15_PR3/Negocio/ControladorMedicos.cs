@@ -22,9 +22,9 @@ namespace Negocio
         {
             return accMed.obtenerTablaXEspecialidad(especialidad);
         }
-        public DataTable getTablaMedico(string legajo)
+        public DataTable getTablaFiltrada(string filtro)
         {
-            return accMed.obtenerTablaMedicoPorLegajo(legajo);
+            return accMed.obtenerTablaMedicoFiltrada(filtro);
         }
 
         public bool AgregarMedico(ref Medicos med)

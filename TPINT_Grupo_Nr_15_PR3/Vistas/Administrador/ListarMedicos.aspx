@@ -50,9 +50,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style4">Legajo Médico:</td>
+                    <td class="auto-style4">&nbsp;</td>
                     <td class="auto-style4">
-                        <asp:TextBox ID="txtLegajo" runat="server" MaxLength="5"></asp:TextBox>
+                        <asp:TextBox ID="txtLegajo" runat="server" MaxLength="5" AutoPostBack="true" OnTextChanged="txtLegajo_TextChanged"></asp:TextBox>
                     &nbsp;
                         <asp:RequiredFieldValidator ID="rvLegajo" runat="server" ControlToValidate="txtLegajo" ErrorMessage="Ingrese un legajo" ValidationGroup="GrupoBuscar">*</asp:RequiredFieldValidator>
                     </td>

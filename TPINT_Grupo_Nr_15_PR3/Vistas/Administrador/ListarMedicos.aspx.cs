@@ -213,9 +213,9 @@ namespace Vistas.Administrador
         {
             ControladorMedicos negMedicos = new ControladorMedicos();
 
-            string legajo = txtLegajo.Text;
+            string filtro = txtLegajo.Text;
 
-            CargarGD(negMedicos.getTablaMedico(legajo));
+            CargarGD(negMedicos.getTablaFiltrada(filtro));
         }
 
         protected void btnMostrarTodos_Click(object sender, EventArgs e)
@@ -227,6 +227,15 @@ namespace Vistas.Administrador
         {
             gvHorariosMedico.Visible = false;
             btnOcultarHorarios.Visible = false;
+        }
+
+        protected void txtLegajo_TextChanged(object sender, EventArgs e)
+        {
+            ControladorMedicos negMedicos = new ControladorMedicos();
+
+            string filtro = txtLegajo.Text;
+
+            CargarGD(negMedicos.getTablaFiltrada(filtro));
         }
     }
 }

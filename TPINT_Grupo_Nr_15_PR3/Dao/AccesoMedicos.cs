@@ -44,11 +44,20 @@ namespace Dao
             //GO
         }
 
-        public DataTable obtenerTablaMedicoPorLegajo(string legajo)
+        public DataTable obtenerTablaMedicoFiltrada(string legajo)
         {
-            string consulta = "SELECT * FROM viewMedicos WHERE Legajo = '" + legajo + "'";
+            string consulta = "SELECT * FROM viewMedicos " +
+                              "WHERE LOWER(Legajo) LIKE '%' + LOWER(@FILTRO) + '%' " +
+                              "OR LOWER(Nombre) LIKE '%' + LOWER(@FILTRO) + '%' " +
+                              "OR LOWER(Apellido) LIKE '%' + LOWER(@FILTRO) + '%' " +
+                              "OR LOWER(Especialidad) LIKE '%' + LOWER(@FILTRO) + '%'";
 
-            return acceso.ObtenerTabla("Medicos", consulta);
+            SqlCommand cmd = new SqlCommand();
+            SqlParameter sqlParametros = new SqlParameter();
+            sqlParametros = cmd.Parameters.Add("@FILTRO", SqlDbType.VarChar);
+            sqlParametros.Value = legajo;
+
+            return acceso.ObtenerTabla("Medicos", consulta,cmd);
 
             //CREATE VIEW viewMedicos
             //AS
