@@ -90,7 +90,18 @@
                             <asp:Button CssClass="btn" ID="Button1" runat="server" Text="Buscar" OnClick="Button1_Click" OnCommand="Button1_Command" ValidationGroup="Grupo1" />
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <asp:Label ID="lblmensajes" runat="server"></asp:Label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:LinkButton CssClass="btn secundario" ID="lbVolverInicio" runat="server" PostBackUrl="~/Medico/Inicio.aspx">Volver al Inicio</asp:LinkButton>
                         </td> 
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style4">&nbsp;</td>
+                        <td class="auto-style3">&nbsp;</td>
+                        <td class="auto-style2">
+                            &nbsp;</td>
+                        <td>
+                            &nbsp;</td> 
                         <td>&nbsp;</td>
                     </tr>
                 </table>
