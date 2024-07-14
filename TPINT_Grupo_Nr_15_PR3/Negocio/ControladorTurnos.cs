@@ -13,9 +13,9 @@ namespace Negocio
     {
         AccesoTurnos acceTur = new AccesoTurnos();
 
-        public DataTable getTablaTurnosMedicos()
+        public DataTable getTablaTurnosMedicos(Turnos tur)
         {
-            return acceTur.getTablaTurnosListarMedico();
+            return acceTur.getTablaTurnosListarMedico(tur);
         }
 
         public DataTable getTablaTurnosAdministrador()
@@ -33,6 +33,11 @@ namespace Negocio
             }
             return null;
 
+        }
+
+        public string ObtenerLegajoMed(Usuarios usu)
+        {
+            return acceTur.ObtenerLegajoMedico(usu);
         }
 
         public bool hayDisponibles(string legajo, DateTime fecha)

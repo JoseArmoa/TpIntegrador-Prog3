@@ -80,6 +80,15 @@ namespace Dao
             return FilasCambiadas;
         }
 
+        public string ObtenerLegajoMedicoPorUsuario(string consulta)
+        {
+            SqlConnection conexion = ObtenerConeccion();
+            SqlCommand cmd = new SqlCommand(consulta, conexion);
+            string resultado = Convert.ToString(cmd.ExecuteScalar());
+            conexion.Close();
+            return resultado;
+        }
+
         public bool esVerdadero(ref SqlCommand cmd, string consulta)
         {
             SqlConnection Conexion = ObtenerConeccion();

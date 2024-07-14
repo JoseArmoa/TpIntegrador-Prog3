@@ -21,12 +21,23 @@ namespace Dao
             return db.existe(consulta);
         }
 
-        public DataTable getTablaTurnosListarMedico()
+        public DataTable getTablaTurnosListarMedico(Turnos tur)
         {
             string consulta = "Select IdTurno AS [ID Turnos],FechaTurno AS Fecha,HoraTurno AS Hora,NombrePaciente AS Nombre,ApellidoPaciente AS Apellido,DniPaciente_TA AS DNI,Asistio AS Asistio " +
                 "From Turnos inner join Pacientes " +
-                "ON DniPaciente = DniPaciente_TA";
+                "ON DniPaciente = DniPaciente_TA " +
+                "where LegajoMedico_Turno = '" + tur.medico + "'";
             return db.ObtenerTabla("Turnos", consulta);
+        }
+
+        public string ObtenerLegajoMedico(Usuarios usuario)
+        {
+            string consulta = "select Medicos.LegajoMedico " +
+                              "from Usuarios inner join Medicos " +
+                              "on Usuarios.IdUsuario = Medicos.IdUsuario_Med " +
+                              "where Usuarios.IdUsuario = ' " + usuario.iDUsuario + "'";
+
+            return db.ObtenerLegajoMedicoPorUsuario(consulta);
         }
 
         public DataTable getTablaTurnosListarAdministrador()
