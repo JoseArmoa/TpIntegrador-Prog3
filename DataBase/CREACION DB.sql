@@ -1060,3 +1060,58 @@ AND HorariosXDiaXMedicoXDl.HoraDisponible = HoraTurno) inner join Pacientes
 ON DniPaciente_TA = DniPaciente) inner join Observaciones
 ON DniPaciente = DniPaciente_Obs
 GO
+
+CREATE TRIGGER TR_CREARUSUARIO_Admin
+ON Administradores
+AFTER INSERT
+AS
+BEGIN 
+--CREAMOS EL USUARIO CONCATENANDO APELLIDO Y LOS PRIMEROS 4 DIGITOS DEL DNI
+INSERT INTO Usuarios(NombreUsuario, Contrasenia, TipoUsuario)
+SELECT CONCAT(ApellidoAdmin,LEFT(DniAdmin,4)), CONCAT(ApellidoAdmin,DniAdmin), 'Admin' FROM inserted
+
+UPDATE A
+SET A.IdUsuario_Admin = U.IdUsuario
+FROM (Administradores as A INNER JOIN inserted as I
+ON A.LegajoAdmin = I.LegajoAdmin) INNER JOIN Usuarios as U
+ON U.NombreUsuario = CONCAT(I.ApellidoAdmin, LEFT(I.DniAdmin,4))
+END
+GO
+
+
+INSERT INTO Administradores (LegajoAdmin, NombreAdmin, ApellidoAdmin, DniAdmin)
+SELECT 'A001', 'Carolina', 'Alvarez', '39888222' 
+GO
+
+
+
+CREATE PROCEDURE CalcularPorcentajeAsistencias
+    @FechaInicio DATE,
+    @FechaFin DATE
+AS
+BEGIN
+    WITH CTE_Contador AS (
+        SELECT
+            SUM(CASE WHEN Asistio = 1 THEN 1 ELSE 0 END) AS TotalAsistencias,
+            SUM(CASE WHEN Asistio = 0 THEN 1 ELSE 0 END) AS TotalInasistencias,
+            COUNT(*) AS Total
+        FROM
+            Turnos
+        WHERE
+            FechaTurno BETWEEN @FechaInicio AND @FechaFin
+    )
+    SELECT
+        'ASISTENCIAS' AS Tipo,
+        CAST(TotalAsistencias * 100.0 / Total AS DECIMAL(5, 2)) AS Porcentaje
+    FROM
+        CTE_Contador
+    UNION ALL
+    SELECT
+        'INASISTENCIAS' AS Tipo,
+        CAST(TotalInasistencias * 100.0 / Total AS DECIMAL(5, 2)) AS Porcentaje
+    FROM
+        CTE_Contador;
+END;
+
+EXEC CalcularPorcentajeAsistencias '2024/07/14', '2024/12/30'
+GO
