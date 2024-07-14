@@ -32,9 +32,19 @@ namespace Vistas.Medico
 
         protected void CargarGD()
         {
+            ControladorUsuario contrUsu = new ControladorUsuario();
 
-            gvTurnos.DataSource = controlTur.getTablaTurnosMedicos();
+            Usuarios usu = new Usuarios();
+            usu.nombreUsuario = Session["Usuario"].ToString();
+            usu = contrUsu.obtenerUsuario(usu);
+
+
+            Turnos tur = new Turnos();
+            string legajo = controlTur.ObtenerLegajoMed(usu);
+            tur.medico = legajo;
+            gvTurnos.DataSource = controlTur.getTablaTurnosMedicos(tur);
             gvTurnos.DataBind();
+
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
