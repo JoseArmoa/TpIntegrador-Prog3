@@ -13,9 +13,6 @@
         .auto-style2 {
             height: 23px;
         }
-        .auto-style7 {
-            width: 176px;
-        }
         .auto-style9 {
             width: 168px;
         }
@@ -36,6 +33,12 @@
         }
         .auto-style16 {
             width: 351px;
+        }
+        .auto-style18 {
+            width: 255px;
+        }
+        .auto-style19 {
+            width: 312px;
         }
         </style>
     <link rel="stylesheet" href="..\estilos.css" />
@@ -68,17 +71,18 @@
                         <td class="auto-style9">Desde:
                             <asp:TextBox ID="txtInicio" runat="server" TextMode="Date"></asp:TextBox>
                         </td>
-                        <td class="auto-style7">Hasta:
+                        <td class="auto-style19">Hasta:
                             <asp:TextBox ID="txtFinal" runat="server" TextMode="Date"></asp:TextBox>
                         </td>
                         <td>
                             <asp:Button CssClass="btn" ID="btnVer" runat="server" Text="Ver" OnClick="btnVer_Click" />
+                            <asp:CompareValidator ID="cvFechas" runat="server" ControlToCompare="txtInicio" ControlToValidate="txtFinal" ErrorMessage="Rango de fecha incorrecto" Operator="GreaterThan">*</asp:CompareValidator>
                         </td>
                         <td>&nbsp;</td>
                     </tr>
                     <tr>
                         <td class="auto-style9">&nbsp;</td>
-                        <td class="auto-style7">
+                        <td class="auto-style19">
                             <asp:Label ID="lblInforme1" runat="server"></asp:Label>
                         </td>
                         <td>
@@ -87,7 +91,7 @@
                     </tr>
                     <tr>
                         <td class="auto-style9">&nbsp;</td>
-                        <td class="auto-style7">
+                        <td class="auto-style19">
                             <asp:Label ID="lblInforme2" runat="server"></asp:Label>
                         </td>
                         <td>&nbsp;</td>
@@ -95,7 +99,9 @@
                     </tr>
                     <tr>
                         <td class="auto-style9">&nbsp;</td>
-                        <td class="auto-style7">
+                        <td class="auto-style19">
+                            &nbsp;</td>
+                        <td>
                             <asp:Chart ID="Chart1" runat="server" Visible="False">
                                 <series>
                                     <asp:Series ChartArea="ChartArea1" ChartType="Pie" Name="Series1">
@@ -108,11 +114,10 @@
                             </asp:Chart>
                         </td>
                         <td>&nbsp;</td>
-                        <td>&nbsp;</td>
                     </tr>
                     <tr>
                         <td class="auto-style9">&nbsp;</td>
-                        <td class="auto-style7">&nbsp;</td>
+                        <td class="auto-style19">&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>
                             &nbsp;</td>

@@ -68,7 +68,6 @@
                 <Columns>
                     <asp:TemplateField HeaderText="Acciones">
                         <ItemTemplate>
-                            <asp:CheckBox ID="cbPresente" runat="server" Text="Asistencia" Checked='<%# Bind("Asistio") %>' />
                             &nbsp;
                             <asp:LinkButton ID="LinkButton2" runat="server" CommandArgument='<%# Eval("NombrePaciente") + "-" + Eval("DniPaciente_TA") +"-"+Eval("Observacion") %>' CommandName="comandoTurnos" OnClick="LinkButton2_Click" OnCommand="LinkButton2_Command">Ver Observacion</asp:LinkButton>
                         </ItemTemplate>
@@ -91,6 +90,11 @@
                     <asp:TemplateField HeaderText="Especialidad">
                         <ItemTemplate>
                             <asp:Label ID="lblEspecialidad" runat="server" Text='<%# Bind("NombreEspecialidad") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Asistio">
+                        <ItemTemplate>
+                            <asp:CheckBox ID="CheckBox1" runat="server" Checked='<%# Bind("Asistio") %>' Enabled="False" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

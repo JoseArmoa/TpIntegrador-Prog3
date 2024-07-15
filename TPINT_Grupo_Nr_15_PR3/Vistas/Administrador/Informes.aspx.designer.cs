@@ -141,6 +141,15 @@ namespace Vistas.Administrador
         protected global::System.Web.UI.WebControls.Button btnVer;
 
         /// <summary>
+        /// Control cvFechas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator cvFechas;
+
+        /// <summary>
         /// Control lblInforme1.
         /// </summary>
         /// <remarks>

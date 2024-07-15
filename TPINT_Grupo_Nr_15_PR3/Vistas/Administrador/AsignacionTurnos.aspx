@@ -162,7 +162,7 @@
                     <td class="auto-style2">&nbsp;</td>
                     <td class="auto-style15">&nbsp;</td>
                     <td>
-                        <asp:HyperLink class="btn secundario" ID="hlVolverInicio" runat="server" NavigateUrl="~/OpcionesTurno.aspx">Volver a Inicio</asp:HyperLink>
+                        <asp:HyperLink class="btn secundario" ID="hlVolverInicio" runat="server" NavigateUrl="~/Administrador/Inicio.aspx">Volver a Inicio</asp:HyperLink>
                     </td>
                 </tr>
             </table>

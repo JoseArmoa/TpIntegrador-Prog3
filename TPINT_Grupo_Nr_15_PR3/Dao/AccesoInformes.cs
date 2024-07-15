@@ -29,8 +29,9 @@ namespace Dao
 
             string consulta = "SELECT 'Asistio' as Tipo, SUM(CASE WHEN Asistio = 1 THEN 1 ElSE 0 END) as Cantidad " +
                               "FROM Turnos " +
+                              "WHERE FechaTurno >= @FECHAINICIO and FechaTurno <= @FECHAFINAL " +
                               "UNION " +
-                              "SELECT 'No asistio' as Tipo, SUM(CASE WHEN Asistio = 0 THEN 1 ElSE 0 END) as Cantidad " +
+                              "SELECT 'No Asistio' as Tipo, SUM(CASE WHEN Asistio = 0 THEN 1 ElSE 0 END) as Cantidad " +
                               "FROM Turnos " +
                               "WHERE FechaTurno >= @FECHAINICIO and FechaTurno <= @FECHAFINAL ";
 
