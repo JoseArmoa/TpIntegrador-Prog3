@@ -1155,7 +1155,21 @@ FROM Turnos
 UNION
 SELECT 'No asistio' as Tipo, SUM(CASE WHEN Asistio = 0 THEN 1 ElSE 0 END) as Cantidad
 FROM Turnos
-WHERE FechaTurno >= '2024/07/14' and FechaTurno <= '2024/12/30'
+WHERE FechaTurno >= '2024/07/20' and FechaTurno <= '2024/12/25'
 
 EXEC CalcularPorcentajeAsistencias '2024/07/14', '2024/12/30'
 GO
+
+Select Asistio,Turnos.FechaTurno, Turnos.DniPaciente_TA,Pacientes.NombrePaciente,Especialidades.NombreEspecialidad,Observacion  
+From(((((Especialidades inner join Medicos  
+ON IdEspecialidad = IdEspecialidad_Med) inner join HorariosXDiaXMedico 
+ON LegajoMedico = LegajoMedico_HorXDiaXMed) inner join HorariosXDiaXMedicoXDl 
+ON LegajoMedico_HorXDiaXMed = HorariosXDiaXMedicoXDl.LegajoMedico 
+AND DiaSemana_HorXDiaXMed = DiaSemana 
+AND HoraTrabajo_HorXDiaXMed = HoraDisponible) inner join Turnos 
+ON HorariosXDiaXMedicoXDl.LegajoMedico = LegajoMedico_Turno 
+ AND DiaSemana = DiaSemana_Turno 
+AND FechaDisponible = FechaTurno 
+AND HorariosXDiaXMedicoXDl.HoraDisponible = HoraTurno) inner join Pacientes 
+ON DniPaciente_TA = DniPaciente) FULL OUTER JOIN Observaciones 
+ON Pacientes.DniPaciente = DniPaciente_Obs

@@ -64,7 +64,7 @@
             <h1>Turnos</h1>
             <br />
             <br />
-            <asp:GridView CssClass="grid" ID="gvTurnos" runat="server" AutoGenerateColumns="False">
+            <asp:GridView CssClass="grid" ID="gvTurnos" runat="server" AutoGenerateColumns="False" AllowPaging="True" AllowSorting="True" OnPageIndexChanging="gvTurnos_PageIndexChanging" PageSize="5">
                 <Columns>
                     <asp:TemplateField HeaderText="Acciones">
                         <ItemTemplate>
