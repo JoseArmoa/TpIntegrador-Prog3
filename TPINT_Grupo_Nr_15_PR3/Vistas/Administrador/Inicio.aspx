@@ -43,7 +43,7 @@
             </p>
             <br />
             <p>
-                <asp:HyperLink ID="hlPacientes" runat="server" NavigateUrl="~/Administrador/CargarPacientes.aspx">PACIENTES</asp:HyperLink>
+                <asp:HyperLink ID="hlPacientes" runat="server" NavigateUrl="~/Administrador/ListarPacientes.aspx">PACIENTES</asp:HyperLink>
             </p>
             <br />
             <p>

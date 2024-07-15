@@ -53,7 +53,7 @@ namespace Dao
                                 "AND DiaSemana = DiaSemana_Turno " +
                                 "AND FechaDisponible = FechaTurno " +
                                 "AND HorariosXDiaXMedicoXDl.HoraDisponible = HoraTurno) inner join Pacientes " +
-                                "ON DniPaciente_TA = DniPaciente) inner join Observaciones " +
+                                "ON DniPaciente_TA = DniPaciente) FULL OUTER JOIN Observaciones " +
                                 "ON Pacientes.DniPaciente = DniPaciente_Obs";
             return db.ObtenerTabla("Turnos", consulta);
         }

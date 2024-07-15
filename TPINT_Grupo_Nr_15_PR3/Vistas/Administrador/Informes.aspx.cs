@@ -131,19 +131,48 @@ namespace Vistas.Administrador
             DateTime inicio = DateTime.Parse(txtInicio.Text);
             DateTime final = DateTime.Parse(txtFinal.Text);
             dt = ci.getTablaAsistencias(inicio, final);
-            int cantAsistencias = Convert.ToInt32(dt.Rows[0][1]);
-            int cantInasitencias = Convert.ToInt32(dt.Rows[1][1]);
-            int totalTurno = cantAsistencias + cantInasitencias;
-            decimal PorcentajeAsistencia = totalTurno > 0 ? (decimal)cantAsistencias / totalTurno * 100 : 0;
 
-            foreach (DataRow d in dt.Rows)
+            int cantAsistencias;
+            int cantInasistencias;
+            int totalTurno;
+            decimal PorcentajeAsistencia;
+            decimal PorcentajeInasistencia;
+            try
             {
-                Chart1.Series[0].Points.AddXY(d[0], d[1]);
+                cantAsistencias = Convert.ToInt32(dt.Rows[0][1]);
+                cantInasistencias = Convert.ToInt32(dt.Rows[1][1]);
+                totalTurno = cantAsistencias + cantInasistencias;
+                PorcentajeAsistencia = totalTurno > 0 ? (decimal)cantAsistencias / totalTurno * 100 : 0;
+                PorcentajeInasistencia = totalTurno > 0 ? (decimal)cantInasistencias / totalTurno * 100 : 0;
             }
+            catch(InvalidCastException ex)
+            {
+                lblInforme1.Text = "No se encontraron registros dentro del periodo.";
+                return;
+            }
+
+            if(PorcentajeAsistencia == 100)
+            {
+                Chart1.Series[0].Points.AddXY(dt.Rows[0][0], dt.Rows[0][1]);
+                lblInforme2.Text = "El 100% asistio.";
+            }else if(PorcentajeInasistencia == 100)
+            {
+                Chart1.Series[0].Points.AddXY(dt.Rows[1][0], dt.Rows[1][1]);
+                lblInforme2.Text = "No hubo asistencias registradas";
+            }
+            else
+            {
+                foreach (DataRow d in dt.Rows)
+                {
+                    Chart1.Series[0].Points.AddXY(d[0], d[1]);
+                }
+                lblInforme2.Text = $"Solo el {PorcentajeAsistencia:F2}% asistió.";
+            }
+
             Chart1.Visible = true;
 
-            lblInforme1.Text = "Desde la fecha " + txtInicio.Text + " hasta " + txtFinal.Text + " hubo un total de " + totalTurno + " turnos.";
-            lblInforme2.Text = $"Solo el {PorcentajeAsistencia:F2}% asistió.";
+            lblInforme1.Text = $"Desde la fecha  {txtInicio.Text}  hasta  {txtFinal.Text}   hubo un total de  {totalTurno}  turnos.";
+            
         }
     }
 }
