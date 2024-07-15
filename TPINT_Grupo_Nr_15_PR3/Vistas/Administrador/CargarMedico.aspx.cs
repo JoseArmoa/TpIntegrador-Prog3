@@ -202,5 +202,35 @@ namespace Vistas.Administrador
             }
         }
 
+        protected void cvDni_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            ControladorMedicos cm = new ControladorMedicos();
+            Medicos med = new Medicos();
+            med.dni = txtDniMedico.Text;
+            if (cm.existeDni(ref med))
+            {
+                args.IsValid = false;
+            }
+            else
+            {
+                args.IsValid = true;
+            }
+        }
+
+        protected void cvLegajo_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            ControladorMedicos cm = new ControladorMedicos();
+            Medicos med = new Medicos();
+            med.legajo = txtLegajoMedico.Text;
+            if (cm.existeLegajo(ref med))
+            {
+                args.IsValid = false;
+            }
+            else
+            {
+                args.IsValid = true;
+            }
+
+        }
     }
 }

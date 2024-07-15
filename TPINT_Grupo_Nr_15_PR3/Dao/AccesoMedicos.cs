@@ -220,5 +220,19 @@ namespace Dao
 
             return acceso.ObtenerTabla("Medicos", consulta);
         }
+
+        public bool ExisteDNI(ref Medicos med)
+        {
+            string consulta = "SELECT Dni FROM viewMedicos WHERE Dni = '" + med.dni + "'";
+
+            return acceso.existe(consulta);
+        }
+
+        public bool ExisteLegajo(ref Medicos med)
+        {
+            string consulta = "SELECT Dni FROM viewMedicos WHERE Legajo = '" + med.legajo + "'";
+
+            return acceso.existe(consulta);
+        }
     }
 }

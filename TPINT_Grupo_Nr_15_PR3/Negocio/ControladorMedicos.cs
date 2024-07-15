@@ -68,5 +68,15 @@ namespace Negocio
         {
             return accMed.ObtenerTablaFiltrada2(especialidad);
         }
+
+        public bool existeDni(ref Medicos med)
+        {
+            return accMed.ExisteDNI(ref med);
+        }
+
+        public bool existeLegajo(ref Medicos med)
+        {
+            return accMed.ExisteLegajo(ref med);
+        }
     }
 }

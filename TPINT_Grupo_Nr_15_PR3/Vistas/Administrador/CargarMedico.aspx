@@ -82,6 +82,7 @@
                     <td class="auto-style13">
                         <asp:TextBox ID="txtLegajoMedico" runat="server" MaxLength="5"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rvLegajo" runat="server" ControlToValidate="txtLegajoMedico" ErrorMessage="Ingresa un legajo" ValidationGroup="GrupoAgregarMedico">*</asp:RequiredFieldValidator>
+                        <asp:CustomValidator ID="cvLegajo" runat="server" ControlToValidate="txtLegajoMedico" ErrorMessage="El Legajo ingresado ya existe en la base de datos" OnServerValidate="cvLegajo_ServerValidate" ValidationGroup="GrupoAgregarMedico" ClientValidationFunction="validateInput"></asp:CustomValidator>
                     </td>
                     <td class="auto-style13">&nbsp;</td>
                 </tr>
@@ -109,6 +110,7 @@
                         <asp:TextBox ID="txtDniMedico" runat="server"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rvDni" runat="server" ControlToValidate="txtDniMedico" ErrorMessage="Ingrese un dni" ValidationGroup="GrupoAgregarMedico">*</asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="revDni" runat="server" ControlToValidate="txtDniMedico" ErrorMessage="El DNI sólo puede contener números" ValidationExpression="^[1-9]\d*$" ValidationGroup="GrupoAgregarMedico">*</asp:RegularExpressionValidator>
+                        <asp:CustomValidator ID="cvDni" runat="server" ControlToValidate="txtDniMedico" ErrorMessage="El DNI ingresado ya existe en la base de datos" OnServerValidate="cvDni_ServerValidate" ValidationGroup="GrupoAgregarMedico" ClientValidationFunction="validateInput"></asp:CustomValidator>
                     </td>
                     <td class="auto-style15"></td>
                 </tr>
