@@ -61,5 +61,11 @@ namespace Vistas
                 lblObservacion.Text = arguments[2];
             }
         }
+
+        protected void gvTurnos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvTurnos.PageIndex = e.NewPageIndex;
+            CargarGD();
+        }
     }
 }

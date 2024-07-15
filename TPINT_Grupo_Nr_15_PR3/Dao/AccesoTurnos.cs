@@ -42,20 +42,29 @@ namespace Dao
 
         public DataTable getTablaTurnosListarAdministrador()
         {
-            string consulta = "Select Asistio,Turnos.FechaTurno, Turnos.DniPaciente_TA,Pacientes.NombrePaciente,Especialidades.NombreEspecialidad,Observacion " +
-                                "From(((((Especialidades inner join Medicos " +
-                                "ON IdEspecialidad = IdEspecialidad_Med) inner join HorariosXDiaXMedico " +
-                                "ON LegajoMedico = LegajoMedico_HorXDiaXMed) inner join HorariosXDiaXMedicoXDl " +
-                                "ON LegajoMedico_HorXDiaXMed = HorariosXDiaXMedicoXDl.LegajoMedico " +
-                                "AND DiaSemana_HorXDiaXMed = DiaSemana " +
-                                "AND HoraTrabajo_HorXDiaXMed = HoraDisponible) inner join Turnos " +
-                                "ON HorariosXDiaXMedicoXDl.LegajoMedico = LegajoMedico_Turno " +
-                                "AND DiaSemana = DiaSemana_Turno " +
-                                "AND FechaDisponible = FechaTurno " +
-                                "AND HorariosXDiaXMedicoXDl.HoraDisponible = HoraTurno) inner join Pacientes " +
-                                "ON DniPaciente_TA = DniPaciente) FULL OUTER JOIN Observaciones " +
-                                "ON Pacientes.DniPaciente = DniPaciente_Obs";
+            string consulta = "Select * FROM viewTurnos " +
+                              "ORDER BY FechaTurno";
             return db.ObtenerTabla("Turnos", consulta);
+
+
+            /*
+             *  CREATE VIEW viewTurnos
+                AS
+                Select Asistio,DATEADD(SECOND, DATEDIFF(SECOND, '00:00:00', Turnos.HoraTurno), CAST(Turnos.FechaTurno AS DateTime)) as FechaTurno, Turnos.DniPaciente_TA,Pacientes.NombrePaciente,Especialidades.NombreEspecialidad,Observacion 
+                From(((((Especialidades inner join Medicos 
+                ON IdEspecialidad = IdEspecialidad_Med) inner join HorariosXDiaXMedico 
+                ON LegajoMedico = LegajoMedico_HorXDiaXMed) inner join HorariosXDiaXMedicoXDl 
+                ON LegajoMedico_HorXDiaXMed = HorariosXDiaXMedicoXDl.LegajoMedico 
+                AND DiaSemana_HorXDiaXMed = DiaSemana 
+                AND HoraTrabajo_HorXDiaXMed = HoraDisponible) inner join Turnos 
+                ON HorariosXDiaXMedicoXDl.LegajoMedico = LegajoMedico_Turno 
+                AND DiaSemana = DiaSemana_Turno 
+                AND FechaDisponible = FechaTurno 
+                AND HorariosXDiaXMedicoXDl.HoraDisponible = HoraTurno) inner join Pacientes 
+                ON DniPaciente_TA = DniPaciente) FULL OUTER JOIN Observaciones 
+                ON Pacientes.DniPaciente = DniPaciente_Obs 
+                GO 
+            */
         }
 
         public DataTable getTablaFiltradaTurnos(Turnos tur)

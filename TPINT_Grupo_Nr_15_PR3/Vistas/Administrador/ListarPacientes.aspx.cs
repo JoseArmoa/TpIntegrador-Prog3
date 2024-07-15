@@ -72,7 +72,7 @@ namespace Vistas
         protected void gvListarPacientes_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             string DniPaciente = ((Label)gvListarPacientes.Rows[e.RowIndex].FindControl("lb_it_DNI")).Text;
-          
+
             pac.dni = DniPaciente;
             contrPacientes.EliminarPacientes(pac);
 
@@ -101,7 +101,7 @@ namespace Vistas
             string Direccion = ((TextBox)gvListarPacientes.Rows[e.RowIndex].FindControl("txt_eit_Direccion")).Text;
             string Telefno = ((TextBox)gvListarPacientes.Rows[e.RowIndex].FindControl("txt_eit_telefono")).Text;
             string Fecha = ((TextBox)gvListarPacientes.Rows[e.RowIndex].FindControl("txt_eit_FechNac")).Text;
-            
+
             pac.dni = DniPaciente;
             pac.nombre = NombrePaciente;
             pac.apellido = ApellidoPaciente;
@@ -140,9 +140,10 @@ namespace Vistas
             }
         }
 
-        protected void gvListarPacientes_SelectedIndexChanged(object sender, EventArgs e)
+        protected void gvListarPacientes_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-
+            gvListarPacientes.PageIndex = e.NewPageIndex;
+            CargarGD();
         }
     }
 
