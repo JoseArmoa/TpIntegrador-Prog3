@@ -58,5 +58,15 @@ namespace Negocio
                 return false;
             }
         }
+
+        public string getIdEspecialidad(string Legajo)
+        {
+            return accMed.obtenerIdEspecialidad(Legajo);
+        }
+
+        public DataTable getTablaFiltradaEspecialidad(string especialidad)
+        {
+            return accMed.ObtenerTablaFiltrada2(especialidad);
+        }
     }
 }

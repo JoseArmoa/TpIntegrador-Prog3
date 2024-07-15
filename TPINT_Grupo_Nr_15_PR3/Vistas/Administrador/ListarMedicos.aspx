@@ -50,24 +50,47 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style4">&nbsp;</td>
+                    <td class="auto-style4">Legajo: </td>
                     <td class="auto-style4">
                         <asp:TextBox ID="txtLegajo" runat="server" MaxLength="5" AutoPostBack="true" OnTextChanged="txtLegajo_TextChanged"></asp:TextBox>
                     &nbsp;
                         <asp:RequiredFieldValidator ID="rvLegajo" runat="server" ControlToValidate="txtLegajo" ErrorMessage="Ingrese un legajo" ValidationGroup="GrupoBuscar">*</asp:RequiredFieldValidator>
-                    </td>
-                    <td class="auto-style4">
+                    &nbsp;&nbsp;
                         <asp:Button class="btn" ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" ValidationGroup="GrupoBuscar" />
-                        &nbsp;&nbsp;
-                        <asp:Button class="btn" ID="btnMostrarTodos" runat="server" Text="Mostrar Todos" OnClick="btnMostrarTodos_Click" ValidationGroup="GrupoBuscar" />
-                        &nbsp;
+                        &nbsp;&nbsp;&nbsp;
                         <asp:Button class="btn secundario" ID="btnAgregar" runat="server" PostBackUrl="~/Administrador/CargarMedico.aspx" Text="Agregar" />
                     </td>
+                    <td class="auto-style4">
+                        &nbsp;&nbsp;
+                        &nbsp;
+                        </td>
+                </tr>
+                <tr>
+                    <td class="auto-style4">Especialidad:&nbsp;&nbsp; </td>
+                    <td class="auto-style4">
+                        <asp:DropDownList ID="ddlFiltroEspecialidad" runat="server" ValidationGroup="GrupoFiltro">
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="rfvFiltroEspecialidad" runat="server" ControlToValidate="ddlFiltroEspecialidad" ErrorMessage="Seleccione una Especialidad" InitialValue="-1" ValidationGroup="GrupoFiltro">*</asp:RequiredFieldValidator>
+&nbsp;&nbsp;
+                        <asp:Button CssClass="btn" ID="btnFiltrar" runat="server" OnClick="btnFiltrar_Click" Text="Filtrar" ValidationGroup="GrupoFiltro" />
+                    </td>
+                    <td class="auto-style4">
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style4">&nbsp;</td>
+                    <td class="auto-style4">
+                        &nbsp;&nbsp;
+                        <asp:Button class="btn" ID="btnMostrarTodos" runat="server" Text="Mostrar Todos" OnClick="btnMostrarTodos_Click" />
+                        &nbsp;&nbsp;
+                    </td>
+                    <td class="auto-style4">
+                        &nbsp;</td>
                 </tr>
                 <tr>
                     <td class="auto-style3"></td>
                     <td class="auto-style3" id="ddl_eit_Especialidad">
-                        <asp:GridView CssClass="grid" ID="gvListarMedicos" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="10" GridLines="Vertical" PageSize="6" ShowHeaderWhenEmpty="True" OnRowDeleting="gvListarMedicos_RowDeleting" OnRowEditing="gvListarMedicos_RowEditing" OnRowDataBound="gvListarMedicos_RowDataBound" OnRowUpdating="gvListarMedicos_RowUpdating" OnRowCancelingEdit="gvListarMedicos_RowCancelingEdit" OnRowCommand="gvListarMedicos_RowCommand">
+                        <asp:GridView CssClass="grid" ID="gvListarMedicos" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="10" GridLines="Vertical" PageSize="4" ShowHeaderWhenEmpty="True" OnRowDeleting="gvListarMedicos_RowDeleting" OnRowEditing="gvListarMedicos_RowEditing" OnRowDataBound="gvListarMedicos_RowDataBound" OnRowUpdating="gvListarMedicos_RowUpdating" OnRowCancelingEdit="gvListarMedicos_RowCancelingEdit" OnRowCommand="gvListarMedicos_RowCommand" OnPageIndexChanging="gvListarMedicos_PageIndexChanging">
                             <AlternatingRowStyle BackColor="#DCDCDC" />
                             <Columns>
                                 <asp:TemplateField HeaderText="Acciones">
@@ -94,7 +117,7 @@
                                     <EditItemTemplate>
                                         <asp:TextBox ID="txt_eit_Nombre" runat="server" Text='<%# Bind("Nombre") %>'></asp:TextBox>
                                         &nbsp;<asp:RequiredFieldValidator ID="rfv_eit_Nombre" runat="server" ControlToValidate="txt_eit_Nombre" ErrorMessage="Debe ingresar un nombre de médico" ValidationGroup="Grupo1">*</asp:RequiredFieldValidator>
-                                        <asp:RegularExpressionValidator ID="rev_eit_Nombre" runat="server" ControlToValidate="txt_eit_Nombre" ErrorMessage="El nombre sólo debe contener letras " ValidationExpression="^[A-Za-z\s]+$" ValidationGroup="Grupo1">*</asp:RegularExpressionValidator>
+                                        <asp:RegularExpressionValidator ID="rev_eit_Nombre" runat="server" ControlToValidate="txt_eit_Nombre" ErrorMessage="El nombre sólo debe contener letras " ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$" ValidationGroup="Grupo1">*</asp:RegularExpressionValidator>
                                     </EditItemTemplate>
                                     <ItemTemplate>
                                         <asp:Label ID="lbl_it_Nombre" runat="server" Text='<%# Bind("Nombre") %>'></asp:Label>
@@ -104,7 +127,7 @@
                                     <EditItemTemplate>
                                         <asp:TextBox ID="txt_eit_Apellido" runat="server" Text='<%# Bind("Apellido") %>'></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="rfv_eit_Apellido" runat="server" ControlToValidate="txt_eit_Apellido" ErrorMessage="Debe ingresar el apellido del médico" ValidationGroup="Grupo1">*</asp:RequiredFieldValidator>
-                                        <asp:RegularExpressionValidator ID="rev_eit_Apellido" runat="server" ControlToValidate="txt_eit_Apellido" ErrorMessage="El apellido sólo puede contener letras" ValidationExpression="^[A-Za-z\s]+$" ValidationGroup="Grupo1">*</asp:RegularExpressionValidator>
+                                        <asp:RegularExpressionValidator ID="rev_eit_Apellido" runat="server" ControlToValidate="txt_eit_Apellido" ErrorMessage="El apellido sólo puede contener letras" ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$" ValidationGroup="Grupo1">*</asp:RegularExpressionValidator>
                                     </EditItemTemplate>
                                     <ItemTemplate>
                                         <asp:Label ID="lbl_it_Apellido" runat="server" Text='<%# Bind("Apellido") %>'></asp:Label>
@@ -112,9 +135,7 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Dni">
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="txt_eit_Dni" runat="server" Text='<%# Bind("DNI") %>'></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="rfv_eit_Dni" runat="server" ControlToValidate="txt_eit_Dni" ErrorMessage="Debe ingresar un numero de dni" ValidationGroup="Grupo1">*</asp:RequiredFieldValidator>
-                                        <asp:RegularExpressionValidator ID="rev_eit_Dni" runat="server" ControlToValidate="txt_eit_Dni" ErrorMessage="El dni solo debe contener números" ValidationExpression="^[0-9,]*$" ValidationGroup="Grupo1">*</asp:RegularExpressionValidator>
+                                        <asp:Label ID="lbl_eit_Dni" runat="server" Text='<%# Bind("DNI") %>'></asp:Label>
                                     </EditItemTemplate>
                                     <ItemTemplate>
                                         <asp:Label ID="lbl_it_Dni" runat="server" Text='<%# Bind("DNI") %>'></asp:Label>
@@ -145,6 +166,7 @@
                     <td class="auto-style3">
                         <asp:ValidationSummary ID="vsEditarMedicos" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="Grupo1" />
                         <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="GrupoBuscar" />
+                        <asp:ValidationSummary ID="vsFiltro" runat="server" ValidationGroup="GrupoFiltro" ShowMessageBox="True" ShowSummary="False" />
                     </td>
                 </tr>
                 <tr>
@@ -157,7 +179,7 @@
                 <tr>
                     <td class="auto-style2">&nbsp;</td>
                     <td class="auto-style2 nombreUsuario">
-                        <asp:GridView CssClass="grid" ID="gvHorariosMedico" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" PageSize="5" ShowHeaderWhenEmpty="True" >
+                        <asp:GridView CssClass="grid" ID="gvHorariosMedico" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" PageSize="6" ShowHeaderWhenEmpty="True" >
                             <AlternatingRowStyle BackColor="#DCDCDC" />
                             <Columns>
                                 <asp:TemplateField HeaderText="Legajo">

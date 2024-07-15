@@ -161,13 +161,15 @@ namespace Vistas.Administrador
                     txtNombreMedico.Text = "";
                     txtFNMedico.Text = "";
                     txtDireccionMedico.Text = "";
-                    ddlEspecialidades.SelectedIndex = 0;
-                    ddlProvincias.SelectedIndex = 0;
-                    ddlLocalidades.SelectedIndex = 0;
+                    ddlEspecialidades.SelectedIndex = -1;
+                    ddlProvincias.SelectedIndex = -1;
+                    ddlLocalidades.SelectedIndex = -1;
                     txtNacionalidadMedico.Text = "";
                     txtTelefonoMedico.Text = "";
                     txtEmailMedico.Text = "" ;
                     txtSexoMedico.Text = "";
+                    ddlDias.SelectedIndex = -1;
+                    ddlHorario.SelectedIndex = -1;
                     lblDiasyHorario.Text = "";
 
                     horarios = new List<HorarioMedico>();

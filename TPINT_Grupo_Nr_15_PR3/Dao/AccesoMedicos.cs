@@ -199,5 +199,26 @@ namespace Dao
             //WHERE LegajoMedico = @LEGAJO
             //RETURN
         }
+
+        public string obtenerIdEspecialidad(string Legajo)
+        {
+            string consulta = "SELECT IdEspecialidad_Med FROM Medicos WHERE LegajoMedico = @LEGAJO";
+            SqlCommand cmd = new SqlCommand();
+            SqlParameter sqlParametros = new SqlParameter();
+            sqlParametros = cmd.Parameters.Add("@LEGAJO", SqlDbType.NChar);
+            sqlParametros.Value = Legajo;
+ 
+            DataTable dt =  acceso.ObtenerTabla("Medicos", consulta, cmd);
+            return dt.Rows[0]["IdEspecialidad_Med"].ToString();
+
+        }
+
+        public DataTable ObtenerTablaFiltrada2(string especialidad)
+        {
+            string consulta = "SELECT Legajo, Nombre, Apellido, Dni, Especialidad FROM viewMedicos " +
+                              "WHERE Especialidad = '" + especialidad + "'";
+
+            return acceso.ObtenerTabla("Medicos", consulta);
+        }
     }
 }

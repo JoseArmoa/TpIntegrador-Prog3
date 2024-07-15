@@ -28,6 +28,7 @@ namespace Vistas.Administrador
                 CargarGD();
                 gvHorariosMedico.Visible = false;
                 btnOcultarHorarios.Visible = false;
+                cargarFilltro();
             }
         }
 
@@ -87,6 +88,13 @@ namespace Vistas.Administrador
                 {
                     ControladorEspecialidades ce = new ControladorEspecialidades();
                     cargarDDL(ddl, ce.getTabla());
+
+                    Label lblLegajo = (Label)e.Row.FindControl("lbl_eit_Legajo");
+                    ControladorMedicos cm = new ControladorMedicos();
+                    string id = cm.getIdEspecialidad(lblLegajo.Text);
+
+                    ddl.SelectedValue = id;
+                    
                 }
 
             }
@@ -97,7 +105,7 @@ namespace Vistas.Administrador
             string Legajo = ((Label)gvListarMedicos.Rows[e.RowIndex].FindControl("lbl_eit_Legajo")).Text;
             string Nombre = ((TextBox)gvListarMedicos.Rows[e.RowIndex].FindControl("txt_eit_Nombre")).Text;
             string Apellido = ((TextBox)gvListarMedicos.Rows[e.RowIndex].FindControl("txt_eit_Apellido")).Text;
-            string Dni = ((TextBox)gvListarMedicos.Rows[e.RowIndex].FindControl("txt_eit_Dni")).Text;
+            string Dni = ((Label)gvListarMedicos.Rows[e.RowIndex].FindControl("lbl_eit_Dni")).Text;
             int Especialidad = Int32.Parse( ((DropDownList)gvListarMedicos.Rows[e.RowIndex].FindControl("ddl_eit_Especialidad")).SelectedItem.Value);
           
 
@@ -142,73 +150,6 @@ namespace Vistas.Administrador
             }
         }
 
-     /// ---------- MODIFICAR Y ELIMINAR HORARIOS MEDICOS -------
-  
-        //protected void gvHorariosMedico_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        //{
-        //    String legajo = ((Label)gvHorariosMedico.Rows[e.RowIndex].FindControl("lbl_Legajo_HS")).Text;
-        //    int dia = Convert.ToInt32( ((Label)gvHorariosMedico.Rows[e.RowIndex].FindControl("lbl_Dia_HS")).Text);
-
-        //    HorarioMedico hm = new HorarioMedico();
-        //    hm.LegajoMed = legajo;
-        //    hm.DiaSemana = dia;
-
-        //    ControladorHorario cHorario = new ControladorHorario();
-        //    cHorario.EliminarHorario(ref hm);
-
-        //    CargarHorario(legajo);
-        //}
-
-        //protected void gvHorariosMedico_RowEditing(object sender, GridViewEditEventArgs e)
-        //{
-        //    String legajo = ((Label)gvHorariosMedico.Rows[e.NewEditIndex].FindControl("lbl_Legajo_HS")).Text;
-        //    gvHorariosMedico.EditIndex = e.NewEditIndex;        
-
-        //    CargarHorario(legajo);
-        //}
-
-        //protected void gvHorariosMedico_RowDataBound(object sender, GridViewRowEventArgs e)
-        //{
-        //    if (e.Row.RowType == DataControlRowType.DataRow)
-        //    {
-        //        DropDownList ddl = (DropDownList)e.Row.FindControl("ddl_eit_Dias");
-        //        if (ddl != null)
-        //        {
-        //            ControladorDia cd = new ControladorDia();
-        //            cargarDDL(ddl, cd.getTabla());
-        //        }
-
-        //    }
-        //}
-
-        //protected void gvHorariosMedico_RowUpdating(object sender, GridViewUpdateEventArgs e)
-        //{
-        //    string Legajo = ((Label)gvHorariosMedico.Rows[e.RowIndex].FindControl("lbl_eit_Legajo")).Text;
-        //    int Dia = Convert.ToInt32(((DropDownList)gvHorariosMedico.Rows[e.RowIndex].FindControl("ddl_eit_Dias")).SelectedItem.Value);
-        //    TimeSpan Ingreso = TimeSpan.Parse( ((TextBox)gvHorariosMedico.Rows[e.RowIndex].FindControl("txt_eit_Entrada")).Text );
-        //    TimeSpan Egreso = TimeSpan.Parse( ((TextBox)gvHorariosMedico.Rows[e.RowIndex].FindControl("txt_eit_Salida")).Text );
-
-        //    HorarioMedico hm = new HorarioMedico();
-        //    hm.LegajoMed = Legajo;
-        //    hm.DiaSemana = Dia;
-        //    hm.HoraEntrada = Ingreso;
-        //    hm.HoraSalida = Egreso;
-
-        //    ControladorHorario ch = new ControladorHorario();
-        //    ch.ActualizarHorario(ref hm);
-
-        //    gvHorariosMedico.EditIndex = -1;
-        //    CargarHorario(Legajo);
-        //}
-
-        //protected void gvHorariosMedico_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
-        //{
-        //    string Legajo = ((Label)gvHorariosMedico.Rows[e.RowIndex].FindControl("lbl_eit_Legajo")).Text;
-
-        //    gvHorariosMedico.EditIndex = -1;
-        //    CargarHorario(Legajo);
-        //}
-
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             ControladorMedicos negMedicos = new ControladorMedicos();
@@ -237,5 +178,31 @@ namespace Vistas.Administrador
 
             CargarGD(negMedicos.getTablaFiltrada(filtro));
         }
+
+        protected void gvListarMedicos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvListarMedicos.PageIndex = e.NewPageIndex;
+            CargarGD();
+        }
+
+        protected void cargarFilltro()
+        {
+            ControladorEspecialidades ce = new ControladorEspecialidades();
+            cargarDDL(ddlFiltroEspecialidad, ce.getTabla());
+            ListItem lt = new ListItem("-Selecione una Especialidad-", "-1");
+            ddlFiltroEspecialidad.Items.Insert(0, lt);
+        }
+
+        protected void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            ControladorMedicos negMedicos = new ControladorMedicos();
+
+            string id = ddlFiltroEspecialidad.SelectedItem.Text;
+
+
+            CargarGD(negMedicos.getTablaFiltradaEspecialidad(id));
+            ddlFiltroEspecialidad.SelectedValue = "-1";
+        }
+
     }
 }

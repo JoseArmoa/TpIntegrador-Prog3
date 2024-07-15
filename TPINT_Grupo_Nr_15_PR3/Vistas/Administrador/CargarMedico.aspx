@@ -14,9 +14,6 @@
         .auto-style2 {
             height: 33px;
         }
-        .auto-style3 {
-            width: 63%;
-        }
         .auto-style4 {
             width: 359px;
         }
@@ -44,6 +41,13 @@
         }
         .auto-style13 {
             height: 26px;
+        }
+        .auto-style14 {
+            width: 359px;
+            height: 39px;
+        }
+        .auto-style15 {
+            height: 39px;
         }
     </style>
      <link rel="stylesheet" href="..\estilos.css" />
@@ -86,6 +90,7 @@
                     <td class="auto-style13">
                         <asp:TextBox ID="txtNombreMedico" runat="server"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rvNombre" runat="server" ControlToValidate="txtNombreMedico" ErrorMessage="Ingrese un nombre" ValidationGroup="GrupoAgregarMedico">*</asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="revNombre" runat="server" ControlToValidate="txtNombreMedico" ErrorMessage="El nombre sólo puede contener letras" ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$" ValidationGroup="GrupoAgregarMedico">*</asp:RegularExpressionValidator>
                     </td>
                     <td class="auto-style13"></td>
                 </tr>
@@ -94,16 +99,18 @@
                     <td class="auto-style13">
                         <asp:TextBox ID="txtApellidoMedico" runat="server"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rvApellido" runat="server" ControlToValidate="txtApellidoMedico" ErrorMessage="Ingrese un apellido" ValidationGroup="GrupoAgregarMedico">*</asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="revApellido" runat="server" ControlToValidate="txtApellidoMedico" ErrorMessage="El apellido sólo puede contener letras" ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$" ValidationGroup="GrupoAgregarMedico">*</asp:RegularExpressionValidator>
                     </td>
                     <td class="auto-style13"></td>
                 </tr>
                 <tr>
-                    <td class="auto-style4">DNI:</td>
-                    <td>
+                    <td class="auto-style14">DNI:</td>
+                    <td class="auto-style15">
                         <asp:TextBox ID="txtDniMedico" runat="server"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rvDni" runat="server" ControlToValidate="txtDniMedico" ErrorMessage="Ingrese un dni" ValidationGroup="GrupoAgregarMedico">*</asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="revDni" runat="server" ControlToValidate="txtDniMedico" ErrorMessage="El DNI sólo puede contener números" ValidationExpression="^[1-9]\d*$" ValidationGroup="GrupoAgregarMedico">*</asp:RegularExpressionValidator>
                     </td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style15"></td>
                 </tr>
                 <tr>
                     <td class="auto-style4">Fecha de Nacimiento:</td>
@@ -122,13 +129,13 @@
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="auto-style4">Provincia:</td>
-                    <td>
+                    <td class="auto-style14">Provincia:</td>
+                    <td class="auto-style15">
                         <asp:DropDownList ID="ddlProvincias" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlProvincias_SelectedIndexChanged">
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="rvProvincia" runat="server" ControlToValidate="ddlProvincias" ErrorMessage="Seleccione una Provincia" InitialValue="-1" ValidationGroup="GrupoAgregarMedico">*</asp:RequiredFieldValidator>
                     </td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style15"></td>
                 </tr>
                 <tr>
                     <td class="auto-style5">Localidad:</td>
@@ -144,6 +151,7 @@
                     <td>
                         <asp:TextBox ID="txtNacionalidadMedico" runat="server"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rvNacionalidad" runat="server" ControlToValidate="txtNacionalidadMedico" ErrorMessage="Ingrese una nacionalidad" ValidationGroup="GrupoAgregarMedico">*</asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="revNacionalidad" runat="server" ControlToValidate="txtNacionalidadMedico" ErrorMessage="La Nacionalidad sólo puede contener letras" ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$" ValidationGroup="GrupoAgregarMedico">*</asp:RegularExpressionValidator>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
@@ -152,22 +160,25 @@
                     <td>
                         <asp:TextBox ID="txtSexoMedico" runat="server"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rvSexo" runat="server" ControlToValidate="txtSexoMedico" ErrorMessage="Ingrese el sexo" ValidationGroup="GrupoAgregarMedico">*</asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="revSexoMedico" runat="server" ControlToValidate="txtSexoMedico" ErrorMessage="Sexo sólo debe contener letras" ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$" ValidationGroup="GrupoAgregarMedico">*</asp:RegularExpressionValidator>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="auto-style4">Teléfono:</td>
-                    <td>
+                    <td class="auto-style14">Teléfono:</td>
+                    <td class="auto-style15">
                         <asp:TextBox ID="txtTelefonoMedico" runat="server"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rvTelefono" runat="server" ControlToValidate="txtTelefonoMedico" ErrorMessage="Ingrese un telefono" ValidationGroup="GrupoAgregarMedico">*</asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="revTelefono" runat="server" ControlToValidate="txtTelefonoMedico" ErrorMessage="El Teléfono sólo debe contener números" ValidationExpression="^[1-9]\d*$" ValidationGroup="GrupoAgregarMedico">*</asp:RegularExpressionValidator>
                     </td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style15"></td>
                 </tr>
                 <tr>
                     <td class="auto-style4">Email:</td>
                     <td>
                         <asp:TextBox ID="txtEmailMedico" runat="server"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rvEmail" runat="server" ControlToValidate="txtEmailMedico" ErrorMessage="Ingrese un email" ValidationGroup="GrupoAgregarMedico">*</asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtEmailMedico" ErrorMessage="El Email ingresado no es válido" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="GrupoAgregarMedico">*</asp:RegularExpressionValidator>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
